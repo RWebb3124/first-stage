@@ -14,10 +14,10 @@ class User < ApplicationRecord
   has_many :flashcard_decks, through: :user_decks
   has_many :flashcards, through: :flashcard_decks
 
-  validates :first_name, presence: true
-  validates :last_name, presence: true
-  validates :username, presence: true, uniqueness: true
-  validates :address, presence: true, uniqueness: true, length: { minimum: 8 }
+  # validates :first_name, presence: true
+  # validates :last_name, presence: true
+  # validates :username, presence: true, uniqueness: true
+  # validates :address, presence: true, uniqueness: true, length: { minimum: 8 }
   validates :years_experience, presence: true, if: :interviewer?
   validates :headline, presence: true, if: :interviewer?
   validates :about, presence: true, length: { minimum: 16 }, if: :interviewer?

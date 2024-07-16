@@ -1,0 +1,6 @@
+<%= simple_form_for(current_user, url: upgrade_to_interviewer_user_path(current_user), method: :patch) do |f| %>
+  <%= f.input :years_experience %>
+  <%= f.input :headline %>
+  <%= f.input :about %>
+  <%= f.button :submit, "Sign up" %>
+<% end %>
