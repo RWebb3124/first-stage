@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :bookings_as_interviewee, class_name: ‘booking’, foreign_key: :interviewee_id
-  has_many :bookings_as_interviewer, class_name: ‘booking’, foreign_key: :interviewer_id
+  has_many :bookings_as_interviewee, class_name: 'booking', foreign_key: :interviewee_id
+  has_many :bookings_as_interviewer, class_name: 'booking', foreign_key: :interviewer_id
   has_many :reviews, through: :bookings
   has_many :user_tags
   has_many :tags, through: :user_tags

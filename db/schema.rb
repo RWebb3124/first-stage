@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_15_151440) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_16_045507) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -36,13 +36,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_15_151440) do
   end
 
   create_table "flashcard_decks", force: :cascade do |t|
-    t.bigint "user_id", null: false
     t.string "title"
     t.string "description"
     t.float "completion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_flashcard_decks_on_user_id"
   end
 
   create_table "flashcards", force: :cascade do |t|
@@ -63,15 +61,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_15_151440) do
     t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
   end
 
-  create_table "notifications", force: :cascade do |t|
-    t.string "title"
-    t.string "content"
-    t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_notifications_on_user_id"
-  end
-
   create_table "reviews", force: :cascade do |t|
     t.string "title"
     t.string "content"
@@ -87,6 +76,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_15_151440) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "user_decks", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "flashcard_deck_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["flashcard_deck_id"], name: "index_user_decks_on_flashcard_deck_id"
+    t.index ["user_id"], name: "index_user_decks_on_user_id"
   end
 
   create_table "user_tags", force: :cascade do |t|
@@ -121,11 +119,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_15_151440) do
   add_foreign_key "bookings", "users", column: "interviewee_id"
   add_foreign_key "bookings", "users", column: "interviewer_id"
   add_foreign_key "chatrooms", "users"
-  add_foreign_key "flashcard_decks", "users"
   add_foreign_key "flashcards", "flashcard_decks"
   add_foreign_key "messages", "chatrooms"
-  add_foreign_key "notifications", "users"
   add_foreign_key "reviews", "bookings"
+  add_foreign_key "user_decks", "flashcard_decks"
+  add_foreign_key "user_decks", "users"
   add_foreign_key "user_tags", "tags"
   add_foreign_key "user_tags", "users"
 end
