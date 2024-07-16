@@ -1,1 +1,35 @@
 // Specific CSS for your home-page
+.container-home .banner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+
+  h1 {
+    font-size: 100px;
+    font-weight: bolder;
+
+  }
+
+  h3 {
+    font-size: 50px;
+    font-weight: bolder;
+
+
+  }
+
+  .buttons-home {
+    display: flex;
+    justify-content: space-around;
+
+    #btn-home {
+      background-color: black;
+      box-shadow: 5px 10px 10px rgb(98, 97, 97);
+      color: white;
+      padding: 10px 25px 10px 25px;
+      margin: 20px;
+      border-radius: 5px;
+    }
+  }
+}
