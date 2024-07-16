@@ -17,4 +17,15 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :username, presence: true, uniqueness: true
+  validates :address, presence: true, uniqueness: true, length: { minimum: 8 }
+  validates :years_experience, presence: true, if: :interviewer?
+  validates :headline, presence: true, if: :interviewer?
+  validates :about, presence: true, length: { minimum: 16 }, if: :interviewer?
+  validates :tags, presence: true, if: :interviewer?
+end
+
+private
+
+def interviewer?
+  interviewer == true
 end
