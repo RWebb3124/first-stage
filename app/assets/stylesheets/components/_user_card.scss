@@ -1,0 +1,78 @@
+.card-user {
+  overflow: hidden;
+  background: white;
+  position: relative;
+  box-shadow: 0 0 10px rgba(154, 154, 154, 0.2);
+  border-radius: 10px;
+  margin: 10px;
+  height: 350px;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+}
+
+.user-avatar-img {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  position: absolute;
+  right: 131px;
+  top: -50px;
+}
+
+.capacity-icon {
+  display: flex;
+}
+
+.card-user-infos {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+  padding: 16px;
+}
+
+.user-card-tags {
+  display: flex;
+  justify-content: start;
+}
+
+.card-user h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-user p {
+  font-size: 12px;
+  opacity: .7;
+  margin: 0;
+}
+
+.card-user-tags p {
+  font-size: 14px;
+  opacity: .8;
+  margin: 0;
+}
+
+.individual-tag {
+  padding: 6px 10px;
+  background-color: rgb(241, 241, 240);
+  border-radius: 50px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+.price-capacity {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: auto;
+}
+
+.card-user a {
+  color: inherit !important;
+  text-decoration: none !important;
+}

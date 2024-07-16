@@ -38,9 +38,9 @@ end
       username: Faker::Internet.username,
       address: Faker::Address.city,
       interviewer: true,
-      years_experience: 6,
+      years_experience: rand(1..4),
       headline: "This is my tagline",
-      about: "This is a story all about how my life got flipped on upside down"
+      about: "I am a Senior Ruby developer with six years of experience in Fintech. My dream is to be a team lead, and I can\'t wait to help you rock your next interview!"
     }
   )
   interviewer.save!
