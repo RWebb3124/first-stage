@@ -9,9 +9,8 @@ class User < ApplicationRecord
   has_many :reviews, through: :bookings
   has_many :user_tags
   has_many :tags, through: :user_tags
-  has_many :notifications
   has_many :chatrooms
   has_many :messages, through: :chatrooms
-  has_many :flashcard_decks
+  has_many :flashcard_decks, through: :user_decks
   has_many :flashcards, through: :flashcard_decks
 end
