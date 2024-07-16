@@ -23,7 +23,16 @@
     display: flex;
     justify-content: space-around;
 
-    #btn-home {
+    #btn-index {
+      background-color: black;
+      box-shadow: 5px 10px 10px rgb(98, 97, 97);
+      color: white;
+      padding: 10px 25px 10px 25px;
+      margin: 20px;
+      border-radius: 5px;
+    }
+
+    #btn-become-interviewer {
       background-color: black;
       box-shadow: 5px 10px 10px rgb(98, 97, 97);
       color: white;
