@@ -1,17 +1,83 @@
-.footer-content {
-  background: #e0e0e0;
-  padding: 30px 10px;
+.footer {
+  background-color: #e0e0e0;
+  box-shadow: 0 -2px 2px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  position: fixed;
   bottom: 0;
   width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-content: center;
-  height: 60px;
+  z-index: 10;
 }
 
-.footer-firststage a, .footer-social a {
-  margin-right: 15px;
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+}
+
+.foot-menu {
+  display: flex;
+  justify-content: right;
+  flex-basis: auto;
+  width: 63%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.foot-item {
+  margin: 0 50px;
+}
+
+.foot-links {
+  color: #333;
   text-decoration: none;
-  color: #000;
+  transition: all 0.3s ease-in-out;
+}
+
+.foot-links:hover {
+  color: grey;
+}
+
+.footer-social {
+  display: flex;
+  justify-content: right;
+  flex-basis: auto;
+  width: 15%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.social-item {
+  margin: 0 10px;
+  padding: 0 5px;
+
+  i {
+    color: #333;
+  }
+}
+
+.hamburger {
+  display: none;
+  cursor: pointer;
+}
+
+
+@media (max-width: 768px) {
+  .foot-menu {
+    display: none;
+  }
+
+  .footer-social {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+  }
 }
