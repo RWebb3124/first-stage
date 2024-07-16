@@ -13,4 +13,8 @@ class User < ApplicationRecord
   has_many :messages, through: :chatrooms
   has_many :flashcard_decks, through: :user_decks
   has_many :flashcards, through: :flashcard_decks
+
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :username, presence: true, uniqueness: true
 end
