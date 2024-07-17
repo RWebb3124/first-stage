@@ -23,6 +23,8 @@ class User < ApplicationRecord
   validates :years_experience, presence: true, if: :interviewer?
   validates :headline, presence: true, if: :interviewer?
   validates :about, presence: true, length: { minimum: 16 }, if: :interviewer?
+  validates :linkedin, presence: true, if: :interviewer?
+  validates :github, presence: true, if: :interviewer?
   # validates :tags, presence: true, if: :interviewer?
 end
 

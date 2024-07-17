@@ -2,6 +2,8 @@
   <%= f.input :years_experience %>
   <%= f.input :headline %>
   <%= f.input :about %>
+  <%= f.input :linkedin, label: "LinkedIn profile URL"%>
+  <%= f.input :github, label: "Github profile URL"%> %>
 
   <%= f.association :tags,
                   as: :check_boxes,
