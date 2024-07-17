@@ -1,0 +1,58 @@
+.review-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.review-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #ccc;
+}
+
+.user-details {
+  margin-left: 10px;
+}
+
+.username {
+  font-weight: bold;
+}
+
+.review-date {
+  color: #888;
+  font-size: 12px;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.rating i {
+  margin-right: 5px;
+  color: #f0c14b;
+}
+
+.rating-value {
+  margin-left: 5px;
+}
+
+.review-content {
+  font-size: 14px;
+  line-height: 1.5;
+}
