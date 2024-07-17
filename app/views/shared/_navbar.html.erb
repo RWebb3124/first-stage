@@ -8,7 +8,7 @@
 
     <ul class="nav-menu">
       <li class="nav-item">
-        <a href="#" class="nav-links">Home</a>
+        <a href="<%= root_path %>" class="nav-links">Home</a>
       </li>
       <li class="nav-item">
         <a href="#" class="nav-links">Flashcards</a>
@@ -26,6 +26,14 @@
       <form class="search-form">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
       </form>
+    </div>
+
+    <div class="navbar-avatar">
+      <% if user_signed_in? %>
+        <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" %>
+      <% else %>
+        <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+      <% end %>
     </div>
 
     <div class="hamburger">
