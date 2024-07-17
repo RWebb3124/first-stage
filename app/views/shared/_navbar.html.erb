@@ -1,12 +1,14 @@
 <nav class="navbar">
   <div class="navbar-container">
-    <%= link_to "#", class: "navbar-brand" do %>
-      <div class="logo-circle">
-        <span>logo</span>
-      </div>
-    <% end %>
+    <div class="nav-menu-left">
+      <%= link_to "#", class: "navbar-brand" do %>
+        <div class="logo-circle">
+          <span>logo</span>
+        </div>
+      <% end %>
+    </div>
 
-    <ul class="nav-menu">
+    <ul class="nav-menu-center">
       <li class="nav-item">
         <a href="<%= root_path %>" class="nav-links">Home</a>
       </li>
@@ -21,19 +23,20 @@
       </li>
     </ul>
 
-    <div class="search-bar">
-      <i class="fas fa-search"></i>
-      <form class="search-form">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-      </form>
-    </div>
-
-    <div class="navbar-avatar">
-      <% if user_signed_in? %>
-        <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" %>
-      <% else %>
-        <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-      <% end %>
+    <div class="nav-menu-right">
+      <div class="search-bar">
+        <i class="fas fa-search"></i>
+        <form class="search-form">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        </form>
+      </div>
+      <div class="navbar-avatar">
+        <% if user_signed_in? %>
+          <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" %>
+        <% else %>
+          <%= link_to "Login", new_user_session_path, class: "rails nav-link" %>
+        <% end %>
+      </div>
     </div>
 
     <div class="hamburger">
