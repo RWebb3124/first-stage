@@ -17,11 +17,19 @@
   margin: 0;
 }
 
+.footer-left {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-basis: auto;
+  width: 20%;
+}
+
 .foot-menu {
   display: flex;
-  justify-content: right;
+  justify-content: center;
   flex-basis: auto;
-  width: 63%;
+  width: 100%;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -43,9 +51,9 @@
 
 .footer-social {
   display: flex;
-  justify-content: right;
+  justify-content: space-between;
   flex-basis: auto;
-  width: 15%;
+  width: 20%;
   list-style: none;
   margin: 0;
   padding: 0;
