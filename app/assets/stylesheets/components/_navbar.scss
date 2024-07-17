@@ -99,6 +99,11 @@
   text-decoration: none;
   margin: 0;
   padding: 0;
+
+  a {
+    color: grey;
+    margin-right: 10px;
+  }
 }
 
 .hamburger {
@@ -107,7 +112,7 @@
 }
 
 @media (max-width: 768px) {
-  .nav-menu {
+  .nav-menu-center {
     display: none;
   }
 
