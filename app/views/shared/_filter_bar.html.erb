@@ -1,62 +1,172 @@
-<div class="filter-bar row col-3 p-3 border bg-light">
-  <div class="accordion accordion-flush" id="accordionFlushExample">
-    <div class="accordion-item mb-3">
-      <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-          Years Experience
-        </button>
-      </h2>
-      <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-        <div class="accordion-body">Placeholder</div>
+<form action="users" method="get">
+  <div class="filter-bar border bg-light">
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+      <!-- Years Experience -->
+      <div class="accordion-item mb-3">
+        <h2 class="accordion-header" id="headingYearsExperience">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+            Years Experience
+          </button>
+        </h2>
+        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="headingYearsExperience" data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">
+            <ul class="list-unstyled">
+              <li>
+                <label>
+                  <input type="checkbox" name="years_experience[]" value="M" data-action='change->filter-users#filterUsers'> 3-5 Mid Level
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="checkbox" name="years_experience[]" value="S" data-action='change->filter-users#filterUsers'> 5+ Senior
+                </label>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="accordion-item mb-3">
-      <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-          Language
-        </button>
-      </h2>
-      <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-        <div class="accordion-body">Placeholder</div>
+      <!-- Language -->
+      <div class="accordion-item mb-3">
+        <h2 class="accordion-header" id="headingLanguage">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+            Language
+          </button>
+        </h2>
+        <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingLanguage" data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">
+            <ul class="list-unstyled">
+              <li>
+                <label>
+                  <input type="checkbox" name="language[]" value="English"> English
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="checkbox" name="language[]" value="French"> French
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="checkbox" name="language[]" value="Spanish"> Spanish
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="checkbox" name="language[]" value="Dutch"> Dutch
+                </label>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="accordion-item mb-3">
-      <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-          Availability
-        </button>
-      </h2>
-      <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-        <div class="accordion-body">Placeholder</div>
+      <!-- Availability -->
+      <div class="accordion-item mb-3">
+        <h2 class="accordion-header" id="headingAvailability">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+            Availability
+          </button>
+        </h2>
+        <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="headingAvailability" data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">
+            <ul class="list-unstyled">
+              <li>
+                <label>
+                  <input type="checkbox" name="availability[]" value="Monday"> Monday
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="checkbox" name="availability[]" value="Tuesday"> Tuesday
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="checkbox" name="availability[]" value="Wednesday"> Wednesday
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="checkbox" name="availability[]" value="Thursday"> Thursday
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="checkbox" name="availability[]" value="Friday"> Friday
+                </label>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="accordion-item mb-3">
-      <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
-          Tags
-        </button>
-      </h2>
-      <div id="flush-collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-        <div class="accordion-body">Placeholder</div>
+      <!-- Tags -->
+      <div class="accordion-item mb-3">
+        <h2 class="accordion-header" id="headingTags">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+            Tags
+          </button>
+        </h2>
+        <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="headingTags" data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">
+            <ul class="list-unstyled">
+              <li>
+                <label>
+                  <input type="checkbox" name="tag[]" value="Ruby"> Ruby
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="checkbox" name="tag[]" value="HTML"> HTML
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="checkbox" name="tag[]" value="JavaScript"> JavaScript
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="checkbox" name="tag[]" value="CSS"> CSS
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="checkbox" name="tag[]" value="React"> React
+                </label>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="accordion-item mb-3">
-      <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
-          Sort by
-        </button>
-      </h2>
-      <div id="flush-collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-        <div class="accordion-body">Placeholder</div>
+      <!-- Sort By -->
+      <div class="accordion-item mb-3">
+        <h2 class="accordion-header" id="headingSortBy">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+            Sort by
+          </button>
+        </h2>
+        <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="headingSortBy" data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">
+            <ul class="list-unstyled">
+              <li>
+                <label>
+                  <input type="checkbox" name="reccomendation[]" value="review"> Most Reccomended
+                </label>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- Reset button -->
+      <div class="accordion-item mb-3">
+        <h2 class="accordion-header">
+          <input class="btn btn-dark" type="submit" value="Submit">
+          <input class="btn btn-dark" type="reset" value="Reset">
+        </h2>
       </div>
     </div>
   </div>
-  <div class="accordion-item mb-3">
-    <h2 class="accordion-header">
-      <input class="btn btn-primary" type="reset" value="Reset">
-    </h2>
-  </div>
-</div>
+</form>
+<!-- JavaScript to Handle Accordion Button Toggle -->
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     const accordionButtons = document.querySelectorAll(".accordion-button");
