@@ -1,12 +1,20 @@
+<<<<<<< Updated upstream
 <div class="container">
   <%= render 'shared/filter_bar' %>
 </div>
 
 <div class="container">
-  <%= render 'shared/review_card' %>
-</div>
-
-
-<div class="container">
   <%= render 'shared/user_card' %>
+=======
+<div class="main-container" data-controller="filter-users">
+    <div class="row">
+      <div class="col-6 col-lg-3 mt-4">
+        <h2>Filter</h2>
+        <%= render 'shared/filter_bar' %>
+    </div>
+    <div class="col-6 col-lg-9">
+        <%= render partial: 'shared/user_card', locals: { users: @users } %>
+    </div>
+  </div>
+>>>>>>> Stashed changes
 </div>

@@ -4,7 +4,14 @@
     <h3>Find Your....<h3>
     <div class="buttons-home">
       <div id="btn-index" class="link-colour"><h4><%= link_to "Find an Interviewer", users_path %><h4></div>
-      <div id="btn-become-interviewer" class="link-colour"><h4>Become an Interviewer<h4></div>
+      <div id="btn-become-interviewer" class="link-colour"><h4>
+      <% if user_signed_in? %>
+      <%= link_to "Become an Interviewer", become_interviewer_user_path(current_user) %>
+      <% else %>
+      <%= link_to 'Become an Interviewer', new_user_registration_path %>
+      <% end %>
+      </h4>
+      </div>
     </div>
   </div>
 
