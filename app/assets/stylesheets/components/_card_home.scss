@@ -1,5 +1,5 @@
-.card {
-  background-color: rgb(233, 233, 233);
+.card-home {
+  background-color: rgb(234, 234, 234);
   width: 250px;
   height: 250px;
   border-radius: 10px;
@@ -9,7 +9,11 @@
   margin: 50px;
 }
 
-.container-cards {
+.card-home:hover {
+  transform: translateY(-5px);
+}
+
+.container-cards-home {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -17,4 +21,9 @@
   h5 {
     font-weight: bolder;
   }
+
+  .bi {
+    padding-bottom: 10px;
+  }
+
 }

@@ -7,8 +7,9 @@
 
 
   h1 {
-    font-size: 100px;
+    font-size: 120px;
     font-weight: bolder;
+    margin-bottom: -5px;
 
   }
 
@@ -23,22 +24,42 @@
     display: flex;
     justify-content: space-around;
 
+    .link-colour {
+      color: white;
+
+      a {
+        color: white;
+        text-decoration: none;
+      }
+
+    }
+
     #btn-index {
       background-color: black;
       box-shadow: 5px 10px 10px rgb(98, 97, 97);
-      color: white;
-      padding: 10px 25px 10px 25px;
+      padding: 10px 50px 10px 50px;
       margin: 20px;
       border-radius: 5px;
+    }
+
+    #btn-index:hover {
+      background-color: gray;
+      border: 2px solid black;
+
     }
 
     #btn-become-interviewer {
       background-color: black;
       box-shadow: 5px 10px 10px rgb(98, 97, 97);
-      color: white;
-      padding: 10px 25px 10px 25px;
+      padding: 10px 30px 10px 30px;
       margin: 20px;
       border-radius: 5px;
     }
+
+    #btn-become-interviewer:hover {
+      background-color: gray;
+      border: 2px solid black
+    }
+
   }
 }
