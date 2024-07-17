@@ -1,0 +1,51 @@
+.navbar-extender {
+  height: 80px;
+  background-color: #e0e0e0;
+  position: relative;
+  overflow: visible;
+}
+
+.user-avatar-show {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  position: absolute;
+  left: 10%;
+  top: 30px;
+  border: 1px solid white;
+}
+
+.user-details {
+  background-color: bisque;
+  height: 160px;
+}
+
+.user-buttons {
+  background-color: rgb(241, 196, 255);
+  height: 160px;
+}
+
+.social-media-list {
+  list-style: none;
+  padding: 0;
+}
+
+.social-media-list li {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.social-link-img {
+  height: 25px;
+}
+
+.show-social-links {
+  display: flex;
+  align-items: center;
+}
+
+.user-names-links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
