@@ -14,7 +14,7 @@
         <br>
         <div class="card-user-infos">
           <div class="title-description">
-            <h2><%= user.first_name %> <%= user.last_name %></h2>
+            <h2><%= link_to "#{user.first_name} #{user.last_name}", user_path(user) %></h2>
             <p>@<%= user.username %></p>
           </div>
           <div class="user-card-tags">
