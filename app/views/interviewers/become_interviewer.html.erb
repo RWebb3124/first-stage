@@ -2,5 +2,11 @@
   <%= f.input :years_experience %>
   <%= f.input :headline %>
   <%= f.input :about %>
-  <%= f.button :submit, "Sign up" %>
+
+  <%= f.association :tags,
+                  as: :check_boxes,
+                  input_html: { class: "tag-selector" },
+                  item_wrapper_class: 'tag-item' %>
+
+  <%= f.button :submit, "Become interviewer" %>
 <% end %>
