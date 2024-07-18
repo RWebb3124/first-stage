@@ -1,0 +1,13 @@
+<div class="container-booking">
+  <div class="container py-5 d-flex justify-content-center">
+    <div class="form rounded p-3 shadow">
+      <h3>Request Booking:</h3>
+      <%= simple_form_for @booking, url: interview_booking_path(interviewer_id: @user.id) do |f| %>
+        <%= f.input :start_time %>
+        <%= f.input :end_time %>
+        <%= f.input :meeting_link %>
+        <%= f.submit class: 'btn-form' %>
+      <% end %>
+    </div>
+  </div>
+</div>
