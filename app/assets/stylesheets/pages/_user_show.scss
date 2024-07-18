@@ -16,13 +16,13 @@
   box-shadow: 0 3px 10px rgba(0,0,0,0.2);
 }
 
-.user-details {
-  background-color: bisque;
-}
+// .user-details {
+//   // background-color: bisque;
+// }
 
-.user-buttons {
-  background-color: rgb(241, 196, 255);
-}
+// .user-buttons {
+//   // background-color: rgb(241, 196, 255);
+// }
 
 .social-media-list {
   list-style: none;
@@ -56,4 +56,83 @@
 
 .username-location-etc p {
   opacity: 0.6;
+}
+
+.user-details-buttons {
+  border-bottom: solid 1px rgb(187, 187, 187);
+}
+
+.user-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+.bottom-buttons {
+  display: flex;
+  justify-content: end;
+  padding-bottom: 16px;
+}
+
+.top-buttons {
+  display: flex;
+  justify-content: end;
+  padding-bottom: 10px;
+}
+
+#reviews-button {
+  background-color: #638bad;
+  border: 0px;
+  padding: 20px 25px;
+  &:hover {
+    background-color: #4b6d8a;
+  }
+}
+
+#book-button {
+  margin-left: 8px;
+  background-color: rgb(34, 192, 150);
+  border: 0px;
+  padding: 20px 30px;
+  &:hover {
+    background-color: rgb(25, 161, 125);
+  }
+}
+
+#years-exp-panel {
+  margin-left: 8px;
+  border: 0px;
+  padding: 20px 30px;
+  background-color: #e0e0e0;
+  box-shadow: 3px 3px 5px rgba(0,0,0,0.2);
+}
+
+#years-exp-panel p {
+  color: #808080;
+  opacity: 0.7;
+  margin: 0px;
+}
+
+#years-exp-panel h4 {
+  color: #808080;
+  margin: 0px;
+}
+
+#interviews-panel {
+  margin-left: 8px;
+  border: 0px;
+  padding: 20px 30px;
+  background-color: #e0e0e0;
+  box-shadow: 3px 3px 5px rgba(0,0,0,0.2);
+}
+
+#interviews-panel p {
+  color: #808080;
+  opacity: 0.7;
+  margin: 0px;
+}
+
+#interviews-panel h4 {
+  color: #808080;
+  margin: 0px;
 }

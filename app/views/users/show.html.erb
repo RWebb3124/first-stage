@@ -37,9 +37,24 @@
         <p><i class="fa-solid fa-location-dot"></i> <%= @user.address %></p>
         <p><i class="fa-regular fa-calendar"></i> joined <%= @user.created_at.strftime('%B') %>, <%= @user.created_at.strftime('%Y') %></p>
         <p><i class="fa-regular fa-star"></i>4.2 (12)</p>
+        <p></p>
       </div>
     </div>
     <div class="user-buttons col-12 col-sm-4 col-md-4 col-lg-4">
+      <div class="top-buttons">
+        <div class="btn btn-primary" id="interviews-panel">
+          <h4>16</h4>
+          <small><p>interviews hosted</p></small>
+        </div>
+        <div class="btn btn-primary" id="years-exp-panel">
+          <h4><%= @user.years_experience %>+</h4>
+          <small><p>years experience</p></small>
+        </div>
+      </div>
+      <div class="bottom-buttons">
+        <%= link_to "Reviews", "#", id: "reviews-button", class:"btn btn-primary"%>
+        <%= link_to "Book Interview", "#", id:"book-button", class:"btn btn-primary"%>
+      </div>
     </div>
   </div>
   <!-- <div class="container">
