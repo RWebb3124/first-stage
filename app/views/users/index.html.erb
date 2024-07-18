@@ -5,8 +5,8 @@
         <h2>Filter</h2>
         <%= render 'shared/filter_bar' %>
     </div>
-    <div class="col-6 col-lg-9">
-        <%= render partial: 'shared/user_card', locals: { users: @users } %>
+    <div class="col-6 col-lg-9" data-filter-users-target="list">
+        <%= render 'shared/user_card', users: @users %>
     </div>
   </div>
 </div>
