@@ -1,37 +1,32 @@
 <div class="row g-0">
   <% @users.each do |user| %>
     <div class="col-12 col-sm-6 col-md-4 col-lg-4">
-    <div class="card-user-container my-4">
-      <br>
-      <br>
-      <div class="card-user">
-        <div class="user-card-avatar">
-          <%= image_tag("default_avatar.jpeg", class:"user-avatar-img") %>
-        </div>
-        <br>
-        <br>
-        <br>
-        <div class="card-user-infos">
-          <div class="title-description">
-            <h2><%= link_to "#{user.first_name} #{user.last_name}", user_path(user) %></h2>
-            <p>@<%= user.username %></p>
+      <a href="<%= user_path(user) %>" class="clickable-card">
+        <div class="card-user">
+          <div class="user-card-avatar">
+            <%= image_tag("default_avatar.jpeg", class:"user-avatar-img") %>
           </div>
-          <div class="user-card-tags">
-            <% user_tags=UserTag.where(user: user) %>
-            <% user_tags.each do |usertag| %>
-              <div class="individual-tag"><p><%= usertag.tag.name %></p></div>
-            <% end %>
-          </div>
-          <div class="user-about border-top p-2">
-            <p><%= user.about %></p>
-          </div>
-          <div class="price-capacity">
-            <div class="capacity-icon"><i class="fa-solid fa-location-dot"></i> <p class="card-user-capacity ms-2"> <%= user.address %></p></div>
-            <h2 class="card-user-pricing"><%= user.years_experience %> <%= "year".pluralize(user.years_experience) %> experience</h2>
+          <div class="card-user-infos">
+            <div class="title-description">
+              <h2><%= "#{user.first_name} #{user.last_name}" %></h2>
+              <p>@<%= user.username %></p>
+            </div>
+            <div class="user-card-tags">
+              <% user_tags=UserTag.where(user: user) %>
+              <% user_tags.each do |usertag| %>
+                <div class="individual-tag"><p><%= usertag.tag.name %></p></div>
+              <% end %>
+            </div>
+            <div class="user-about border-top p-2">
+              <p><%= user.about %></p>
+            </div>
+            <div class="price-capacity">
+              <div class="capacity-icon"><i class="fa-solid fa-location-dot"></i> <p class="card-user-capacity ms-2"> <%= user.address %></p></div>
+              <h2 class="card-user-pricing"><%= user.years_experience %> <%= "year".pluralize(user.years_experience) %> experience</h2>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      </a>
     </div>
   <% end %>
 </div>
