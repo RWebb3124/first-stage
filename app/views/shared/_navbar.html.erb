@@ -1,11 +1,11 @@
 <nav class="navbar">
   <div class="navbar-container">
     <div class="nav-menu-left">
-      <%= link_to "#", class: "navbar-brand" do %>
+      <a href="<%= root_path %>" class="navbar-brand">
         <div class="logo-circle">
           <span>logo</span>
         </div>
-      <% end %>
+      </a>
     </div>
 
     <ul class="nav-menu-center">
@@ -27,12 +27,20 @@
       <div class="search-bar">
         <i class="fas fa-search"></i>
         <form class="search-form">
-          <input class="form-control me-2 search-bar-box" type="search" placeholder="Search" aria-label="Search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         </form>
       </div>
-      <div class="navbar-avatar-2">
+      <div class="navbar-avatar">
         <% if user_signed_in? %>
-          <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" %>
+         <li class="nav-item dropdown">
+            <i class="fa-regular fa-user" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">My Profile</a>
+             <a class="dropdown-item" href="#">My Bookings</a>
+              <%= link_to "Edit Profile", edit_user_registration_path, class: "nav-link dropdown-item" %>
+              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" %>
+            </div>
+          </li>
         <% else %>
           <%= link_to "Login", new_user_session_path, class: "rails nav-link" %>
         <% end %>
