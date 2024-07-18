@@ -1,4 +1,4 @@
-<form action="users" method="get">
+
   <div class="filter-bar border bg-light">
     <div class="accordion accordion-flush" id="accordionFlushExample">
       <!-- Years Experience -->
@@ -10,16 +10,12 @@
         </h2>
         <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="headingYearsExperience" data-bs-parent="#accordionFlushExample">
           <div class="accordion-body">
-            <ul class="list-unstyled">
+            <ul class="list-unstyled" data-filter-users-target="years" >
               <li>
-                <label>
                   <input type="checkbox" name="years_experience[]" value="M" data-action='change->filter-users#filterUsers'> 3-5 Mid Level
-                </label>
               </li>
               <li>
-                <label>
                   <input type="checkbox" name="years_experience[]" value="S" data-action='change->filter-users#filterUsers'> 5+ Senior
-                </label>
               </li>
             </ul>
           </div>
@@ -37,22 +33,22 @@
             <ul class="list-unstyled">
               <li>
                 <label>
-                  <input type="checkbox" name="language[]" value="English"> English
+                  <input type="checkbox" name="language[]" value="English" data-action='change->filter-users#filterUsers'> English
                 </label>
               </li>
               <li>
                 <label>
-                  <input type="checkbox" name="language[]" value="French"> French
+                  <input type="checkbox" name="language[]" value="French" data-action='change->filter-users#filterUsers'> French
                 </label>
               </li>
               <li>
                 <label>
-                  <input type="checkbox" name="language[]" value="Spanish"> Spanish
+                  <input type="checkbox" name="language[]" value="Spanish" data-action='change->filter-users#filterUsers'> Spanish
                 </label>
               </li>
               <li>
                 <label>
-                  <input type="checkbox" name="language[]" value="Dutch"> Dutch
+                  <input type="checkbox" name="language[]" value="Dutch" data-action='change->filter-users#filterUsers'> Dutch
                 </label>
               </li>
             </ul>
@@ -62,36 +58,36 @@
       <!-- Availability -->
       <div class="accordion-item mb-3">
         <h2 class="accordion-header" id="headingAvailability">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree" >
             Availability
           </button>
         </h2>
-        <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="headingAvailability" data-bs-parent="#accordionFlushExample">
+        <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="headingAvailability" data-bs-parent="#accordionFlushExample" >
           <div class="accordion-body">
             <ul class="list-unstyled">
               <li>
                 <label>
-                  <input type="checkbox" name="availability[]" value="Monday"> Monday
+                  <input type="checkbox" name="availability[]" value="Monday" data-action='change->filter-users#filterUsers'> Monday
                 </label>
               </li>
               <li>
                 <label>
-                  <input type="checkbox" name="availability[]" value="Tuesday"> Tuesday
+                  <input type="checkbox" name="availability[]" value="Tuesday" data-action='change->filter-users#filterUsers'> Tuesday
                 </label>
               </li>
               <li>
                 <label>
-                  <input type="checkbox" name="availability[]" value="Wednesday"> Wednesday
+                  <input type="checkbox" name="availability[]" value="Wednesday" data-action='change->filter-users#filterUsers'> Wednesday
                 </label>
               </li>
               <li>
                 <label>
-                  <input type="checkbox" name="availability[]" value="Thursday"> Thursday
+                  <input type="checkbox" name="availability[]" value="Thursday" data-action='change->filter-users#filterUsers'> Thursday
                 </label>
               </li>
               <li>
                 <label>
-                  <input type="checkbox" name="availability[]" value="Friday"> Friday
+                  <input type="checkbox" name="availability[]" value="Friday" data-action='change->filter-users#filterUsers'> Friday
                 </label>
               </li>
             </ul>
@@ -107,31 +103,18 @@
         </h2>
         <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="headingTags" data-bs-parent="#accordionFlushExample">
           <div class="accordion-body">
-            <ul class="list-unstyled">
+            <ul class="list-unstyled" data-filter-users-target="tags">
               <li>
-                <label>
-                  <input type="checkbox" name="tag[]" value="Ruby"> Ruby
-                </label>
+              <input type="checkbox" name="tag[]" value="Ruby on Rails" data-action='change->filter-users#filterUsers'> Ruby on Rails
               </li>
               <li>
-                <label>
-                  <input type="checkbox" name="tag[]" value="HTML"> HTML
-                </label>
+              <input type="checkbox" name="tag[]" value="HTML" data-action='change->filter-users#filterUsers'> HTML
               </li>
               <li>
-                <label>
-                  <input type="checkbox" name="tag[]" value="JavaScript"> JavaScript
-                </label>
+              <input type="checkbox" name="tag[]" value="Javascript" data-action='change->filter-users#filterUsers'> JavaScript
               </li>
               <li>
-                <label>
-                  <input type="checkbox" name="tag[]" value="CSS"> CSS
-                </label>
-              </li>
-              <li>
-                <label>
-                  <input type="checkbox" name="tag[]" value="React"> React
-                </label>
+              <input type="checkbox" name="tag[]" value="CSS" data-action='change->filter-users#filterUsers'> CSS
               </li>
             </ul>
           </div>
@@ -159,13 +142,11 @@
       <!-- Reset button -->
       <div class="accordion-item mb-3">
         <h2 class="accordion-header">
-          <input class="btn btn-dark" type="submit" value="Submit">
           <input class="btn btn-dark" type="reset" value="Reset">
         </h2>
       </div>
     </div>
   </div>
-</form>
 <!-- JavaScript to Handle Accordion Button Toggle -->
 <script>
   document.addEventListener("DOMContentLoaded", function() {
