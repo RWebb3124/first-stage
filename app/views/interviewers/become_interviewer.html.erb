@@ -1,14 +1,23 @@
-<%= simple_form_for(current_user, url: upgrade_to_interviewer_user_path(current_user), method: :patch) do |f| %>
-  <%= f.input :years_experience %>
-  <%= f.input :headline %>
-  <%= f.input :about %>
-  <%= f.input :linkedin, label: "LinkedIn profile URL"%>
-  <%= f.input :github, label: "Github profile URL"%>
+<div class="container-signup-form">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-sm-4 col-sm-offset-4">
+      <div class="signup-form">
+        <h2><strong>Signup as Interviewer</strong></h2>
+        <%= simple_form_for(current_user, url: upgrade_to_interviewer_user_path(current_user), method: :patch) do |f| %>
+          <%= f.input :years_experience %>
+          <%= f.input :headline %>
+          <%= f.input :about %>
+          <%= f.input :linkedin, label: "LinkedIn profile URL"%>
+          <%= f.input :github, label: "Github profile URL"%>
 
-  <%= f.association :tags,
-                  as: :check_boxes,
-                  input_html: { class: "tag-selector" },
-                  item_wrapper_class: 'tag-item' %>
+          <%= f.association :tags,
+                          as: :check_boxes,
+                          input_html: { class: "tag-selector" },
+                          item_wrapper_class: 'tag-item' %>
 
-  <%= f.button :submit, "Become interviewer" %>
-<% end %>
+          <%= f.button :submit, "Become interviewer", class: "btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
