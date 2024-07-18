@@ -1,28 +1,32 @@
 <div class="navbar-extender"><%= image_tag("default_avatar.jpeg", class:"user-avatar-show") %></div>
 <div class="container">
   <div class="user-details-buttons row g-0">
-    <div class="user-details col-6 col-sm-6 col-md-3 col-lg-3">
+    <div class="user-details col-12 col-sm-8 col-md-8 col-lg-8">
       <br>
       <br>
       <div class="user-names-links mt-4">
         <h3 class=""><%= @user.first_name %> <%= @user.last_name %></h3>
         <div class="show-social-links mt-2">
           <ul class="social-media-list">
-            <li>
-              <%= link_to "https://github.com/lewagon" do %>
-                <%= image_tag 'github.png', class:"social-link-img" %>
-              <% end %>
-            </li>
+            <% if @user.github? %>
+              <li>
+                <%= link_to @user.github do %>
+                  <%= image_tag 'github.png', class:"social-link-img" %>
+                <% end %>
+              </li>
+            <% end %>
             <li>
               <%= link_to "https://www.fiverr.com/developerguy720?source=gig_cards&referrer_gig_slug=be-your-ruby-on-rails-developer&ref_ctx_id=1f2fe98fceb0430cabd03038f42b4994&imp_id=ec6bc9da-ef2a-4058-9b58-fffcda0cf1bc" do %>
                 <%= image_tag 'fiverr.png', class:"social-link-img" %>
               <% end %>
             </li>
-            <li>
-              <%= link_to "https://www.linkedin.com/school/le-wagon/" do %>
-                <%= image_tag 'linkedin.png', class:"social-link-img" %>
-              <% end %>
-            </li>
+            <% if @user.linkedin? %>
+              <li>
+                <%= link_to @user.linkedin do %>
+                  <%= image_tag 'linkedin.png', class:"social-link-img" %>
+                <% end %>
+              </li>
+            <% end %>
           </ul>
         </div>
         <div></div>
@@ -32,7 +36,7 @@
     <div class="user-buttons col-12 col-sm-4 col-md-4 col-lg-4">
     </div>
   </div>
-  <div class="container">
+  <!-- <div class="container">
     <%= render 'shared/review_card' %>
-  </div>
+  </div> -->
 </div>

@@ -40,7 +40,9 @@ end
       interviewer: true,
       years_experience: rand(1..4),
       headline: "This is my tagline",
-      about: "I am a Senior Ruby developer with six years of experience in Fintech. My dream is to be a team lead, and I can\'t wait to help you rock your next interview!"
+      about: "I am a Senior Ruby developer with six years of experience in Fintech. My dream is to be a team lead, and I can\'t wait to help you rock your next interview!",
+      github: "https://github.com/lewagon",
+      linkedin: "https://www.linkedin.com/school/le-wagon/"
     }
   )
   interviewer.save!
