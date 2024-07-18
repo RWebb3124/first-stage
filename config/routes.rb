@@ -13,4 +13,6 @@ Rails.application.routes.draw do
       patch 'upgrade_to_interviewer', to: 'interviewers#upgrade_to_interviewer'
     end
   end
+  get '/users/:interviewer_id/bookings/new', to: 'bookings#new', as: 'new_interview_booking'
+  post '/users/:interviewer_id/bookings/create', to: 'bookings#create', as: 'interview_booking'
 end
