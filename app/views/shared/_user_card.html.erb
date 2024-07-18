@@ -1,10 +1,12 @@
 <div class="row g-0">
   <% users.each do |user| %>
-    <div class="col-12 col-sm-6 col-md-4 col-lg-4">
+    <div class="col-12 col-sm-12 col-md-6 col-lg-4">
       <a href="<%= user_path(user) %>" class="clickable-card">
         <div class="card-user">
           <div class="user-card-avatar">
-            <%= image_tag("default_avatar.jpeg", class:"user-avatar-img") %>
+            <div class="user-card-avatar-center">
+              <%= image_tag("default_avatar.jpeg", class:"user-avatar-img") %>
+            </div>
           </div>
           <div class="card-user-infos">
             <div class="title-description">
