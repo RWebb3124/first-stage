@@ -28,6 +28,12 @@
         <div></div>
       </div>
       <p><%= @user.headline %></p>
+      <div class="username-location-etc">
+        <p>@<%= @user.username %></p>
+        <p><i class="fa-solid fa-location-dot"></i> <%= @user.address %></p>
+        <p><i class="fa-regular fa-calendar"></i> joined <%= @user.created_at.strftime('%B') %>, <%= @user.created_at.strftime('%Y') %></p>
+        <p><i class="fa-regular fa-star"></i>4.2 (12)</p>
+      </div>
     </div>
     <div class="user-buttons col-12 col-sm-4 col-md-4 col-lg-4">
     </div>
