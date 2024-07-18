@@ -31,7 +31,6 @@
         color: white;
         text-decoration: none;
       }
-
     }
 
     #btn-index {
@@ -45,7 +44,7 @@
     #btn-index:hover {
       background-color: gray;
       border: 2px solid black;
-
+      transition: 0.2s ease;
     }
 
     #btn-become-interviewer {
@@ -58,7 +57,8 @@
 
     #btn-become-interviewer:hover {
       background-color: gray;
-      border: 2px solid black
+      border: 2px solid black;
+      transition: 0.2s ease;
     }
 
   }

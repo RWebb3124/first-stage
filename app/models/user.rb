@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :bookings_as_interviewee, class_name: 'booking', foreign_key: :interviewee_id
-  has_many :bookings_as_interviewer, class_name: 'booking', foreign_key: :interviewer_id
+  has_many :bookings_as_interviewee, class_name: 'Booking', foreign_key: :interviewee_id
+  has_many :bookings_as_interviewer, class_name: 'Booking', foreign_key: :interviewer_id
   has_many :reviews, through: :bookings
   has_many :user_tags, dependent: :destroy
   has_many :tags, through: :user_tags
@@ -23,13 +23,19 @@ class User < ApplicationRecord
   validates :years_experience, presence: true, if: :interviewer?
   validates :headline, presence: true, if: :interviewer?
   validates :about, presence: true, length: { minimum: 16 }, if: :interviewer?
-  validates :linkedin, presence: true, if: :interviewer?
-  validates :github, presence: true, if: :interviewer?
+  # validates :linkedin, presence: true, if: :interviewer?
+  # validates :github, presence: true, if: :interviewer?
   # validates :tags, presence: true, if: :interviewer?
-end
 
-private
+  def interviewer?
+    self.interviewer == true
+  end
 
-def interviewer?
-  interviewer == true
+  def github?
+    self.github.present?
+  end
+
+  def linkedin?
+    self.linkedin.present?
+  end
 end
