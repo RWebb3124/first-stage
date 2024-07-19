@@ -4,12 +4,17 @@ class Booking < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_one :chatroom, dependent: :destroy
 
-  validates :start_time, :end_time, presence: true
+  validates :start_time, :end_time, :meeting_link, presence: true
 
   default_scope -> { order(:start_time) }  # Our meetings will be ordered by their start_time by default
 
   def time
     "#{start_time.strftime("%H:%M")} - #{end_time.strftime("%H:%M")}"
+  end
+
+  def time_full
+    "#{start_time.strftime("%A, %d %B %Y")}"
+
   end
 
   def multi_days?

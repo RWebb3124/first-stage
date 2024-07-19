@@ -7,8 +7,8 @@ class BookingsController < ApplicationController
   def create
     @start_time = DateTime.parse(booking_params[:start_time])
     @end_time = DateTime.parse(booking_params[:end_time])
-    @booking_link = booking_params[:booking_link]
-    @booking = Booking.new(start_time: @start_time, end_time: @end_time, booking_link: @booking_link)
+    @meeting_link = booking_params[:meeting_link]
+    @booking = Booking.new(start_time: @start_time, end_time: @end_time, meeting_link: @meeting_link)
     @interviewer = User.find(params[:interviewer_id])
     @booking.interviewer = @interviewer
     @booking.interviewee = current_user
@@ -34,6 +34,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:interview_id, :start_time, :end_time, :booking_link)
+    params.require(:booking).permit(:interview_id, :start_time, :end_time, :meeting_link)
   end
 end

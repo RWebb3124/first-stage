@@ -15,8 +15,8 @@
 
       <% bookings.each do |booking| %>
         <div class="meeting">
-          <p> Link: <%= booking.meeting_link %></p>
           <small><%= booking.time unless booking.multi_days? %></small>
+          <p> Link: <%= booking.meeting_link %></p>
         </div>
       <% end %>
     <% end %>
