@@ -2,6 +2,7 @@ class Booking < ApplicationRecord
   belongs_to :interviewee, class_name: 'User'
   belongs_to :interviewer, class_name: 'User'
   has_many :reviews, dependent: :destroy
+  has_many :chatrooms, dependent: :destroy
 
   validates :start_time, :end_time, presence: true
 

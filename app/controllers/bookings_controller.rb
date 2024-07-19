@@ -10,6 +10,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(start_time: @start_time, end_time: @end_time)
     @booking.interviewer = User.find(params[:interviewer_id])
     @booking.interviewee = current_user
+    @booking.chatroom = Chatroom.create(name: @booking.id)
     if @booking.save
       redirect_to my_bookings_path
     else
