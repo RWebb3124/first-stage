@@ -1,0 +1,18 @@
+<div class="mybookings">
+  <div class="calendar-container">
+    <%= month_calendar(events: @mybookings, end_attribute: :end_time) do |date, bookings| %>
+      <%= date %>
+
+      <% bookings.each do |booking| %>
+        <div class="meeting">
+          <p> Link: <%= booking.meeting_link %></p>
+          <small><%= booking.time unless booking.multi_days? %></small>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="bookings-container">
+    <h4> My Bookings: </h4>
+    <%= render 'shared/mybookings_card' %>
+  </div>
+</div>

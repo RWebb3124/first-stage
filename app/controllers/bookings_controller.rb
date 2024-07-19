@@ -11,11 +11,15 @@ class BookingsController < ApplicationController
     @booking.interviewer = User.find(params[:interviewer_id])
     @booking.interviewee = current_user
     if @booking.save
-      redirect_to root_path
+      redirect_to my_bookings_path
     else
       render :new
     end
+  end
 
+  def mybookings
+    @bookings = Booking.all
+    @mybookings = @bookings.where(interviewee_id: current_user)
   end
 
 private
