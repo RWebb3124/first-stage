@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :messages, through: :chatrooms, dependent: :destroy
   has_many :flashcard_decks, through: :user_decks
   has_many :flashcards, through: :flashcard_decks
+  has_one_attached :photo
 
   accepts_nested_attributes_for :tags
 
