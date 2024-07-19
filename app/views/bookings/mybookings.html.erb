@@ -1,7 +1,11 @@
 <% if @mybookingrequests.any? %>
   <div class="booking-requests">
-    <h4> Booking requests </h4>
-    <%= render 'shared/mybookings_card', mybookings: @mybookingrequests %>
+    <div class="row">
+      <div class="col-3">
+        <h4> Booking requests </h4>
+        <%= render 'shared/mybookings_card', mybookings: @mybookingrequests %>
+      </div>
+    </div>
   </div>
 <% end %>
 <div class="mybookings">
