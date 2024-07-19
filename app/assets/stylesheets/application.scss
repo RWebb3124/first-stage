@@ -6,6 +6,8 @@
 // External libraries
 @import "bootstrap";
 @import "font-awesome";
+@import "flatpickr/dist/flatpickr.css";
+@import "simple_calendar";
 
 // Your CSS partials
 @import "components/index";
@@ -19,4 +21,9 @@
 
 .content {
   flex: 1;
+}
+
+body {
+  background-color: $background-colour !important;
+  color: $text-colour !important;
 }

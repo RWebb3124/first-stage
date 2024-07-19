@@ -1,6 +1,6 @@
 <div class="container-signup-form">
   <div class="row justify-content-center">
-    <div class="col-md-6 col-sm-4 col-sm-offset-4">
+    <div class="col-10 col-sm-8 col-md-7 col-lg-6">
       <div class="signup-form">
           <h2><strong>Edit <%= resource_name.to_s.humanize %></strong></h2>
 
@@ -24,13 +24,19 @@
               <%= f.input :last_name,
                           required: true,
                           input_html: { autocomplete: "family-name" } %>
-              <%= f.input :years_experience,
-                          required: true,
-                          as: :integer %>
               <%= f.input :address,
                           required: true %>
               <%= f.input :username,
                           required: true %>
+              <% if resource.interviewer == true %>
+                <%= f.input :headline %>
+                <%= f.input :years_experience %>
+                <%= f.input :about %>
+                <%= f.input :linkedin %>
+                <%= f.input :github %>
+                <%= f.input :fiverr %>
+                <%= f.input :personal_website %>
+              <% end %>
             </div>
 
             <div class="form-actions">

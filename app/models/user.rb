@@ -37,4 +37,12 @@ class User < ApplicationRecord
   def linkedin?
     self.linkedin.present?
   end
+
+  def fiverr?
+    self.fiverr.present?
+  end
+
+  def personal_website?
+    self.personal_website.present?
+  end
 end

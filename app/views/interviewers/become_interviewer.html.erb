@@ -1,8 +1,8 @@
 <div class="container-signup-form">
   <div class="row justify-content-center">
-    <div class="col-md-6 col-sm-4 col-sm-offset-4">
+    <div class="col-10 col-sm-8 col-md-7 col-lg-6">
       <div class="signup-form">
-        <h2><strong>Signup as Interviewer</strong></h2>
+        <h2><strong>Become an interviewer</strong></h2>
         <%= simple_form_for(current_user, url: upgrade_to_interviewer_user_path(current_user), method: :patch) do |f| %>
           <%= f.input :years_experience %>
           <%= f.input :headline %>

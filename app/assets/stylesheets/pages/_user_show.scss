@@ -1,6 +1,6 @@
 .navbar-extender {
   height: 80px;
-  background-color: #e0e0e0;
+  background-color: $primary-colour;
   position: relative;
   overflow: visible;
 }
@@ -59,7 +59,8 @@
 }
 
 .user-details-buttons {
-  border-bottom: solid 1px rgb(187, 187, 187);
+  border-bottom: solid 1px $secondary-colour;
+  margin-bottom: 30px;
 }
 
 .user-buttons {
@@ -81,9 +82,10 @@
 }
 
 #reviews-button {
-  background-color: #638bad;
+  background-color: $secondary-colour;
   border: 0px;
   padding: 20px 25px;
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
   &:hover {
     background-color: #4b6d8a;
   }
@@ -91,9 +93,10 @@
 
 #book-button {
   margin-left: 8px;
-  background-color: rgb(34, 192, 150);
+  background-color: $accent-colour;
   border: 0px;
   padding: 20px 30px;
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
   &:hover {
     background-color: rgb(25, 161, 125);
   }
@@ -102,37 +105,71 @@
 #years-exp-panel {
   margin-left: 8px;
   border: 0px;
-  padding: 20px 30px;
-  background-color: #e0e0e0;
-  box-shadow: 3px 3px 5px rgba(0,0,0,0.2);
+  padding: 4px 15px;
+  background-color: $primary-colour;
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
 }
 
 #years-exp-panel p {
-  color: #808080;
+  color: $text-colour;
   opacity: 0.7;
+  font-size: 12px;
   margin: 0px;
 }
 
 #years-exp-panel h4 {
-  color: #808080;
+  color: $text-colour;
+  font-size: 20px;
   margin: 0px;
 }
 
 #interviews-panel {
   margin-left: 8px;
   border: 0px;
-  padding: 0px 15px;
-  background-color: #e0e0e0;
-  box-shadow: 3px 3px 5px rgba(0,0,0,0.2);
+  padding: 4px 15px;
+  background-color: $primary-colour;
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
 }
 
 #interviews-panel p {
-  color: #808080;
+  color: $text-colour;
   opacity: 0.7;
+  font-size: 12px;
   margin: 0px;
 }
 
 #interviews-panel h4 {
-  color: #808080;
+  color: $text-colour;
+  font-size: 20px;
   margin: 0px;
+}
+
+.main-content-left {
+  //background-color: bisque;
+  margin-bottom: 30px;
+}
+
+.main-content-right {
+  display: flex;
+  justify-content: end;
+}
+
+.carousel-caption-header {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 3px 5px;
+  border-radius: 2px;
+}
+
+.carousel-caption-text {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 3px 5px;
+  border-radius: 2px;
+}
+
+.some-of-my-projects {
+  border-top: solid 1px $secondary-colour;
+  padding-top: 15px;
+  margin-bottom: 10px;
 }

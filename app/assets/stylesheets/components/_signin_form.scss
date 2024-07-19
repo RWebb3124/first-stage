@@ -1,5 +1,5 @@
 .signin-form {
-  background-color: rgb(228, 228, 228);
+  background-color: $background-colour;
   padding: 10px 20px;
   padding-bottom: 10px;
   margin-top: 40px;
@@ -8,7 +8,7 @@
   box-shadow: 0 5px 10px grey;
 
   .btn-primary {
-    background-color: black;
+    background-color: $text-colour;
     box-shadow: 5px 10px 10px rgb(98, 97, 97);
     padding: 10px 30px 10px 30px;
     margin-bottom: 20px;
@@ -18,7 +18,7 @@
   }
 
   .btn-primary:hover {
-    background-color: gray;
+    background-color: $secondary-colour;
     border: 2px solid black
   }
 

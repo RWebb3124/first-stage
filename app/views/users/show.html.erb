@@ -10,20 +10,29 @@
           <ul class="social-media-list">
             <% if @user.github? %>
               <li>
-                <%= link_to @user.github do %>
+                <%= link_to @user.github, target:"_blank" do %>
                   <%= image_tag 'github.png', class:"social-link-img" %>
                 <% end %>
               </li>
             <% end %>
-            <li>
-              <%= link_to "https://www.fiverr.com/developerguy720?source=gig_cards&referrer_gig_slug=be-your-ruby-on-rails-developer&ref_ctx_id=1f2fe98fceb0430cabd03038f42b4994&imp_id=ec6bc9da-ef2a-4058-9b58-fffcda0cf1bc" do %>
-                <%= image_tag 'fiverr.png', class:"social-link-img" %>
-              <% end %>
-            </li>
             <% if @user.linkedin? %>
               <li>
-                <%= link_to @user.linkedin do %>
-                  <%= image_tag 'linkedin.png', class:"social-link-img" %>
+                <%= link_to @user.linkedin, target:"_blank" do %>
+                  <%= image_tag 'linkedin.png', class:"social-link-img ms-1" %>
+                <% end %>
+              </li>
+            <% end %>
+            <% if @user.fiverr? %>
+              <li>
+                <%= link_to @user.fiverr, target:"_blank" do %>
+                  <%= image_tag 'fiverr.png', class:"social-link-img" %>
+                <% end %>
+              </li>
+            <% end %>
+            <% if @user.personal_website? %>
+              <li>
+                <%= link_to @user.personal_website, target:"_blank" do %>
+                  <%= image_tag 'personal_website.png', class:"social-link-img" %>
                 <% end %>
               </li>
             <% end %>
@@ -48,7 +57,7 @@
         </div>
         <div class="btn btn-primary" id="years-exp-panel">
           <h4><%= @user.years_experience %>+</h4>
-          <small><p>years experience</p></small>
+          <small><p><%= "year".pluralize(@user.years_experience) %> experience</p></small>
         </div>
       </div>
       <div class="bottom-buttons">
@@ -57,7 +66,49 @@
       </div>
     </div>
   </div>
-  <!-- <div class="container">
-    <%= render 'shared/review_card' %>
-  </div> -->
+  <div class="show-main-content row g-0">
+    <div class="main-content-left col-12 col-sm-8 col-md-8 col-lg-8">
+      <h3>About</h3>
+      <p class="mb-3"><%= @user.about %></p>
+      <h3 class="my-3 some-of-my-projects">Some of my projects</h3>
+      <div id="carouselExampleAutoplaying" class="carousel carousel-dark slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <%= image_tag("airpnp.png", class:"d-block w-100") %>
+            <div class="carousel-caption d-none d-md-block">
+              <div><h5 class="carousel-caption-header">AirPnP</h5></div>
+              <div><p class="carousel-caption-text">An app for hiring out your swimming pool</p></div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <%= image_tag("movielist.png", class:"d-block w-100") %>
+            <div class="carousel-caption d-none d-md-block">
+              <div><h5 class="carousel-caption-header">Movie listings</h5></div>
+              <div><p class="carousel-caption-text">Store all your movies in custom lists</p></div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <%= image_tag("stupidcoaching.png", class:"d-block w-100") %>
+            <div class="carousel-caption d-none d-md-block">
+              <div><h5 class="carousel-caption-header">Stupid Coaching</h5></div>
+              <div><p class="carousel-caption-text">Get some tough love and get motivated</p></div>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+    <div class="main-content-right col-12 col-sm-4 col-md-4 col-lg-4">
+      <div>
+        <%= render 'shared/review_card' %>
+      </div>
+    </div>
+  </div>
 </div>
