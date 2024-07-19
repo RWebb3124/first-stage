@@ -3,6 +3,7 @@ require "open-uri"
 
 UserTag.destroy_all
 User.destroy_all
+Tag.destroy_all
 
 tags = [
   { name: "RoR", icon_url: "ruby_on_rails.png" },
