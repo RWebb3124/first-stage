@@ -8,7 +8,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new
     @booking.interviewer = User.find(params[:interviewer_id])
     @booking.interviewee = current_user
-    
+    @booking.chatroom = Chatroom.create(name: @booking.id)
     if @booking.save
       redirect_to root_path
     else

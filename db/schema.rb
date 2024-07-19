@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_18_125315) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_19_095909) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -29,10 +29,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_18_125315) do
 
   create_table "chatrooms", force: :cascade do |t|
     t.string "name"
-    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_chatrooms_on_user_id"
+    t.bigint "booking_id", null: false
+    t.index ["booking_id"], name: "index_chatrooms_on_booking_id"
   end
 
   create_table "flashcard_decks", force: :cascade do |t|
@@ -58,7 +58,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_18_125315) do
     t.bigint "chatroom_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
     t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -116,15 +118,17 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_18_125315) do
     t.string "github"
     t.string "fiverr"
     t.string "personal_website"
+    t.string "nickname"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "bookings", "users", column: "interviewee_id"
   add_foreign_key "bookings", "users", column: "interviewer_id"
-  add_foreign_key "chatrooms", "users"
+  add_foreign_key "chatrooms", "bookings"
   add_foreign_key "flashcards", "flashcard_decks"
   add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "reviews", "bookings"
   add_foreign_key "user_decks", "flashcard_decks"
   add_foreign_key "user_decks", "users"
