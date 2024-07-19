@@ -5,13 +5,45 @@
   width: 100%;
   margin-bottom: 10px;
   padding: 20px;
-  border: 1px solid #e0e0e0;
   border-radius: 5px;
-  background-color: rgb(189, 186, 186);
+  background-color: rgb(227, 227, 227);
 }
 
 .mybookings-card:hover {
-  background: #d3d3d3;
+  background: #e1e1e1;
   color: white;
-  transform: translateY(-5px);
+  transform: translateY(-2px);
+}
+
+.accept-reject-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.accept-button {
+  text-decoration: none;
+  border: none;
+  background: $primary-colour;
+  color: white;
+  border-radius: 5px;
+  height: 40px;
+  width: 80px;
+  margin-right: 10px;
+  &:hover {
+    background: #0a84d5;
+  }
+}
+
+.reject-button {
+  text-decoration: none;
+  border: 1px solid gray;
+  background: none;
+  color: gray;
+  border-radius: 5px;
+  height: 40px;
+  width: 80px;
+  &:hover {
+    color: rgb(228, 89, 25);
+    border-color: rgb(228, 89, 25);
+  }
 }
