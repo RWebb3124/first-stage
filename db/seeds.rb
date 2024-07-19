@@ -1,6 +1,8 @@
 require 'faker'
 require "open-uri"
 
+Booking.destroy_all
+Chatroom.destroy_all
 UserTag.destroy_all
 User.destroy_all
 Tag.destroy_all

@@ -4,12 +4,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :bookings_as_interviewee, class_name: 'Booking', foreign_key: :interviewee_id
-  has_many :bookings_as_interviewer, class_name: 'Booking', foreign_key: :interviewer_id
+  has_many :bookings_as_interviewee, class_name: 'Booking', foreign_key: :interviewee_id, dependent: :destroy
+  has_many :bookings_as_interviewer, class_name: 'Booking', foreign_key: :interviewer_id, dependent: :destroy
   has_many :reviews, through: :bookings
   has_many :user_tags, dependent: :destroy
   has_many :tags, through: :user_tags
-  has_many :chatrooms, through: :bookings
+  has_many :chatrooms, through: :bookings_as_interviewee, dependent: :destroy
+  has_many :chatrooms, through: :bookings_as_interviewer, dependent: :destroy
   has_many :messages, through: :chatrooms, dependent: :destroy
   has_many :flashcard_decks, through: :user_decks
   has_many :flashcards, through: :flashcard_decks
