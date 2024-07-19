@@ -1,5 +1,11 @@
-<% @mybookings.each do |booking| %>
+<% mybookings.each do |booking| %>
   <div class="mybookings-card">
     <p> Link: <%= booking.meeting_link %></p>
   </div>
+  <% if booking.status == nil %>
+    <div class="accept-reject-buttons">
+      <small><%= button_to "Accept", update_booking_status_path(booking, status: 'accepted'), class: "booking-card-accept", method: :patch, data: {turbo: false} %></small>
+      <small><%= button_to "Reject", update_booking_status_path(booking, status: 'rejected'), class: "booking-card-reject", method: :patch, data: {turbo: false} %></small>
+    </div>
+  <% end %>
 <% end %>

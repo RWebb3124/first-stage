@@ -18,11 +18,17 @@ class BookingsController < ApplicationController
   end
 
   def mybookings
-    @bookings = Booking.all
-    @mybookings = @bookings.where(interviewee_id: current_user)
+    @mybookings = Booking.where(interviewee_id: current_user, status: 'accepted')
+    @mybookingrequests = Booking.where(interviewee_id: current_user, status: nil)
   end
 
-private
+  def update_status
+    @booking = Booking.find(params[:booking_id])
+    @booking.update(status: params[:status])
+    redirect_to my_bookings_path
+  end
+
+  private
 
   def booking_params
     params.require(:booking).permit(:interview_id, :start_time, :end_time)

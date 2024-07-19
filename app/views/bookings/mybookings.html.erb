@@ -1,3 +1,9 @@
+<% if @mybookingrequests.any? %>
+  <div class="booking-requests">
+    <h4> Booking requests </h4>
+    <%= render 'shared/mybookings_card', mybookings: @mybookingrequests %>
+  </div>
+<% end %>
 <div class="mybookings">
   <div class="calendar-container">
     <%= month_calendar(events: @mybookings, end_attribute: :end_time) do |date, bookings| %>
@@ -13,6 +19,6 @@
   </div>
   <div class="bookings-container">
     <h4> My Bookings: </h4>
-    <%= render 'shared/mybookings_card' %>
+    <%= render 'shared/mybookings_card', mybookings: @mybookings %>
   </div>
 </div>
