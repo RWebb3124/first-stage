@@ -22,3 +22,8 @@
 .content {
   flex: 1;
 }
+
+body {
+  background-color: $background-colour !important;
+  color: $text-colour !important;
+}
