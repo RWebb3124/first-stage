@@ -2,9 +2,7 @@
   <div class="navbar-container">
     <div class="nav-menu-left">
       <a href="<%= root_path %>" class="navbar-brand">
-        <div class="logo-circle">
-          <span>logo</span>
-        </div>
+          <%= image_tag "first_stage_logo.png" %>
       </a>
     </div>
 
@@ -30,8 +28,9 @@
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         </form>
       </div>
-      <div class="navbar-avatar">
+
         <% if user_signed_in? %>
+        <div class="navbar-avatar">
          <li class="nav-item dropdown">
             <i class="fa-regular fa-user" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -41,10 +40,11 @@
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" %>
             </div>
           </li>
+          </div>
         <% else %>
-          <%= link_to "Login", new_user_session_path, class: "rails nav-link" %>
-        <% end %>
-      </div>
+          <%= link_to "Login", new_user_session_path, class: "login-button" %>
+
+      <% end %>
     </div>
 
     <div class="hamburger">
