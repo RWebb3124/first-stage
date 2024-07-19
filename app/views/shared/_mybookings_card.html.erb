@@ -1,6 +1,9 @@
 <% mybookings.each do |booking| %>
   <div class="mybookings-card">
-    <p> Link: <%= booking.meeting_link %></p>
+    <ul>
+      <li> <%= booking.time_full %></li>
+      <li> <%= booking.time %></li>
+      <li> <a href="<%= booking.meeting_link %>" target="_blank">Meeting Link</a> </li>
   </div>
   <% if booking.status == nil %>
 

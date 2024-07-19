@@ -8,6 +8,7 @@ class BookingsController < ApplicationController
     @start_time = DateTime.parse(booking_params[:start_time])
     @end_time = DateTime.parse(booking_params[:end_time])
     @booking = Booking.new(start_time: @start_time, end_time: @end_time)
+    @booking.meeting_link = booking_params[:meeting_link]
     @booking.interviewer = User.find(params[:interviewer_id])
     @booking.interviewee = current_user
     if @booking.save
@@ -32,6 +33,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:interview_id, :start_time, :end_time)
+    params.require(:booking).permit(:interview_id, :start_time, :end_time, :meeting_link)
   end
 end
