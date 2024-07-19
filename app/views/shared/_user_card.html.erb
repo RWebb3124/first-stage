@@ -5,7 +5,7 @@
         <div class="card-user">
           <div class="user-card-avatar">
             <div class="user-card-avatar-center">
-              <%= image_tag("default_avatar.jpeg", class:"user-avatar-img") %>
+              <%= cl_image_tag user.photo.key, class:"user-avatar-img", crop: :fill unless user.photo.key.blank? %>
             </div>
           </div>
           <div class="card-user-infos">
