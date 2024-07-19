@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   get '/users/:interviewer_id/bookings/new', to: 'bookings#new', as: 'new_interview_booking'
   post '/users/:interviewer_id/bookings/create', to: 'bookings#create', as: 'interview_booking'
   get '/mybookings', to: 'bookings#mybookings', as: 'my_bookings'
+  patch '/mybookings/:booking_id/update_status', to: 'bookings#update_status', as: 'update_booking_status'
 end

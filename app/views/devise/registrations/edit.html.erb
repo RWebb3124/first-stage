@@ -30,7 +30,7 @@
                           required: true %>
               <% if resource.interviewer == true %>
                 <%= f.input :headline %>
-                <%= f.input :years_experience %>
+                <%= f.input :years_experience, required: true, as: :integer %>
                 <%= f.input :about %>
                 <%= f.input :linkedin %>
                 <%= f.input :github %>
