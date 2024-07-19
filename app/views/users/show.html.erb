@@ -10,20 +10,29 @@
           <ul class="social-media-list">
             <% if @user.github? %>
               <li>
-                <%= link_to @user.github do %>
+                <%= link_to @user.github, target:"_blank" do %>
                   <%= image_tag 'github.png', class:"social-link-img" %>
                 <% end %>
               </li>
             <% end %>
-            <li>
-              <%= link_to "https://www.fiverr.com/developerguy720?source=gig_cards&referrer_gig_slug=be-your-ruby-on-rails-developer&ref_ctx_id=1f2fe98fceb0430cabd03038f42b4994&imp_id=ec6bc9da-ef2a-4058-9b58-fffcda0cf1bc" do %>
-                <%= image_tag 'fiverr.png', class:"social-link-img" %>
-              <% end %>
-            </li>
             <% if @user.linkedin? %>
               <li>
-                <%= link_to @user.linkedin do %>
-                  <%= image_tag 'linkedin.png', class:"social-link-img" %>
+                <%= link_to @user.linkedin, target:"_blank" do %>
+                  <%= image_tag 'linkedin.png', class:"social-link-img ms-1" %>
+                <% end %>
+              </li>
+            <% end %>
+            <% if @user.fiverr? %>
+              <li>
+                <%= link_to @user.fiverr, target:"_blank" do %>
+                  <%= image_tag 'fiverr.png', class:"social-link-img" %>
+                <% end %>
+              </li>
+            <% end %>
+            <% if @user.personal_website? %>
+              <li>
+                <%= link_to @user.personal_website, target:"_blank" do %>
+                  <%= image_tag 'personal_website.png', class:"social-link-img" %>
                 <% end %>
               </li>
             <% end %>
