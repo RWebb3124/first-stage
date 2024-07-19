@@ -11,9 +11,15 @@ require 'faker'
 UserTag.destroy_all
 User.destroy_all
 
-ruby_on_rails = Tag.create!({ name: "Ruby on Rails", icon_url: "#" })
-javascript = Tag.create!({ name: "Javascript", icon_url: "#" })
-css = Tag.create!({ name: "CSS", icon_url: "#" })
+ruby_on_rails = Tag.create!({ name: "Ruby on Rails", icon_url: "ruby_on_rails.png" })
+javascript = Tag.create!({ name: "Javascript", icon_url: "javascript.png" })
+css = Tag.create!({ name: "CSS", icon_url: "css.png" })
+ruby = Tag.create!({ name: "Ruby", icon_url: "ruby.png" })
+python = Tag.create!({ name: "Python", icon_url: "python.png" })
+cplusplus = Tag.create!({ name: "C++", icon_url: "c++.png" })
+docker = Tag.create!({ name: "Docker", icon_url: "docker.png" })
+html = Tag.create!({ name: "HTML", icon_url: "html.png" })
+kubernetes = Tag.create!({ name: "Kubernetes", icon_url: "kubernetes.png" })
 
 5.times do
   User.create!(

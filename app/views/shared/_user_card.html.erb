@@ -16,7 +16,7 @@
             <div class="user-card-tags">
               <% user_tags=UserTag.where(user: user) %>
               <% user_tags.each do |usertag| %>
-                <div class="individual-tag"><p><%= usertag.tag.name %></p></div>
+                <div class="individual-tag"><%= image_tag(usertag.tag.icon_url, class:"tag_icon") %><p><%= usertag.tag.name %></p></div>
               <% end %>
             </div>
             <div class="user-about border-top p-2">
