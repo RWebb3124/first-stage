@@ -11,7 +11,7 @@ require 'faker'
 UserTag.destroy_all
 User.destroy_all
 
-ruby_on_rails = Tag.create!({ name: "Ruby on Rails", icon_url: "ruby_on_rails.png" })
+ruby_on_rails = Tag.create!({ name: "RoR", icon_url: "ruby_on_rails.png" })
 javascript = Tag.create!({ name: "Javascript", icon_url: "javascript.png" })
 css = Tag.create!({ name: "CSS", icon_url: "css.png" })
 ruby = Tag.create!({ name: "Ruby", icon_url: "ruby.png" })
