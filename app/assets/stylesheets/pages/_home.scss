@@ -5,7 +5,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow: hidden; // Ensure no content spills out of the banner container
+  overflow: hidden;
   height: 60vh;
 
   &::before {
@@ -16,10 +16,10 @@
     width: 100%;
     height: 100%;
     background-image: url("banner.jpg");
-    background-size: cover; // Adjust the size of the background image
-    background-position: center; // Center the background image
-    opacity: 0.5; // Adjust the opacity as needed
-    z-index: -1; // Ensure the background stays behind the content
+    background-size: cover;
+    background-position: center;
+    opacity: 0.5;
+    z-index: -1;
   }
 
   h1 {
@@ -63,10 +63,12 @@
     }
     #btn-index h4 {
       color: $background-colour;
+      margin: 0px;
     }
 
     #btn-become-interviewer h4 {
       color: $background-colour;
+      margin: 0px;
     }
 
     #btn-become-interviewer {

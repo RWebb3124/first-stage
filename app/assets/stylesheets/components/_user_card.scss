@@ -50,6 +50,7 @@
   font-size: 16px;
   font-weight: bold;
   margin: 0;
+  color: $text-colour;
 }
 
 .card-user p {
@@ -62,11 +63,12 @@
   font-size: 14px;
   opacity: .8;
   margin: 0;
+  color: $secondary-colour;
 }
 
 .individual-tag {
   padding: 6px 10px;
-  background-color: $background-colour;
+  background-color: #d9f0ff;
   border-radius: 50px;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -80,11 +82,21 @@
   margin-top: auto;
 }
 
-.card-user a {
-  color: inherit !important;
-  text-decoration: none !important;
-}
+// .card-user a {
+//   color: inherit !important;
+//   text-decoration: none !important;
+// }
 
 .clickable-card {
   text-decoration: none;
+  color: $text-colour;
+  background-color: white;
+}
+
+.clickable-card p {
+  font-family: $body-font !important;
+}
+
+.clickable-card h1, h2, h3, h4, h5, h6 {
+  font-family: $headers-font !important;
 }
