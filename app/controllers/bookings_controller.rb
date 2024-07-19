@@ -7,21 +7,22 @@ class BookingsController < ApplicationController
   def create
     @start_time = DateTime.parse(booking_params[:start_time])
     @end_time = DateTime.parse(booking_params[:end_time])
-    @booking = Booking.new(start_time: @start_time, end_time: @end_time)
-    @booking.meeting_link = booking_params[:meeting_link]
-    @booking.interviewer = User.find(params[:interviewer_id])
+    @meeting_link = booking_params[:meeting_link]
+    @booking = Booking.new(start_time: @start_time, end_time: @end_time, meeting_link: @meeting_link)
+    @interviewer = User.find(params[:interviewer_id])
+    @booking.interviewer = @interviewer
     @booking.interviewee = current_user
     if @booking.save
       @chatroom = @booking.create_chatroom(name: "#{@booking.id}")
-      redirect_to my_bookings_path
+      redirect_to user_path(@interviewer)
     else
       render :new
     end
   end
 
   def mybookings
-    @mybookings = Booking.where(interviewee_id: current_user, status: 'accepted')
-    @mybookingrequests = Booking.where(interviewee_id: current_user, status: nil)
+    @mybookings = Booking.where(interviewer_id: current_user, status: 'accepted')
+    @mybookingrequests = Booking.where(interviewer_id: current_user, status: nil)
   end
 
   def update_status
