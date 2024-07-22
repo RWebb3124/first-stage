@@ -2,7 +2,8 @@
   <div class="navbar-container">
     <div class="nav-menu-left">
       <a href="<%= root_path %>" class="navbar-brand">
-          <div class="logo"><%= image_tag "Group 1-3.png", :style => "width: 160px;" %>
+        <div class="logo">
+          <%= image_tag "Group 1-3.png", style: "width: 160px;" %>
         </div>
       </a>
     </div>
@@ -30,26 +31,25 @@
         </form>
       </div>
 
-        <% if user_signed_in? %>
-          <div id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= cl_image_tag current_user.photo.key, class:"navbar-avatar", crop: :fill unless current_user.photo.key.blank? %>
-            <li class="nav-item dropdown">
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">My Profile</a>
-              <%= link_to "My bookings", my_bookings_path, class: "nav-link dropdown-item" %>
-              <%= link_to "Edit Profile", edit_user_registration_path, class: "nav-link dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" %>
-            </div>
-          </li>
+      <% if user_signed_in? %>
+        <div class="dropdown">
+          <a id="navbarDropdown" class="nav-link dropdown-toggle avatar-dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= cl_image_tag current_user.photo.key, class: "navbar-avatar", crop: :fill unless current_user.photo.key.blank? %>
+          </a>
+          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">My Profile</a>
+            <%= link_to "My bookings", my_bookings_path, class: "dropdown-item" %>
+            <%= link_to "Edit Profile", edit_user_registration_path, class: "dropdown-item" %>
+            <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item" %>
           </div>
-        <% else %>
-          <%= link_to "Login", new_user_session_path, class: "login-button" %>
-
+        </div>
+      <% else %>
+        <%= link_to "Login", new_user_session_path, class: "login-button" %>
       <% end %>
     </div>
 
     <div class="hamburger">
       <i class="fas fa-bars"></i>
     </div>
-
   </div>
 </nav>
