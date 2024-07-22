@@ -2,6 +2,8 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
 
   def home
+    @interviewers = User.where(interviewer: true)
+    @top_ten_interviewers = @interviewers.first(10)
   end
 
   def index
