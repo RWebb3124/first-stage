@@ -1,3 +1,10 @@
+.booking-requests {
+  padding: 20px;
+  margin: 40px 20px;
+  background:rgb(241, 241, 241);
+  border-radius: 10px;
+}
+
 .mybookings {
   display: flex;
   justify-content: space-between;
@@ -10,7 +17,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 50%;
+  width: 50% !important;
   height: min-content;
   padding-right: 10px;
 }
@@ -28,14 +35,4 @@
     margin-top: 20px;
     margin-bottom: 4px;
   }
-}
-
-.booking-requests {
-  padding: 20px;
-  margin-left: 20px;
-  margin-right: 20px;
-  margin-top: 40px;
-  margin-bottom: 40px;
-  background:rgb(241, 241, 241);
-  border-radius: 10px;
 }
