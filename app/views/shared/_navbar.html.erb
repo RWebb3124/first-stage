@@ -31,7 +31,7 @@
       </div>
 
         <% if user_signed_in? %>
-          <%= cl_image_tag current_user.photo.key, class:"navbar-avatar", id:"navbarDropdown", data_bs_toggle:"dropdown", crop: :fill unless current_user.photo.key.blank? %>
+          <div id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= cl_image_tag current_user.photo.key, class:"navbar-avatar", crop: :fill unless current_user.photo.key.blank? %>
             <li class="nav-item dropdown">
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="#">My Profile</a>
