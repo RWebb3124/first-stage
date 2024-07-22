@@ -13,7 +13,7 @@ class ZoomController < ApplicationController
     if access_token
       session[:zoom_access_token] = access_token
       # redirect_to *location in your app where you want to be redirected after you saved the token*
-      redirect_to mybookings_path
+      @access_token = access_token
     else
       flash[:alert] = "There was an error authenticating with Zoom. Please try again."
     end
