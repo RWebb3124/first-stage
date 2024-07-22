@@ -6,7 +6,7 @@
         <%= simple_form_for @booking, url: interview_booking_path(interviewer_id: @user.id), data: { controller: 'flatpickr' } do |f| %>
           <%= f.input :start_time, as: :string, input_html: { data: { flatpickr_target: "startTime" } } %>
           <%= f.input :end_time, as: :string, input_html: { data: { flatpickr_target: "endTime" } } %>
-          <%= f.input :meeting_link %>
+          <%= link_to "Connect to zoom", auth_path %>
           <%= f.submit class: 'btn-primary' %>
         <% end %>
       </div>
