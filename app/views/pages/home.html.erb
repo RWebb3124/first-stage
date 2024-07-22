@@ -10,44 +10,60 @@
         </div>
       </div>
     </div>
-    <h3 id="homepage-tagline">Smash your first interview for the last time<h3>
+    <h3 id="homepage-tagline">Smash your first interview for the last time</h3>
     <div class="buttons-home">
-      <div id="btn-index" class="link-colour"><h4><%= link_to "Find an Interviewer", users_path %><h4></div>
-      <div id="btn-become-interviewer" class="link-colour"><h4>
-      <% if user_signed_in? %>
-      <%= link_to "Become an Interviewer", become_interviewer_user_path(current_user) %>
-      <% else %>
-      <%= link_to 'Become an Interviewer', new_user_registration_path %>
-      <% end %>
-      </h4>
+      <div id="btn-index" class="link-colour">
+        <h4><%= link_to "Find an Interviewer", users_path %></h4>
+      </div>
+      <div id="btn-become-interviewer" class="link-colour">
+        <h4>
+        <% if user_signed_in? %>
+          <%= link_to "Become an Interviewer", become_interviewer_user_path(current_user) %>
+        <% else %>
+          <%= link_to 'Become an Interviewer', new_user_registration_path %>
+        <% end %>
+        </h4>
       </div>
     </div>
   </div>
 
   <div class="container-cards-home">
-      <div class="card-home">
-        <h5>First-stage...</h5>
-        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="#C7C8CC" class="bi bi-pc-display-horizontal" viewBox="0 0 16 16">
-          <path d="M1.5 0A1.5 1.5 0 0 0 0 1.5v7A1.5 1.5 0 0 0 1.5 10H6v1H1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-5v-1h4.5A1.5 1.5 0 0 0 16 8.5v-7A1.5 1.5 0 0 0 14.5 0zm0 1h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5M12 12.5a.5.5 0 1 1 1 0 .5.5 0 0 1-1 0m2 0a.5.5 0 1 1 1 0 .5.5 0 0 1-1 0M1.5 12h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1M1 14.25a.25.25 0 0 1 .25-.25h5.5a.25.25 0 1 1 0 .5h-5.5a.25.25 0 0 1-.25-.25"/>
-        </svg>
-        <p>Here to support with getting you ready for that all important interview in the world of tech</p>
-      </div>
+    <div class="card-home">
+      <h5>First-stage...</h5>
+      <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="#C7C8CC" class="bi bi-pc-display-horizontal" viewBox="0 0 16 16">
+        <path d="M1.5 0A1.5 1.5 0 0 0 0 1.5v7A1.5 1.5 0 0 0 1.5 10H6v1H1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-5v-1h4.5A1.5 1.5 0 0 0 16 8.5v-7A1.5 1.5 0 0 0 14.5 0zm0 1h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5M12 12.5a.5.5 0 1 1 1 0 .5.5 0 0 1-1 0m2 0a.5.5 0 1 1 1 0 .5.5 0 0 1-1 0M1.5 12h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1M1 14.25a.25.25 0 0 1 .25-.25h5.5a.25.25 0 1 1 0 .5h-5.5a.25.25 0 0 1-.25-.25"/>
+      </svg>
+      <p>Here to support with getting you ready for that all important interview in the world of tech</p>
+    </div>
 
-      <div class="card-home">
-        <h5>Find an interviewer</h5>
-        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="#C7C8CC" class="bi bi-binoculars-fill" viewBox="0 0 16 16">
-          <path d="M4.5 1A1.5 1.5 0 0 0 3 2.5V3h4v-.5A1.5 1.5 0 0 0 5.5 1zM7 4v1h2V4h4v.882a.5.5 0 0 0 .276.447l.895.447A1.5 1.5 0 0 1 15 7.118V13H9v-1.5a.5.5 0 0 1 .146-.354l.854-.853V9.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v.793l.854.853A.5.5 0 0 1 7 11.5V13H1V7.118a1.5 1.5 0 0 1 .83-1.342l.894-.447A.5.5 0 0 0 3 4.882V4zM1 14v.5A1.5 1.5 0 0 0 2.5 16h3A1.5 1.5 0 0 0 7 14.5V14zm8 0v.5a1.5 1.5 0 0 0 1.5 1.5h3a1.5 1.5 0 0 0 1.5-1.5V14zm4-11H9v-.5A1.5 1.5 0 0 1 10.5 1h1A1.5 1.5 0 0 1 13 2.5z"/>
-        </svg>
-        <p>To help you prepare by practising with experts before you complete the real interview.</p>
-      </div>
+    <div class="card-home">
+      <h5>Find an interviewer</h5>
+      <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="#C7C8CC" class="bi bi-binoculars-fill" viewBox="0 0 16 16">
+        <path d="M4.5 1A1.5 1.5 0 0 0 3 2.5V3h4v-.5A1.5 1.5 0 0 0 5.5 1zM7 4v1h2V4h4v.882a.5.5 0 0 0 .276.447l.895.447A1.5 1.5 0 0 1 15 7.118V13H9v-1.5a.5.5 0 0 1 .146-.354l.854-.853V9.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v.793l.854.853A.5.5 0 0 1 7 11.5V13H1V7.118a1.5 1.5 0 0 1 .83-1.342l.894-.447A.5.5 0 0 0 3 4.882V4zM1 14v.5A1.5 1.5 0 0 0 2.5 16h3A1.5 1.5 0 0 0 7 14.5V14zm8 0v.5a1.5 1.5 0 0 0 1.5 1.5h3a1.5 1.5 0 0 0 1.5-1.5V14zm4-11H9v-.5A1.5 1.5 0 0 1 10.5 1h1A1.5 1.5 0 0 1 13 2.5z"/>
+      </svg>
+      <p>To help you prepare by practising with experts before you complete the real interview.</p>
+    </div>
 
-      <div class="card-home">
-        <h5>Become an Interviewer</h5>
-        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="#C7C8CC" class="bi bi-clipboard-check-fill" viewBox="0 0 16 16">
-          <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5z"/>
-          <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5zm6.854 7.354-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708"/>
+    <div class="card-home">
+      <h5>Become an Interviewer</h5>
+      <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="#C7C8CC" class="bi bi-clipboard-check-fill" viewBox="0 0 16 16">
+        <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5z"/>
+        <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5zm6.854 7.354-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708"/>
         </svg>
-        <p>As companies look to grow build up recruiting experience with your team to help with practising interview processes</p>
+      <p>As companies look to grow build up recruiting experience with your team to help with practising interview processes</p>
     </div>
   </div>
+  <h1 class="p-4">Find experienced developers to help you prepare</h1>
+  <div id="topteninterviewers">
+  <div class="marquee-content">
+    <div class="user-cards-container">
+      <div class="user-cards-container-inner">
+        <%= render 'shared/home_user_card', users: @top_ten_interviewers %>
+      </div>
+      <div class="user-cards-container-inner">
+        <%= render 'shared/home_user_card', users: @top_ten_interviewers %>
+      </div>
+    </div>
+  </div>
+</div>
 </div>

@@ -124,3 +124,53 @@
   font-size: 24px;
   margin-top: 15px;
 }
+
+#topteninterviewers {
+  overflow: hidden;
+  height: auto;
+  width: 100%;
+  background-color: #70b6e2;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-content {
+  display: flex;
+  align-items: center;
+  height: 500px;
+  overflow: hidden;
+}
+
+.user-cards-container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 200%;
+  animation: marquee 25s linear infinite;
+}
+
+.user-cards-container-inner {
+  display: flex;
+  width: 50%;
+}
+
+#topteninterviewers .user-cards-container .user-card {
+  margin: 0 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.card-home {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
