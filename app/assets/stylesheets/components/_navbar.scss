@@ -134,3 +134,8 @@
   color: white;
   text-decoration: none;
 }
+
+.nav-link {
+  text-decoration: none !important;
+  color: $text-colour !important;
+}

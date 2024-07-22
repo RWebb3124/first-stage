@@ -31,9 +31,8 @@
       </div>
 
         <% if user_signed_in? %>
-        <div class="navbar-avatar">
-         <li class="nav-item dropdown">
-            <i class="fa-regular fa-user" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+          <div id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= cl_image_tag current_user.photo.key, class:"navbar-avatar", crop: :fill unless current_user.photo.key.blank? %>
+            <li class="nav-item dropdown">
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="#">My Profile</a>
               <%= link_to "My bookings", my_bookings_path, class: "nav-link dropdown-item" %>
