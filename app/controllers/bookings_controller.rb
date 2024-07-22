@@ -21,8 +21,9 @@ class BookingsController < ApplicationController
   end
 
   def mybookings
-    @mybookings = Booking.where(interviewer_id: current_user, status: 'accepted')
-    @mybookingrequests = Booking.where(interviewer_id: current_user, status: nil)
+    @mybookings = Booking.where(interviewer_id: current_user, status: 'accepted').or(Booking.where(interviewee_id: current_user, status: 'accepted')).sort_by(&:start_time)
+    @mybookingrequests_er = Booking.where(interviewer_id: current_user, status: nil).sort_by(&:start_time)
+    @mybookingrequests_ee = Booking.where(interviewee_id: current_user, status: nil).sort_by(&:start_time)
   end
 
   def update_status

@@ -11,13 +11,14 @@
 
 .mybookings-card:hover {
   background: #e1e1e1;
-  color: white;
+  color: rgb(119, 119, 119);
   transform: translateY(-2px);
 }
 
 .accept-reject-buttons {
   display: flex;
   align-items: center;
+  margin-bottom: 15px;
 }
 
 .accept-button {

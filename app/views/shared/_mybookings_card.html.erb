@@ -1,16 +1,28 @@
 <% mybookings.each do |booking| %>
   <div class="mybookings-card">
     <ul>
+      <% if booking.status == nil && booking.interviewer_id == current_user.id %>
+        <li><%= booking.interviewee.try(:first_name) %> requested an interview with you</li>
+      <% elsif booking.status == nil && booking.interviewee_id == current_user.id %>
+        <li>You requested an interview with <%= booking.interviewer.try(:first_name) %></li>
+      <% end %>
+      <% if booking.status == 'accepted' && booking.interviewer_id == current_user.id %>
+        <li>With <%= booking.interviewee.try(:first_name) %> as interviewer </li>
+      <% elsif booking.status == 'accepted' && booking.interviewee_id == current_user.id %>
+        <li>With <%= booking.interviewer.try(:first_name) %> as interviewee</li>
+      <% end %>
       <li> <%= booking.time_full %></li>
       <li> <%= booking.time %></li>
-      <li> <a href="<%= booking.meeting_link %>" target="_blank">Meeting Link</a> </li>
+      <li><a href="<%= booking.meeting_link %>" target="_blank">Meeting Link</a></li>
+      <% if booking.status == 'accepted' %>
+        <li>Edit Cancel</li>
+      <% end %>
+    </ul>
   </div>
-  <% if booking.status == nil %>
-
-      <div class="accept-reject-buttons">
-        <small><%= button_to "Accept", update_booking_status_path(booking, status: 'accepted'), class: "accept-button", method: :patch, data: {turbo: false} %></small>
-        <small><%= button_to "Reject", update_booking_status_path(booking, status: 'rejected'), class: "reject-button", method: :patch, data: {turbo: false} %></small>
-      </div>
-
+  <% if booking.status == nil && booking.interviewer_id == current_user.id %>
+    <div class="accept-reject-buttons">
+      <small><%= button_to "Accept", update_booking_status_path(booking, status: 'accepted'), class: "accept-button", method: :patch, data: {turbo: false} %></small>
+      <small><%= button_to "Reject", update_booking_status_path(booking, status: 'rejected'), class: "reject-button", method: :patch, data: {turbo: false} %></small>
+    </div>
   <% end %>
 <% end %>

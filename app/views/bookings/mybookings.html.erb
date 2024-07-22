@@ -1,9 +1,19 @@
-<% if @mybookingrequests.any? %>
+<% if @mybookingrequests_er.any? %>
   <div class="booking-requests">
     <div class="row">
-      <div class="col-3">
-        <h4> Booking requests </h4>
-        <%= render 'shared/mybookings_card', mybookings: @mybookingrequests %>
+      <div class="col-6">
+        <h4> Booking requests as interviewer </h4>
+        <%= render 'shared/mybookings_card', mybookings: @mybookingrequests_er %>
+      </div>
+    </div>
+  </div>
+<% end %>
+<% if @mybookingrequests_ee.any? %>
+  <div class="booking-requests">
+    <div class="row">
+      <div class="col-6">
+        <h4> Booking requests as interviewee </h4>
+        <%= render 'shared/mybookings_card', mybookings: @mybookingrequests_ee %>
       </div>
     </div>
   </div>
@@ -12,11 +22,10 @@
   <div class="calendar-container">
     <%= month_calendar(events: @mybookings, end_attribute: :end_time) do |date, bookings| %>
       <%= date %>
-
       <% bookings.each do |booking| %>
         <div class="meeting">
           <small><%= booking.time unless booking.multi_days? %></small>
-          <p> Link: <%= booking.meeting_link %></p>
+          <a href="<%= booking.meeting_link %>" target="_blank">Meeting</a>
         </div>
       <% end %>
     <% end %>
