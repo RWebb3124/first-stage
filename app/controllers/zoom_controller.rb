@@ -14,6 +14,9 @@ class ZoomController < ApplicationController
       session[:zoom_access_token] = access_token
       # redirect_to *location in your app where you want to be redirected after you saved the token*
       @access_token = access_token
+      @user_bookings = Booking.where(interviewee: current_user)
+      @user_bookings.last.update(meeting_link: "https://api.zoom.us/v2/users?access_token=#{access_token}")
+      redirect_to my_bookings_path
     else
       flash[:alert] = "There was an error authenticating with Zoom. Please try again."
     end

@@ -12,6 +12,7 @@ class BookingsController < ApplicationController
     @booking.interviewer = @interviewer
     @booking.interviewee = current_user
     if @booking.save
+      redirect_to auth_path
       @chatroom = @booking.create_chatroom(name: "#{@booking.id}")
       # redirect_to user_path(@interviewer)
     else
