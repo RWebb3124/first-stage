@@ -1,5 +1,5 @@
 .navbar-extender {
-  height: 80px;
+  height: 25vh;
   background-color: $primary-colour;
   position: relative;
   overflow: visible;
@@ -11,7 +11,7 @@
   border-radius: 50%;
   position: absolute;
   left: 10%;
-  top: 30px;
+  top: 70%;
   border: 1px solid white;
   box-shadow: 0 3px 10px rgba(0,0,0,0.2);
 }
@@ -71,7 +71,7 @@
 .user-buttons {
   display: flex;
   flex-direction: column;
-  justify-content: end;
+  justify-content: space-between;
 }
 
 .bottom-buttons {
@@ -109,6 +109,7 @@
 
 #years-exp-panel {
   margin-left: 8px;
+  margin-top: 5px;
   border: 0px;
   padding: 4px 15px;
   background-color: $primary-colour;
@@ -130,6 +131,7 @@
 
 #interviews-panel {
   margin-left: 8px;
+  margin-top: 5px;
   border: 0px;
   padding: 4px 15px;
   background-color: $primary-colour;

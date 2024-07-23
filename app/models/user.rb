@@ -17,6 +17,7 @@ class User < ApplicationRecord
   has_many :flashcard_decks, through: :user_decks
   has_many :flashcards, through: :flashcard_decks
   has_one_attached :photo
+  has_one_attached :banner_photo
 
   has_many :chatroom_users, dependent: :destroy
   has_many :chatrooms, through: :chatroom_users

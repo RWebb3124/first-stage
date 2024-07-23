@@ -2,7 +2,7 @@ class BookingsController < ApplicationController
   before_action :authenticate_user!
   def new
     @booking = Booking.new
-    @user = User.find(params[:interviewer_id])
+    @interviewer = User.find(params[:interviewer_id])
   end
 
   def create
@@ -24,6 +24,10 @@ class BookingsController < ApplicationController
     @mybookings = Booking.where(interviewer_id: current_user, status: 'accepted').or(Booking.where(interviewee_id: current_user, status: 'accepted')).sort_by(&:start_time)
     @mybookingrequests_er = Booking.where(interviewer_id: current_user, status: nil).sort_by(&:start_time)
     @mybookingrequests_ee = Booking.where(interviewee_id: current_user, status: nil).sort_by(&:start_time)
+  end
+
+  def myinterviews
+    @interviews = Booking.includes(:interviewer).where(interviewee_id: current_user).sort_by(&:start_time)
   end
 
   def update_status
