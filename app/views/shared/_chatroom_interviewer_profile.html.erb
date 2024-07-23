@@ -1,0 +1,41 @@
+<% if @other_user %>
+  <div class=".card-user">
+    <div class="user-card-avatar">
+      <div class="user-card-avatar-center">
+        <% if @other_user.photo.attached? %>
+          <%= cl_image_tag @other_user.photo.key, class: "user-avatar-img", crop: :fill %>
+        <% else %>
+          <%= image_tag "default_avatar.jpeg", class: "user-avatar-img" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="card-user-infos">
+      <div class="title-description">
+        <h2><%= "#{@other_user.first_name} #{@other_user.last_name}" %></h2>
+        <p>@<%= @other_user.username %></p>
+      </div>
+      <div class="user-card-tags">
+        <% user_tags = UserTag.where(user: @other_user) %>
+        <% user_tags.each do |usertag| %>
+          <div class="individual-tag">
+            <p><%= image_tag usertag.tag.icon_url, class: "tag_icon" %> <%= usertag.tag.name %></p>
+          </div>
+        <% end %>
+      </div>
+      <div class="user-about border-top p-2">
+        <p><%= @other_user.about %></p>
+      </div>
+      <div class="price-capacity">
+        <div class="capacity-icon">
+          <i class="fa-solid fa-location-dot"></i>
+          <p class="card-user-capacity ms-2"><%= @other_user.address %></p>
+        </div>
+        <p class="card-user-pricing">
+          <strong><%= @other_user.years_experience %> <%= "year".pluralize(@other_user.years_experience) %> experience</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <p>No other user found in this chatroom.</p>
+<% end %>
