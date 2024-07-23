@@ -43,15 +43,15 @@ end
 
 banner_image_urls = [
   "https://media.istockphoto.com/id/1284817090/photo/space-motion.jpg?s=1024x1024&w=is&k=20&c=yBGWceG8sgDK7qILtLDrAh3PvpR-fUshu-lSCLHDZHc=",
-  "https://source.unsplash.com/random/1440x200/?nature,forest",
-  "https://source.unsplash.com/random/1440x200/?city,night",
-  "https://source.unsplash.com/random/1440x200/?technology,computer",
-  "https://source.unsplash.com/random/1440x200/?space,galaxy",
-  "https://source.unsplash.com/random/1440x200/?ocean,beach",
-  "https://source.unsplash.com/random/1440x200/?mountain,sky",
-  "https://source.unsplash.com/random/1440x200/?abstract,art",
-  "https://source.unsplash.com/random/1440x200/?animal,wildlife",
-  "https://source.unsplash.com/random/1440x200/?architecture,building"
+  "https://cdn.pixabay.com/photo/2016/05/27/08/51/mobile-phone-1419275_1280.jpg",
+  "https://cdn.pixabay.com/photo/2023/03/11/15/28/puddle-7844705_1280.jpg",
+  "https://cdn.pixabay.com/photo/2022/06/12/22/48/gradient-7258997_1280.png",
+  "https://cdn.pixabay.com/photo/2016/08/05/09/31/banner-1571858_1280.jpg",
+  "https://cdn.pixabay.com/photo/2016/09/01/19/53/pocket-watch-1637396_1280.jpg",
+  "https://cdn.pixabay.com/photo/2017/09/21/14/05/animals-2772006_1280.jpg",
+  "https://cdn.pixabay.com/photo/2016/08/03/09/03/universe-1566159_1280.jpg",
+  "https://cdn.pixabay.com/photo/2016/09/04/20/14/sunset-1645103_1280.jpg",
+  "https://cdn.pixabay.com/photo/2015/12/15/09/04/banner-1093909_1280.jpg"
 ]
 
 10.times do
@@ -66,7 +66,7 @@ banner_image_urls = [
     },
     [],
     "https://randomuser.me/api/portraits/men/#{rand(1..99)}.jpg",
-    banner_image_urls[0]
+    banner_image_urls.sample
   )
 end
 
@@ -103,6 +103,6 @@ interviewer_image_urls = [
     },
     Tag.all.sample(3),
     interviewer_image_urls[i],
-    banner_image_urls[0]
+    banner_image_urls.sample
   )
 end
