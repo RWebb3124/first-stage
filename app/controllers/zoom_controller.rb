@@ -12,11 +12,31 @@ class ZoomController < ApplicationController
     access_token = get_access_token(code)
     if access_token
       session[:zoom_access_token] = access_token
-      # redirect_to *location in your app where you want to be redirected after you saved the token*
-      @access_token = access_token
-      @user_bookings = Booking.where(interviewee: current_user)
-      @user_bookings.last.update(meeting_link: "https://api.zoom.us/v2/users?access_token=#{access_token}")
-      redirect_to my_bookings_path
+      api_endpoint_url = "https://api.zoom.us/v2/users/me"
+      serialized_response = RestClient.get(
+        api_endpoint_url,
+        {
+          Authorization: "Bearer #{access_token}",
+          content_type: "application/json",
+          accept: :json
+        }
+      )
+      response = JSON.parse(serialized_response)
+      personal_meeting_url = response["personal_meeting_url"]
+      # headers = {
+      #   "Authorization": "Bearer #{access_token}",
+      #   "Content-Type": "application/json"
+      # }
+      # RestClient.get(api_endpoint_url, headers: headers)
+      # user_data = JSON.parse(response)
+      # system("curl -X GET #{api_endpoint_url} -H 'Authorization: Bearer #{access_token}' -H 'Content-Type: application/json'")
+      # user_data = JSON.parse(response)
+      # personal_meeting_url = user_data["personal_meeting_url"] if user_data.has_key?("personal_meeting_url")
+      if personal_meeting_url
+        @user_bookings = Booking.where(interviewee: current_user)
+        @user_bookings.last.update(meeting_link: personal_meeting_url)
+        redirect_to my_bookings_path
+      end
     else
       flash[:alert] = "There was an error authenticating with Zoom. Please try again."
     end
@@ -27,7 +47,7 @@ class ZoomController < ApplicationController
     client_secret = ENV['CLIENT_ZOOM_SECRET']
     redirect_uri = ENV['CLIENT_ZOOM_REDIRECT_URI']
 
-    zoom_token_url = "https://zoom.us/oauth/token" # call to the endpoint that generated the token
+    zoom_token_url = "https://zoom.us/oauth/token"
 
     credentials = Base64.strict_encode64("#{client_id}:#{client_secret}")
 
