@@ -28,6 +28,7 @@
                           required: true %>
               <%= f.input :username,
                           required: true %>
+              <%= f.input :photo, as: :file %>
               <% if resource.interviewer == true %>
                 <%= f.input :headline %>
                 <%= f.input :years_experience, required: true, as: :integer %>

@@ -35,7 +35,11 @@
       <% if user_signed_in? %>
         <div class="dropdown">
           <a id="navbarDropdown" class="nav-link dropdown-toggle avatar-dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= cl_image_tag current_user.photo.key, class: "navbar-avatar", crop: :fill unless current_user.photo.key.blank? %>
+            <% if current_user.photo.attached? %>
+              <%= cl_image_tag current_user.photo.key, class: "navbar-avatar", crop: :fill %>
+            <% else %>
+              <%= image_tag "default-pp.jpg", class: "navbar-avatar", crop: :fill %>
+            <% end %>
           </a>
           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="#">My Profile</a>
