@@ -21,21 +21,38 @@ tags = [
 
 tags.each { |tag| Tag.create!(tag) }
 
-def attach_profile_picture(user, url)
-  file = URI.open(url)
-  user.photo.attach(io: file, filename: "profile_picture_#{user.id}.png", content_type: "image/png")
+def attach_profile_picture(user, profile_url, banner_url)
+  profile_file = URI.open(profile_url)
+  user.photo.attach(io: profile_file, filename: "profile_picture_#{user.id}.png", content_type: "image/png")
+
+  banner_file = URI.open(banner_url)
+  user.banner_photo.attach(io: banner_file, filename: "banner_photo_#{user.id}.png", content_type: "image/png")
+
   user.save!
 end
 
-def create_user(attributes, tags = [], image_url)
+def create_user(attributes, tags = [], profile_image_url, banner_image_url)
   user = User.new(attributes)
   user.save!
-  attach_profile_picture(user, image_url)
+  attach_profile_picture(user, profile_image_url, banner_image_url)
 
   tags.each do |tag|
     UserTag.create!(user: user, tag: tag)
   end
 end
+
+banner_image_urls = [
+  "https://via.placeholder.com/1440x200.png?text=Banner+1",
+  "https://via.placeholder.com/1440x200.png?text=Banner+2",
+  "https://via.placeholder.com/1440x200.png?text=Banner+3",
+  "https://via.placeholder.com/1440x200.png?text=Banner+4",
+  "https://via.placeholder.com/1440x200.png?text=Banner+5",
+  "https://via.placeholder.com/1440x200.png?text=Banner+6",
+  "https://via.placeholder.com/1440x200.png?text=Banner+7",
+  "https://via.placeholder.com/1440x200.png?text=Banner+8",
+  "https://via.placeholder.com/1440x200.png?text=Banner+9",
+  "https://via.placeholder.com/1440x200.png?text=Banner+10"
+]
 
 10.times do
   create_user(
@@ -48,7 +65,8 @@ end
       address: Faker::Address.city
     },
     [],
-    "https://randomuser.me/api/portraits/men/#{rand(1..99)}.jpg"
+    "https://randomuser.me/api/portraits/men/#{rand(1..99)}.jpg",
+    banner_image_urls.sample
   )
 end
 
@@ -84,6 +102,7 @@ interviewer_image_urls = [
       personal_website: "https://en.wikipedia.org/wiki/#{Faker::Lorem.word.capitalize}"
     },
     Tag.all.sample(3),
-    interviewer_image_urls[i]
+    interviewer_image_urls[i],
+    banner_image_urls.sample
   )
 end
