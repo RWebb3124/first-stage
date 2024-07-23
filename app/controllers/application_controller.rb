@@ -7,8 +7,6 @@ class ApplicationController < ActionController::Base
     if current_user
       if current_user.chatrooms.any?
         @chatrooms = current_user.chatrooms
-      else
-        redirect_to root_path
       end
     end
   end
