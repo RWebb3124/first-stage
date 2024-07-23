@@ -2,17 +2,16 @@
   <div class="mybookings-card">
     <ul>
       <% if booking.status == nil && booking.interviewer_id == current_user.id %>
-        <li><%= booking.interviewee.try(:first_name) %> requested an interview with you</li>
+        <h4> <%= booking.interviewee.try(:first_name) %> <%= booking.interviewee.try(:last_name) %> </h4>
       <% elsif booking.status == nil && booking.interviewee_id == current_user.id %>
         <li>You requested an interview with <%= booking.interviewer.try(:first_name) %></li>
       <% end %>
       <% if booking.status == 'accepted' && booking.interviewer_id == current_user.id %>
-        <li>With <%= booking.interviewee.try(:first_name) %> as interviewer </li>
+        <h4> <%= booking.interviewee.try(:first_name) %> <%= booking.interviewee.try(:last_name) %> </h4>
       <% elsif booking.status == 'accepted' && booking.interviewee_id == current_user.id %>
         <li>With <%= booking.interviewer.try(:first_name) %> as interviewee</li>
       <% end %>
-      <li> <%= booking.time_full %></li>
-      <li> <%= booking.time %></li>
+      <li> <%= booking.time_full %> from <%= booking.time %></li>
       <li><a href="<%= booking.meeting_link %>" target="_blank">Meeting Link</a></li>
       <% if booking.status == 'accepted' %>
         <li>Edit Cancel</li>

@@ -6,7 +6,7 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  height: 60vh;
+  height: 70vh;
 
   &::before {
     content: "";
@@ -77,6 +77,24 @@
   }
 }
 
+.container-cards-home {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+
+}
+
+.card-home {
+  height: 45vh;
+  background-color: white;
+}
+
+.find-devs-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #homepage-first {
   color: #8b7ac5;
   padding-right: 15px;
@@ -98,8 +116,9 @@
   height: 120px;
   width: 120px;
   background-color: #0a1220;
-  top: 20px;
+  top: 30px;
   right: -130px;
+  margin-top: 18px;
   // position: relative;
 }
 
@@ -123,4 +142,54 @@
 #homepage-tagline {
   font-size: 24px;
   margin-top: 15px;
+}
+
+#topteninterviewers {
+  overflow: hidden;
+  height: auto;
+  width: 100%;
+  background-color: $primary-colour;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-content {
+  display: flex;
+  align-items: center;
+  height: 500px;
+  overflow: hidden;
+}
+
+.user-cards-container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 200%;
+  animation: marquee 25s linear infinite;
+}
+
+.user-cards-container-inner {
+  display: flex;
+  width: 50%;
+}
+
+#topteninterviewers .user-cards-container .user-card {
+  margin: 0 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.card-home {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }

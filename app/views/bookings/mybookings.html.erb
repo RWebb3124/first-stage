@@ -24,14 +24,19 @@
       <%= date %>
       <% bookings.each do |booking| %>
         <div class="meeting">
-          <small><%= booking.time unless booking.multi_days? %></small>
-          <a href="<%= booking.meeting_link %>" target="_blank">Meeting</a>
+          <small><%= booking.interviewee.try(:first_name) %> <%= booking.interviewee.try(:last_name) %>
+          <%= booking.time unless booking.multi_days? %>
+          <a href="<%= booking.meeting_link %>" target="_blank">Meeting</a></small>
         </div>
       <% end %>
     <% end %>
   </div>
   <div class="bookings-container">
     <h4> My Bookings: </h4>
-    <%= render 'shared/mybookings_card', mybookings: @mybookings %>
+    <% if @mybookings.any? %>
+      <%= render 'shared/mybookings_card', mybookings: @mybookings %>
+    <% else %>
+      <h6><em> You don't have any bookings yet </em></h6>
+    <% end %>
   </div>
 </div>
