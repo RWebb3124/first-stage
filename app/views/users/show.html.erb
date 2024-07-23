@@ -1,4 +1,4 @@
-<div class="navbar-extender"><%= image_tag("default_avatar.jpeg", class:"user-avatar-show") %></div>
+<div class="navbar-extender"><%= cl_image_tag @user.photo.key, class:"user-avatar-show", crop: :fill unless @user.photo.key.blank? %></div>
 <div class="container">
   <div class="user-details-buttons row g-0">
     <div class="user-details col-12 col-sm-8 col-md-8 col-lg-8">

@@ -1,28 +1,44 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
 require 'faker'
+require "open-uri"
+
+Booking.destroy_all
+Chatroom.destroy_all
 UserTag.destroy_all
 User.destroy_all
+Tag.destroy_all
 
-ruby_on_rails = Tag.create!({ name: "RoR", icon_url: "ruby_on_rails.png" })
-javascript = Tag.create!({ name: "Javascript", icon_url: "javascript.png" })
-css = Tag.create!({ name: "CSS", icon_url: "css.png" })
-ruby = Tag.create!({ name: "Ruby", icon_url: "ruby.png" })
-python = Tag.create!({ name: "Python", icon_url: "python.png" })
-cplusplus = Tag.create!({ name: "C++", icon_url: "c++.png" })
-docker = Tag.create!({ name: "Docker", icon_url: "docker.png" })
-html = Tag.create!({ name: "HTML", icon_url: "html.png" })
-kubernetes = Tag.create!({ name: "Kubernetes", icon_url: "kubernetes.png" })
+tags = [
+  { name: "RoR", icon_url: "ruby_on_rails.png" },
+  { name: "Javascript", icon_url: "javascript.png" },
+  { name: "CSS", icon_url: "css.png" },
+  { name: "Ruby", icon_url: "ruby.png" },
+  { name: "Python", icon_url: "python.png" },
+  { name: "C++", icon_url: "cplusplus.png" },
+  { name: "Docker", icon_url: "docker.png" },
+  { name: "HTML", icon_url: "html.png" },
+  { name: "Kubernetes", icon_url: "kubernetes.png" }
+]
 
-5.times do
-  User.create!(
+tags.each { |tag| Tag.create!(tag) }
+
+def attach_profile_picture(user, url)
+  file = URI.open(url)
+  user.photo.attach(io: file, filename: "profile_picture_#{user.id}.png", content_type: "image/png")
+  user.save!
+end
+
+def create_user(attributes, tags = [], image_url)
+  user = User.new(attributes)
+  user.save!
+  attach_profile_picture(user, image_url)
+
+  tags.each do |tag|
+    UserTag.create!(user: user, tag: tag)
+  end
+end
+
+10.times do
+  create_user(
     {
       first_name: Faker::Name.first_name,
       last_name: Faker::Name.last_name,
@@ -30,12 +46,27 @@ kubernetes = Tag.create!({ name: "Kubernetes", icon_url: "kubernetes.png" })
       password: "Password1234",
       username: Faker::Internet.username,
       address: Faker::Address.city
-    }
+    },
+    [],
+    "https://randomuser.me/api/portraits/men/#{rand(1..99)}.jpg"
   )
 end
 
-5.times do
-  interviewer = User.new(
+interviewer_image_urls = [
+  "https://randomuser.me/api/portraits/women/#{rand(1..99)}.jpg",
+  "https://randomuser.me/api/portraits/men/#{rand(1..99)}.jpg",
+  "https://randomuser.me/api/portraits/women/#{rand(1..99)}.jpg",
+  "https://randomuser.me/api/portraits/men/#{rand(1..99)}.jpg",
+  "https://randomuser.me/api/portraits/women/#{rand(1..99)}.jpg",
+  "https://randomuser.me/api/portraits/men/#{rand(1..99)}.jpg",
+  "https://randomuser.me/api/portraits/women/#{rand(1..99)}.jpg",
+  "https://randomuser.me/api/portraits/men/#{rand(1..99)}.jpg",
+  "https://randomuser.me/api/portraits/women/#{rand(1..99)}.jpg",
+  "https://randomuser.me/api/portraits/men/#{rand(1..99)}.jpg"
+]
+
+10.times do |i|
+  create_user(
     {
       first_name: Faker::Name.first_name,
       last_name: Faker::Name.last_name,
@@ -44,17 +75,15 @@ end
       username: Faker::Internet.username,
       address: Faker::Address.city,
       interviewer: true,
-      years_experience: rand(1..4),
-      headline: "This is my tagline",
-      about: "I am a Senior Ruby developer with six years of experience in Fintech. My dream is to be a team lead, and I can\'t wait to help you rock your next interview!",
-      github: "https://github.com/lewagon",
-      linkedin: "https://www.linkedin.com/school/le-wagon/"
-    }
+      years_experience: rand(1..9),
+      headline: "Passionate full-stack developer with a love for innovative solutions.",
+      about: "With over #{rand(1..9)} years of experience, I specialize in building dynamic web applications using modern technologies like Ruby on Rails and React. I thrive on solving complex problems and improving user experiences through efficient code and design.",
+      github: "https://github.com/#{Faker::Internet.username}",
+      linkedin: "https://www.linkedin.com/in/#{Faker::Internet.username}",
+      fiverr: "https://www.fiverr.com/#{Faker::Internet.username}",
+      personal_website: "https://en.wikipedia.org/wiki/#{Faker::Lorem.word.capitalize}"
+    },
+    Tag.all.sample(3),
+    interviewer_image_urls[i]
   )
-  interviewer.save!
-
-  UserTag.create!({ user: interviewer, tag: ruby_on_rails })
-  UserTag.create!({ user: interviewer, tag: javascript })
-  UserTag.create!({ user: interviewer, tag: css })
-
 end

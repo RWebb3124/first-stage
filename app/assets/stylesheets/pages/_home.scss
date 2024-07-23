@@ -76,3 +76,101 @@
     }
   }
 }
+
+#homepage-first {
+  color: #8b7ac5;
+  padding-right: 15px;
+}
+
+#homepage-stage {
+  color: #0a1220;
+  padding-right: 15px;
+}
+
+.first-stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+#logo-checkbox-outer {
+  height: 120px;
+  width: 120px;
+  background-color: #0a1220;
+  top: 20px;
+  right: -130px;
+  // position: relative;
+}
+
+#logo-checkbox-inner {
+  height: 80%;
+  width: 80%;
+  background-color: #a368bb;
+  border-radius: 5%;
+ //  position: absolute;
+  margin-top: 10%;
+  margin-left: 10%;
+}
+
+#logo-check {
+  color: #060100;
+  font-size: 75px;
+  margin-left: 15px;
+  margin-top: 8px;
+}
+
+#homepage-tagline {
+  font-size: 24px;
+  margin-top: 15px;
+}
+
+#topteninterviewers {
+  overflow: hidden;
+  height: auto;
+  width: 100%;
+  background-color: $primary-colour;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-content {
+  display: flex;
+  align-items: center;
+  height: 500px;
+  overflow: hidden;
+}
+
+.user-cards-container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 200%;
+  animation: marquee 25s linear infinite;
+}
+
+.user-cards-container-inner {
+  display: flex;
+  width: 50%;
+}
+
+#topteninterviewers .user-cards-container .user-card {
+  margin: 0 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.card-home {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}

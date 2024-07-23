@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 import { createConsumer } from "@rails/actioncable"
 
 export default class extends Controller {
-  static values = { chatroomId: Number, currentUserId: Number }
+  static values = { chatroomId: Number, userId: Number }
   static targets = ["messages"]
 
   connect() {
@@ -24,7 +24,8 @@ export default class extends Controller {
   }
 
   #insertMessageAndScrollDown(data) {
-    const currentUserIsSender = this.currentUserIdValue === data.sender_id
+    console.log(this.userIdValue)
+    const currentUserIsSender = this.userIdValue === data.sender_id
     const messageElement = this.#buildMessageElement(currentUserIsSender, data.message)
     this.messagesTarget.insertAdjacentHTML("beforeend", messageElement)
     this.#scrollToBottom()

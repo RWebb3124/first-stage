@@ -20,4 +20,7 @@ Rails.application.routes.draw do
   post '/users/:interviewer_id/bookings/create', to: 'bookings#create', as: 'interview_booking'
   get '/mybookings', to: 'bookings#mybookings', as: 'my_bookings'
   patch '/mybookings/:booking_id/update_status', to: 'bookings#update_status', as: 'update_booking_status'
+
+  get '/auth', to: 'zoom#auth'
+  get '/oauth/callback', to: 'zoom#zoom_callback'
 end

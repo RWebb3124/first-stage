@@ -69,7 +69,7 @@
 }
 
 .individual-tag {
-  padding: 6px 10px;
+  padding: 6px 8px;
   background-color: #d9f0ff;
   border-radius: 50px;
   margin-top: 10px;
@@ -80,9 +80,13 @@
   align-items: center;
 }
 
+.individual-tag p {
+  font-size: 10px;
+}
+
 .tag_icon {
-  height: 20px;
-  width: 20px;
+  height: 15px;
+  width: 15px;
 }
 
 .price-capacity {
@@ -105,6 +109,7 @@
 
 .clickable-card p {
   font-family: $body-font !important;
+  display: inline-block;
 }
 
 .clickable-card h1, h2, h3, h4, h5, h6 {

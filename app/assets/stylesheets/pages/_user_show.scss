@@ -35,7 +35,12 @@
 }
 
 .social-link-img {
+  transition: 0.1s ease-in-out;
   height: 20px;
+}
+
+.social-link-img:hover {
+  transform: translateY(-3px);
 }
 
 .show-social-links {
@@ -59,7 +64,7 @@
 }
 
 .user-details-buttons {
-  border-bottom: solid 1px $secondary-colour;
+  border-bottom: solid 1px #dadedd;
   margin-bottom: 30px;
 }
 
@@ -169,7 +174,7 @@
 }
 
 .some-of-my-projects {
-  border-top: solid 1px $secondary-colour;
+  border-top: solid 1px #dadedd;
   padding-top: 15px;
   margin-bottom: 10px;
 }

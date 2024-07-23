@@ -7,17 +7,28 @@
   padding: 20px;
   border-radius: 5px;
   background-color: rgb(227, 227, 227);
+
+  h4 {
+    margin: 0;
+    font-size: 1.2rem;
+    text-decoration: underline;
+  }
+
+  ul {
+    list-style: none;
+  }
 }
 
 .mybookings-card:hover {
   background: #e1e1e1;
-  color: white;
+  color: rgb(119, 119, 119);
   transform: translateY(-2px);
 }
 
 .accept-reject-buttons {
   display: flex;
   align-items: center;
+  margin-bottom: 15px;
 }
 
 .accept-button, .message-button {

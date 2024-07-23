@@ -9,10 +9,11 @@ class BookingsController < ApplicationController
     @start_time = DateTime.parse(booking_params[:start_time])
     @end_time = DateTime.parse(booking_params[:end_time])
     @booking = Booking.new(start_time: @start_time, end_time: @end_time)
-    @booking.interviewer = User.find(params[:interviewer_id])
+    @interviewer = User.find(params[:interviewer_id])
+    @booking.interviewer = @interviewer
     @booking.interviewee = current_user
     if @booking.save
-      @chatroom = @booking.create_chatroom!(name: "#{@booking.id}")
+      @chatroom = @booking.chatroom
       redirect_to my_bookings_path
     else
       render :new
@@ -20,8 +21,9 @@ class BookingsController < ApplicationController
   end
 
   def mybookings
-    @mybookings = Booking.where(interviewee_id: current_user, status: 'accepted')
-    @mybookingrequests = Booking.where(interviewee_id: current_user, status: nil)
+    @mybookings = Booking.where(interviewer_id: current_user, status: 'accepted').or(Booking.where(interviewee_id: current_user, status: 'accepted')).sort_by(&:start_time)
+    @mybookingrequests_er = Booking.where(interviewer_id: current_user, status: nil).sort_by(&:start_time)
+    @mybookingrequests_ee = Booking.where(interviewee_id: current_user, status: nil).sort_by(&:start_time)
   end
 
   def update_status

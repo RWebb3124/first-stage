@@ -8,12 +8,12 @@ class MessagesController < ApplicationController
     @message.user = current_user
 
     if @message.save
-      respond_to do |format|
-        format.html { redirect_to @chatroom }
-        format.turbo_stream
-      end
-    else
-      render "chatrooms/show", status: :unprocessable_entity
+      ChatroomChannel.broadcast_to(
+        @chatroom,
+        message: render_to_string(partial: "message", locals: { message: @message }),
+        sender_id: @message.user.id
+        )
+      head :ok
     end
   end
 

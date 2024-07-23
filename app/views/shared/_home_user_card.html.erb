@@ -1,6 +1,5 @@
-<div class="row g-0">
-  <% users.each do |user| %>
-    <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+<% users.each do |user| %>
+    <div class="col-12 col-sm-6 col-md-3 col-lg-3">
       <a href="<%= user_path(user) %>" class="clickable-card">
         <div class="card-user">
           <div class="user-card-avatar">
@@ -19,7 +18,7 @@
                 <div class="individual-tag"><p><%= image_tag(usertag.tag.icon_url, class:"tag_icon") %> <%= usertag.tag.name %></p></div>
               <% end %>
             </div>
-            <div class="user-about border-top p-2">
+            <div class="home-user-about border-top p-2">
               <p><%= user.about %></p>
             </div>
             <div class="price-capacity">
@@ -31,4 +30,3 @@
       </a>
     </div>
   <% end %>
-</div>

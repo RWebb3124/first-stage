@@ -14,6 +14,11 @@ class Booking < ApplicationRecord
     "#{start_time.strftime("%H:%M")} - #{end_time.strftime("%H:%M")}"
   end
 
+  def time_full
+    "#{start_time.strftime("%A, %b #{start_time.day.ordinalize} ")}"
+
+  end
+
   def multi_days?
     (end_time.to_date - start_time.to_date).to_i >= 1
   end
@@ -21,7 +26,7 @@ class Booking < ApplicationRecord
   private
 
   def create_chatroom
-    chatroom = Chatroom.create(name: "Chatroom for Booking #{self.id}", booking: self)
+    chatroom = Chatroom.create(name:  "#{self.id}", booking: self)
     ChatroomUser.create(chatroom: chatroom, user: self.interviewer)
     ChatroomUser.create(chatroom: chatroom, user: self.interviewee)
   end
