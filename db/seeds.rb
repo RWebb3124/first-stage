@@ -1,5 +1,5 @@
 require 'faker'
-require "open-uri"
+require 'open-uri'
 
 Booking.destroy_all
 Chatroom.destroy_all
@@ -42,16 +42,16 @@ def create_user(attributes, tags = [], profile_image_url, banner_image_url)
 end
 
 banner_image_urls = [
-  "https://via.placeholder.com/1440x200.png?text=Banner+1",
-  "https://via.placeholder.com/1440x200.png?text=Banner+2",
-  "https://via.placeholder.com/1440x200.png?text=Banner+3",
-  "https://via.placeholder.com/1440x200.png?text=Banner+4",
-  "https://via.placeholder.com/1440x200.png?text=Banner+5",
-  "https://via.placeholder.com/1440x200.png?text=Banner+6",
-  "https://via.placeholder.com/1440x200.png?text=Banner+7",
-  "https://via.placeholder.com/1440x200.png?text=Banner+8",
-  "https://via.placeholder.com/1440x200.png?text=Banner+9",
-  "https://via.placeholder.com/1440x200.png?text=Banner+10"
+  "https://media.istockphoto.com/id/1284817090/photo/space-motion.jpg?s=1024x1024&w=is&k=20&c=yBGWceG8sgDK7qILtLDrAh3PvpR-fUshu-lSCLHDZHc=",
+  "https://source.unsplash.com/random/1440x200/?nature,forest",
+  "https://source.unsplash.com/random/1440x200/?city,night",
+  "https://source.unsplash.com/random/1440x200/?technology,computer",
+  "https://source.unsplash.com/random/1440x200/?space,galaxy",
+  "https://source.unsplash.com/random/1440x200/?ocean,beach",
+  "https://source.unsplash.com/random/1440x200/?mountain,sky",
+  "https://source.unsplash.com/random/1440x200/?abstract,art",
+  "https://source.unsplash.com/random/1440x200/?animal,wildlife",
+  "https://source.unsplash.com/random/1440x200/?architecture,building"
 ]
 
 10.times do
@@ -66,7 +66,7 @@ banner_image_urls = [
     },
     [],
     "https://randomuser.me/api/portraits/men/#{rand(1..99)}.jpg",
-    banner_image_urls.sample
+    banner_image_urls[0]
   )
 end
 
@@ -103,6 +103,6 @@ interviewer_image_urls = [
     },
     Tag.all.sample(3),
     interviewer_image_urls[i],
-    banner_image_urls.sample
+    banner_image_urls[0]
   )
 end
