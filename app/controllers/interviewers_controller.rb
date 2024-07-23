@@ -17,6 +17,6 @@ class InterviewersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:years_experience, :headline, :about,
-      :interviewer, :linkedin, :github, :fiverr, :personal_website, tag_ids: [])
+      :interviewer, :banner_photo, :linkedin, :github, :fiverr, :personal_website, tag_ids: [])
   end
 end

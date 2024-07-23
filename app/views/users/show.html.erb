@@ -1,4 +1,4 @@
-<div class="navbar-extender" style="background-image: url('<%= cl_image_path @user.banner_photo.key, height: 300, width:"100%" unless @user.banner_photo.key.blank?%>');">
+<div class="navbar-extender" style="background-image: url('<%= cl_image_path @user.banner_photo.key, height: 200, width:1440, crop: :fill unless @user.banner_photo.key.blank? %>');">
   <%= cl_image_tag @user.photo.key, class:"user-avatar-show", crop: :fill unless @user.photo.key.blank? %>
 </div>
 <div class="container">

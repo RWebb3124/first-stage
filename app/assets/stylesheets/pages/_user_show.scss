@@ -3,6 +3,9 @@
   background-color: $primary-colour;
   position: relative;
   overflow: visible;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .user-avatar-show {
