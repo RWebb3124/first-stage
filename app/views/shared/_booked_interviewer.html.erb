@@ -1,0 +1,40 @@
+<div class="row g-0">
+  <% @interviews.each do |interview| %>
+    <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+      <a href="<%= user_path(interview.interviewer) %>" class="clickable-card">
+        <div class="card-user override-height">
+          <div class="user-card-avatar">
+            <div class="user-card-avatar-center">
+              <%= cl_image_tag interview.interviewer.photo.key, class:"user-avatar-img", crop: :fill unless interview.interviewer.photo.key.blank? %>
+            </div>
+          </div>
+          <div class="card-user-infos">
+            <div class="title-description">
+              <h2><%= "#{interview.interviewer.first_name} #{interview.interviewer.last_name}" %></h2>
+              <p>@<%= interview.interviewer.username %></p>
+            </div>
+            <div class="user-card-tags">
+              <% user_tags=UserTag.where(user: interview.interviewer) %>
+              <% user_tags.each do |usertag| %>
+                <div class="individual-tag"><p><%= image_tag(usertag.tag.icon_url, class:"tag_icon") %> <%= usertag.tag.name %></p></div>
+              <% end %>
+            </div>
+
+            <a href="<%= my_bookings_path %>" class="clickable-card">
+              <div class="interview-info">
+                <div class="time-and-link">
+                  <i class="fa-solid fa-calendar-days"></i>
+                  <h2><%= interview.time_full %></h2>
+                </div>
+                <div class="time-and-link">
+                  <i class="fa-solid fa-link"></i>
+                  <h2><%= interview.meeting_link %></h2>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </a>
+    </div>
+  <% end %>
+</div>
