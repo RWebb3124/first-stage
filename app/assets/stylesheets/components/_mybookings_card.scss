@@ -31,7 +31,7 @@
   margin-bottom: 15px;
 }
 
-.accept-button {
+.accept-button, .message-button {
   text-decoration: none;
   border: none;
   background: $primary-colour;
@@ -53,6 +53,7 @@
   border-radius: 5px;
   height: 40px;
   width: 80px;
+  margin-right: 10px;
   &:hover {
     color: rgb(228, 89, 25);
     border-color: rgb(228, 89, 25);

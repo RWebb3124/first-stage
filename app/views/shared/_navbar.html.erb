@@ -15,9 +15,11 @@
       <li class="nav-item">
         <a href="#" class="nav-links">Flashcards</a>
       </li>
+      <% if current_user %>
       <li class="nav-item">
-        <a href="#" class="nav-links">Messages</a>
+        <%= link_to 'Messages', current_user.chatrooms.any?  ? chatroom_path(@chatrooms.last) : root_path, class: 'nav-links' %>
       </li>
+      <% end %>
       <li class="nav-item">
         <a href="<%= myinterviews_path %>" class="nav-links">Interviews</a>
       </li>
@@ -30,7 +32,6 @@
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         </form>
       </div>
-
       <% if user_signed_in? %>
         <div class="dropdown">
           <a id="navbarDropdown" class="nav-link dropdown-toggle avatar-dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

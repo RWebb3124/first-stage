@@ -1,3 +1,31 @@
 filter-bar {
   padding: 10px;
 }
+.btn-reset {
+  text-decoration: none;
+  border: none;
+  background: $primary-colour;
+  color: white;
+  border-radius: 5px;
+  height: 40px;
+  width: 100px;
+  margin-left: 10px;
+  &:hover {
+    background: #0a84d5;
+  }
+}
+
+.accordion-header-button {
+  background-color: rgb(246, 247, 249);
+  border-radius: 10px;
+}
+
+.filter-bar {
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgb(194, 194, 194);
+  margin-top: 80px;
+}
+
+.accordion-header {
+  border-radius: 10px;
+}

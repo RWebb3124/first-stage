@@ -2,12 +2,14 @@ class ChatroomsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @chatrooms = Chatroom.all
+    @chatrooms = current_user.chatrooms
   end
-  
+
   def show
   @chatroom = Chatroom.find(params[:id])
   @message = Message.new
+  @current_user = current_user
+  @other_user = @chatroom.users.where.not(id: current_user.id).first
   end
 
   def new

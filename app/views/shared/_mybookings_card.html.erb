@@ -18,10 +18,11 @@
       <% end %>
     </ul>
   </div>
-  <% if booking.status == nil && booking.interviewer_id == current_user.id %>
-    <div class="accept-reject-buttons">
-      <small><%= button_to "Accept", update_booking_status_path(booking, status: 'accepted'), class: "accept-button", method: :patch, data: {turbo: false} %></small>
-      <small><%= button_to "Reject", update_booking_status_path(booking, status: 'rejected'), class: "reject-button", method: :patch, data: {turbo: false} %></small>
-    </div>
+  <% if booking.status == nil %>
+      <div class="accept-reject-buttons">
+        <small><%= button_to "Accept", update_booking_status_path(booking, status: 'accepted'), class: "accept-button", method: :patch, data: {turbo: false} %></small>
+        <small><%= button_to "Reject", update_booking_status_path(booking, status: 'rejected'), class: "reject-button", method: :patch, data: {turbo: false} %></small>
+        <small><%= button_to 'Message', booking.chatroom, method: :get, class: "message-button" %></small>
+      </div>
   <% end %>
 <% end %>

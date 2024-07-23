@@ -6,6 +6,10 @@ class Message < ApplicationRecord
   validates :chatroom_id, presence: true
 
   after_create_commit do
-    broadcast_append_to chatroom
+    broadcast_append_to chatroom, target: "messages"
+  end
+
+  def sender?(some_user)
+    user == some_user
   end
 end

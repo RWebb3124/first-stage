@@ -1,4 +1,5 @@
 class BookingsController < ApplicationController
+  before_action :authenticate_user!
   def new
     @booking = Booking.new
     @interviewer = User.find(params[:interviewer_id])
@@ -12,9 +13,8 @@ class BookingsController < ApplicationController
     @booking.interviewer = @interviewer
     @booking.interviewee = current_user
     if @booking.save
-      redirect_to auth_path
-      @chatroom = @booking.create_chatroom(name: "#{@booking.id}")
-      # redirect_to user_path(@interviewer)
+      @chatroom = @booking.chatroom
+      redirect_to my_bookings_path
     else
       render :new
     end

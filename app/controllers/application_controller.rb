@@ -1,6 +1,17 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_chatrooms
+
+  def set_chatrooms
+    if current_user
+      if current_user.chatrooms.any?
+        @chatrooms = current_user.chatrooms
+      else
+        redirect_to root_path
+      end
+    end
+  end
 
   protected
 

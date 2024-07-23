@@ -1,0 +1,36 @@
+<div id="chatrooms-list" class="row">
+  <div class="col-12">
+    <div class="search-container mb-3">
+      <%= form_with url: chatrooms_path, method: :get, local: true, class: "search-form" do |form| %>
+        <%= form.text_field :search, placeholder: "Search..", class: "search-input" %>
+      <% end %>
+    </div>
+    <h4>Messages</h4>
+    <div class="messages-box">
+      <% current_user.chatrooms.each do |chatroom| %>
+        <%= link_to chatroom_path(chatroom), class: "chatroom-link" do %>
+          <div class="chatroom-container">
+            <div class="chatroom-content">
+              <div class="chatroom-info">
+                <strong class="chatroom-name"><%= chatroom.name %></strong>
+
+                  <strong class="chatroom-name">
+                    <% if chatroom.users.where.not(id: current_user.id).first %>
+                      <%= chatroom.users.where.not(id: current_user.id).first.username %>
+                    <% else %>
+                      No other user found
+                    <% end %>
+                  </strong>
+
+                <p class="last-message"><%= truncate(chatroom.messages.last&.content, length: 50) %></p>
+              </div>
+              <div class="chatroom-date">
+              <%= chatroom.updated_at.strftime("%a %b %e") %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
