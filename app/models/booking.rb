@@ -26,7 +26,7 @@ class Booking < ApplicationRecord
   private
 
   def create_chatroom
-    chatroom = Chatroom.create(name:  "#{self.id}", booking: self)
+    chatroom = Chatroom.create(name: , booking: self)
     ChatroomUser.create(chatroom: chatroom, user: self.interviewer)
     ChatroomUser.create(chatroom: chatroom, user: self.interviewee)
   end
