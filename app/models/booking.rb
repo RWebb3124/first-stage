@@ -6,6 +6,8 @@ class Booking < ApplicationRecord
 
   validates :start_time, :end_time, presence: true
 
+  after_create :create_chatroom
+
   default_scope -> { order(:start_time) }  # Our meetings will be ordered by their start_time by default
 
   def time
@@ -14,5 +16,13 @@ class Booking < ApplicationRecord
 
   def multi_days?
     (end_time.to_date - start_time.to_date).to_i >= 1
+  end
+
+  private
+
+  def create_chatroom
+    chatroom = Chatroom.create(name: "Chatroom for Booking #{self.id}", booking: self)
+    ChatroomUser.create(chatroom: chatroom, user: self.interviewer)
+    ChatroomUser.create(chatroom: chatroom, user: self.interviewee)
   end
 end

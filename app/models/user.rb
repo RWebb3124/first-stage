@@ -9,16 +9,18 @@ class User < ApplicationRecord
   has_many :reviews, through: :bookings
   has_many :user_tags, dependent: :destroy
   has_many :tags, through: :user_tags
-  has_many :chatrooms, through: :bookings
+  has_many :chatrooms, through: :bookings, dependent: :destroy
   has_many :messages, through: :chatrooms, dependent: :destroy
   has_many :flashcard_decks, through: :user_decks
   has_many :flashcards, through: :flashcard_decks
+
+  has_many :chatroom_users, dependent: :destroy
 
   accepts_nested_attributes_for :tags
 
   # validates :first_name, presence: true
   # validates :last_name, presence: true
-  # validates :username, presence: true, uniqueness: true
+  validates :username, presence: true, uniqueness: true
   # validates :address, presence: true, uniqueness: true, length: { minimum: 8 }
   validates :years_experience, presence: true, if: :interviewer?
   validates :headline, presence: true, if: :interviewer?
@@ -45,5 +47,9 @@ class User < ApplicationRecord
 
   def personal_website?
     self.personal_website.present?
+  end
+
+  def chatrooms
+    Chatroom.joins(:booking).where(bookings: { interviewer_id: id }).or(Chatroom.joins(:booking).where(bookings: { interviewee_id: id }))
   end
 end

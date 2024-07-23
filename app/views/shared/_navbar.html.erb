@@ -16,7 +16,7 @@
         <a href="#" class="nav-links">Flashcards</a>
       </li>
       <li class="nav-item">
-        <a href="#" class="nav-links">Messages</a>
+        <%= link_to 'Messages', chatrooms_path(@chatrooms), class: 'nav-links' %>
       </li>
       <li class="nav-item">
         <a href="#" class="nav-links">Interviews</a>
@@ -36,9 +36,9 @@
             <i class="fa-regular fa-user" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="#">My Profile</a>
-              <%= link_to "My bookings", my_bookings_path, class: "nav-link dropdown-item" %>
-              <%= link_to "Edit Profile", edit_user_registration_path, class: "nav-link dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" %>
+              <%= link_to "My bookings", my_bookings_path, class: "nav-links dropdown-item" %>
+              <%= link_to "Edit Profile", edit_user_registration_path, class: "nav-links dropdown-item" %>
+              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-links dropdown-item" %>
             </div>
           </li>
         <% else %>
