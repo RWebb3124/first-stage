@@ -1,0 +1,21 @@
+.override-height {
+  height: auto;
+}
+
+.interview-info {
+  background-color: rgb(243, 243, 243);
+  padding: 15px;
+  padding-bottom: 5px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.time-and-link {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+
+  i {
+    padding-right: 10px;
+  }
+}
