@@ -1,5 +1,5 @@
 require 'faker'
-require "open-uri"
+require 'open-uri'
 
 Booking.destroy_all
 Chatroom.destroy_all
@@ -21,21 +21,38 @@ tags = [
 
 tags.each { |tag| Tag.create!(tag) }
 
-def attach_profile_picture(user, url)
-  file = URI.open(url)
-  user.photo.attach(io: file, filename: "profile_picture_#{user.id}.png", content_type: "image/png")
+def attach_profile_picture(user, profile_url, banner_url)
+  profile_file = URI.open(profile_url)
+  user.photo.attach(io: profile_file, filename: "profile_picture_#{user.id}.png", content_type: "image/png")
+
+  banner_file = URI.open(banner_url)
+  user.banner_photo.attach(io: banner_file, filename: "banner_photo_#{user.id}.png", content_type: "image/png")
+
   user.save!
 end
 
-def create_user(attributes, tags = [], image_url)
+def create_user(attributes, tags = [], profile_image_url, banner_image_url)
   user = User.new(attributes)
   user.save!
-  attach_profile_picture(user, image_url)
+  attach_profile_picture(user, profile_image_url, banner_image_url)
 
   tags.each do |tag|
     UserTag.create!(user: user, tag: tag)
   end
 end
+
+banner_image_urls = [
+  "https://media.istockphoto.com/id/1284817090/photo/space-motion.jpg?s=1024x1024&w=is&k=20&c=yBGWceG8sgDK7qILtLDrAh3PvpR-fUshu-lSCLHDZHc=",
+  "https://source.unsplash.com/random/1440x200/?nature,forest",
+  "https://source.unsplash.com/random/1440x200/?city,night",
+  "https://source.unsplash.com/random/1440x200/?technology,computer",
+  "https://source.unsplash.com/random/1440x200/?space,galaxy",
+  "https://source.unsplash.com/random/1440x200/?ocean,beach",
+  "https://source.unsplash.com/random/1440x200/?mountain,sky",
+  "https://source.unsplash.com/random/1440x200/?abstract,art",
+  "https://source.unsplash.com/random/1440x200/?animal,wildlife",
+  "https://source.unsplash.com/random/1440x200/?architecture,building"
+]
 
 10.times do
   create_user(
@@ -48,7 +65,8 @@ end
       address: Faker::Address.city
     },
     [],
-    "https://randomuser.me/api/portraits/men/#{rand(1..99)}.jpg"
+    "https://randomuser.me/api/portraits/men/#{rand(1..99)}.jpg",
+    banner_image_urls[0]
   )
 end
 
@@ -84,6 +102,7 @@ interviewer_image_urls = [
       personal_website: "https://en.wikipedia.org/wiki/#{Faker::Lorem.word.capitalize}"
     },
     Tag.all.sample(3),
-    interviewer_image_urls[i]
+    interviewer_image_urls[i],
+    banner_image_urls[0]
   )
 end
