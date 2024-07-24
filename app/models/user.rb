@@ -12,6 +12,8 @@ class User < ApplicationRecord
 
   has_many :chatrooms, through: :bookings_as_interviewee, dependent: :destroy
   has_many :chatrooms, through: :bookings_as_interviewer, dependent: :destroy
+  has_many :chatroom_users, dependent: :destroy
+  has_many :chatrooms, through: :chatroom_users
 
   has_many :messages, through: :chatrooms, dependent: :destroy
   has_many :flashcard_decks, through: :user_decks
@@ -19,8 +21,6 @@ class User < ApplicationRecord
   has_one_attached :photo
   has_one_attached :banner_photo
 
-  has_many :chatroom_users, dependent: :destroy
-  has_many :chatrooms, through: :chatroom_users
 
   accepts_nested_attributes_for :tags
 
