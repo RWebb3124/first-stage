@@ -1,4 +1,10 @@
 <div class="container mt-5 mb-5">
-  <h4> My booked interviews </h4>
-  <%= render "shared/booked_interviewer" %>
+  <% if @interviews.count == 0 %>
+    <div class="my-interviews-placeholder">
+      <p> Interviews that you book with developers will appear here </p>
+    </div>
+  <% else %>
+    <h4> My booked interviews </h4>
+    <%= render "shared/booked_interviewer" %>
+  <% end %>
 </div>
