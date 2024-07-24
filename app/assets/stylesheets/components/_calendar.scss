@@ -51,7 +51,7 @@
   }
 
   h5 {
-    font-size: 15px;
+    font-size: 12px;
     font-weight: bold;
   }
 
@@ -80,11 +80,5 @@
 }
 
 .meeting:hover {
-  background: #FBFCFC;
-  color: black;
-  width: 150px;
-  height: 100px;
   transform: translateY(-5px);
-  padding: 10px;
-  align-content: center;
 }
