@@ -19,6 +19,14 @@ class UsersController < ApplicationController
       @users = @users.joins(:tags).where(tags: { name: tags })
     end
 
+    if params[:query].present?
+      @users = @users.where("users.interviewer = ? AND (first_name ILIKE ? OR last_name ILIKE ? OR CONCAT(first_name, ' ', last_name) ILIKE ?)",
+      true,
+      "%#{params[:query]}%",
+      "%#{params[:query]}%",
+      "%#{params[:query]}%")
+    end
+
     respond_to do |format|
       format.html
       format.text { render partial: "shared/user_card", locals: { users: @users }, formats: [:html] }
