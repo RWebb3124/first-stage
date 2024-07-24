@@ -1,5 +1,19 @@
-<div class="navbar-extender" style="background-image: url('<%= cl_image_path @user.banner_photo.key, height: 300, width:"100%" unless @user.banner_photo.key.blank?%>');">
-  <%= cl_image_tag @user.photo.key, class:"user-avatar-show", crop: :fill unless @user.photo.key.blank? %>
+<div class="navbar-extender" style="background-image: url('<%= cl_image_path @user.banner_photo.key, height: 200, width:1440, crop: :fill unless @user.banner_photo.key.blank? %>');">
+  <% if @user.photo.attached? %>
+    <%= cl_image_tag @user.photo.key, class:"user-avatar-show", crop: :fill %>
+  <% else %>
+    <%= image_tag "default-pp.jpg", class: "user-avatar-show", crop: :fill %>
+  <% end %>
+  <div class="nav-extender-buttons">
+    <div class="btn btn-primary" id="interviews-panel">
+      <h4>16</h4>
+      <small><p>interviews hosted</p></small>
+    </div>
+    <div class="btn btn-primary" id="years-exp-panel">
+      <h4><%= @user.years_experience %>+</h4>
+      <small><p><%= "year".pluralize(@user.years_experience) %> experience</p></small>
+    </div>
+  </div>
 </div>
 <div class="container">
   <div class="user-details-buttons row g-0">
@@ -52,18 +66,12 @@
       </div>
     </div>
     <div class="user-buttons col-12 col-sm-4 col-md-4 col-lg-4">
-      <div class="top-buttons">
-        <div class="btn btn-primary" id="interviews-panel">
-          <h4>16</h4>
-          <small><p>interviews hosted</p></small>
-        </div>
-        <div class="btn btn-primary" id="years-exp-panel">
-          <h4><%= @user.years_experience %>+</h4>
-          <small><p><%= "year".pluralize(@user.years_experience) %> experience</p></small>
-        </div>
-      </div>
       <div class="bottom-buttons">
-        <%= link_to "Reviews", "#", id: "reviews-button", class:"btn btn-primary"%>
+       <!-- > <div id="reviews-button", class="btn btn-primary">
+          <h4><i class="fa-solid fa-arrow-left"></i></h4>
+          <p>Back</p>
+        </div> -->
+        <%= link_to "back", users_path, id:"reviews-button", class:"btn btn-primary"%>
         <%= link_to "Book Interview", new_interview_booking_path(@user), id:"book-button", class:"btn btn-primary"%>
       </div>
     </div>

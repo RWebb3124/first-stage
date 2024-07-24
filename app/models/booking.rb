@@ -10,7 +10,6 @@ class Booking < ApplicationRecord
 
   default_scope -> { order(:start_time) }
 
-
   def start_time_in_future
     errors.add(:start_time, "must be in the future") if start_time.present? && start_time < Time.current
   end
@@ -18,6 +17,8 @@ class Booking < ApplicationRecord
   def end_time_after_start_time
     errors.add(:end_time, "must be after start time") if start_time.present? && end_time.present? && start_time >= end_time
   end
+
+  after_create :create_chatroom
 
   def time
     "#{start_time.strftime("%H:%M")} - #{end_time.strftime("%H:%M")}"
@@ -30,5 +31,13 @@ class Booking < ApplicationRecord
 
   def multi_days?
     (end_time.to_date - start_time.to_date).to_i >= 1
+  end
+
+  private
+
+  def create_chatroom
+    chatroom = Chatroom.create(name:  "#{self.id}", booking: self)
+    ChatroomUser.create(chatroom: chatroom, user: self.interviewer)
+    ChatroomUser.create(chatroom: chatroom, user: self.interviewee)
   end
 end

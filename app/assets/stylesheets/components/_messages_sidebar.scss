@@ -1,0 +1,73 @@
+#chatrooms-list {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.search-container {
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.search-form {
+  width: 100%;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  font-size: 16px;
+}
+
+.messages-box {
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.chatroom-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.chatroom-container {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  transition: box-shadow 0.3s ease;
+}
+
+.chatroom-container:hover {
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.chatroom-content {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chatroom-info {
+  flex-grow: 1;
+}
+
+.chatroom-name {
+  display: block;
+  margin-bottom: 2px;
+  color: #333;
+}
+
+.last-message {
+  margin: 0;
+  color: #666;
+  font-size: 0.9em;
+}
+
+.chatroom-date {
+  color: #888;
+  font-size: 0.8em;
+  white-space: nowrap;
+  margin-left: 10px;
+}

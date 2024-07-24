@@ -1,0 +1,15 @@
+<h1>ALL Messages</h1>
+<div id="chatrooms-list">
+  <% if @chatrooms.any? %>
+  <div class="chatroom-item">
+    <% @chatrooms.each do |chatroom| %>
+      <li>
+        <%= link_to chatroom.name, chatroom_path(chatroom) %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>You have no messages</p>
+<% end %>
+</div>
+</div>
