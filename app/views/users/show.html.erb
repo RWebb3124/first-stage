@@ -72,7 +72,11 @@
           <p>Back</p>
         </div> -->
         <%= link_to "back", users_path, id:"reviews-button", class:"btn btn-primary"%>
-        <%= link_to "Book Interview", new_interview_booking_path(@user), id:"book-button", class:"btn btn-primary"%>
+        <% if @user == current_user %>
+          <%= link_to "Edit my profile", edit_user_registration_path, id:"book-button", class:"btn btn-primary"%>
+        <% else %>
+          <%= link_to "Book Interview", new_interview_booking_path(@user), id:"book-button", class:"btn btn-primary"%>
+        <% end %>
       </div>
     </div>
   </div>
