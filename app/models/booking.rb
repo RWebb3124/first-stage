@@ -5,8 +5,19 @@ class Booking < ApplicationRecord
   has_one :chatroom, dependent: :destroy
 
   validates :start_time, :end_time, presence: true
+  validate :start_time_in_future
+  validate :end_time_after_start_time
 
-  default_scope -> { order(:start_time) }  # Our meetings will be ordered by their start_time by default
+  default_scope -> { order(:start_time) }
+
+
+  def start_time_in_future
+    errors.add(:start_time, "must be in the future") if start_time.present? && start_time < Time.current
+  end
+
+  def end_time_after_start_time
+    errors.add(:end_time, "must be after start time") if start_time.present? && end_time.present? && start_time >= end_time
+  end
 
   def time
     "#{start_time.strftime("%H:%M")} - #{end_time.strftime("%H:%M")}"

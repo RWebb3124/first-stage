@@ -20,6 +20,27 @@ class BookingsController < ApplicationController
     end
   end
 
+  def edit
+    @booking = Booking.find(params[:id])
+  end
+
+  def update
+    @booking = Booking.find(params[:id])
+    @start_time = DateTime.parse(booking_params[:start_time]) if booking_params[:start_time]
+    @end_time = DateTime.parse(booking_params[:end_time]) if booking_params[:end_time]
+    if @booking.update(booking_params.permit(:start_time, :end_time))
+      redirect_to my_bookings_path
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @booking = Booking.find(params[:id])
+    @booking.destroy
+    redirect_to my_bookings_path
+  end
+
   def mybookings
     @mybookings = Booking.where(interviewer_id: current_user, status: 'accepted').or(Booking.where(interviewee_id: current_user, status: 'accepted')).sort_by(&:start_time)
     @mybookingrequests_er = Booking.where(interviewer_id: current_user, status: nil).sort_by(&:start_time)
@@ -39,6 +60,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:interview_id, :start_time, :end_time)
+    params.require(:booking).permit(:interview_id, :interviewer_id, :interviewee_id, :start_time, :end_time)
   end
 end

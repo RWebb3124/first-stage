@@ -1,0 +1,15 @@
+<div class="container py-5">
+  <div class="row">
+    <div class="col-12 col-md-6 offset-lg-3">
+      <div class="form mary rounded p-3 shadow">
+      <h2>Your Review</h2>
+        <%= simple_form_for([@booking, @review], data: { controller: "submit" }) do |f| %>
+          <%= f.input :title, placeholder: "Give your review a title..." %>
+          <%= f.input :content, placeholder: "Add your review here..." %>
+          <%= f.input :rating, required: true, collection: (1..5).to_a, label: "Rate your experience", input_html: {data: {controller: "star-rating", action: "click->form-submit#submit"}} %>
+          <%= f.button :submit, class: 'btn-form' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -24,4 +24,9 @@ Rails.application.routes.draw do
 
   get '/auth', to: 'zoom#auth'
   get '/oauth/callback', to: 'zoom#zoom_callback'
+
+  resources :bookings, only: [:edit, :update, :destroy] do
+    resources :reviews, only: [:new, :create]
+  end
+  resources :reviews, only: [:edit, :update, :destroy]
 end
