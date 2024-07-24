@@ -12,10 +12,10 @@ export default class extends Controller {
     this.yearsValues = []
     const yearsItems=Array.from(this.yearsTarget.children)
     yearsItems.forEach(item => {
-      console.log(item.children[0])
-      if (item.children[0].checked) {
+      console.log(item.children[0].children[0])
+      if (item.children[0].children[0].checked) {
        // query += `${item.children[0].value}&`
-        this.yearsValues.push(item.children[0].value)
+        this.yearsValues.push(item.children[0].children[0].value)
       }
     })
     if (this.yearsValues.length > 0) {
@@ -23,19 +23,22 @@ export default class extends Controller {
     }
     this.tagsValues = []
     const tagsItems=Array.from(this.tagsTarget.children)
-    console.log(tagsItems)
+    console.log(`Items: ${tagsItems}`)
     tagsItems.forEach(item => {
-      if (item.children[0].checked) {
-        this.tagsValues.push(item.children[0].value)
+      console.log(item.children[0].children[0])
+      if (item.children[0].children[0].checked) {
+        console.log("Adding tag")
+        this.tagsValues.push(item.children[0].children[0].value)
       }
     })
     if (this.tagsValues.length > 0) {
       if (query.length > 0) {
         query += "&"
       }
+      console.log(`Tags: ${this.tagsValues.join(",")}`)
       query += `tags=${this.tagsValues.join(",")}`
     }
-    console.log(query)
+    console.log(`Query: ${query}`)
     fetch(`/users?${query}`, {
       headers: {"Accept": "text/plain"
     }

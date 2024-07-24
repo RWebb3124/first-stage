@@ -1,40 +1,56 @@
 <div class="row g-0">
   <% @interviews.each do |interview| %>
     <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-      <a href="<%= user_path(interview.interviewer) %>" class="clickable-card">
-        <div class="card-user override-height">
-          <div class="user-card-avatar">
-            <div class="user-card-avatar-center">
-              <%= cl_image_tag interview.interviewer.photo.key, class:"user-avatar-img", crop: :fill unless interview.interviewer.photo.key.blank? %>
-            </div>
+      <div class="card-user override-height">
+        <div class="user-card-avatar">
+          <div class="user-card-avatar-center">
+            <%= cl_image_tag interview.interviewer.photo.key, class:"user-avatar-img", crop: :fill unless interview.interviewer.photo.key.blank? %>
           </div>
-          <div class="card-user-infos">
-            <div class="title-description">
-              <h2><%= "#{interview.interviewer.first_name} #{interview.interviewer.last_name}" %></h2>
-              <p>@<%= interview.interviewer.username %></p>
-            </div>
+        </div>
+        <div class="card-user-infos">
+          <div class="title-description">
+            <h2><%= "#{interview.interviewer.first_name} #{interview.interviewer.last_name}" %></h2>
+            <p>@<%= interview.interviewer.username %></p>
+          </div>
+          <div class="tags-section">
             <div class="user-card-tags">
               <% user_tags=UserTag.where(user: interview.interviewer) %>
               <% user_tags.each do |usertag| %>
                 <div class="individual-tag"><p><%= image_tag(usertag.tag.icon_url, class:"tag_icon") %> <%= usertag.tag.name %></p></div>
               <% end %>
             </div>
-
-            <a href="<%= my_bookings_path %>" class="clickable-card">
-              <div class="interview-info">
-                <div class="time-and-link">
-                  <i class="fa-solid fa-calendar-days"></i>
-                  <h2><%= interview.time_full %></h2>
-                </div>
-                <div class="time-and-link">
-                  <i class="fa-solid fa-link"></i>
-                  <h2><%= interview.meeting_link %></h2>
-                </div>
-              </div>
-            </a>
+            <%= link_to "View profile", user_path(interview.interviewer), class:"view-profile" %>
           </div>
+
+          <div class="interview-info">
+            <div class="time-and-link">
+              <% if interview.status == nil %>
+              <i class="fa-solid fa-clock"></i>
+              <h2>Waiting to be confirmed</h2>
+              <% end %>
+
+              <% if interview.status == 'accepted' %>
+              <i class="fa-solid fa-check"></i>
+              <h2>Accepted</h2>
+              <% end %>
+
+              <% if interview.status == 'rejected' %>
+              <i class="fa-solid fa-circle-xmark"></i>
+              <h2>Rejected</h2>
+              <% end %>
+            </div>
+            <div class="time-and-link">
+              <i class="fa-solid fa-calendar-days"></i>
+              <h2><%= interview.time_full %></h2>
+            </div>
+            <div class="time-and-link">
+              <i class="fa-solid fa-link"></i>
+              <h2><%= link_to interview.meeting_link %></h2>
+            </div>
+          </div>
+
         </div>
-      </a>
+      </div>
     </div>
   <% end %>
 </div>

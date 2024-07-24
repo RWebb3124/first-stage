@@ -21,6 +21,18 @@
   }
 }
 
+.calendar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50% !important;
+  height: min-content;
+  padding-right: 10px;
+
+  p {
+    margin-bottom: 0;
+  }
+}
 
 .meeting {
   color: black;

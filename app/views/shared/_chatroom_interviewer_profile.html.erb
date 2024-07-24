@@ -1,39 +1,45 @@
 <% if @other_user %>
-  <div class=".card-user">
-    <div class="user-card-avatar">
-      <div class="user-card-avatar-center">
-        <% if @other_user.photo.attached? %>
-          <%= cl_image_tag @other_user.photo.key, class: "user-avatar-img", crop: :fill %>
-        <% else %>
-          <%= image_tag "default_avatar.jpeg", class: "user-avatar-img" %>
+  <div class="chat-user-container">
+    <div class="chat-info-and-tags">
+      <div class="chat-user-infos">
+        <div class="avatar-infos">
+          <%= cl_image_tag @other_user.photo.key, class:"chat-avatar-img", crop: :fill unless @other_user.photo.key.blank? %>
+          <div class="chat-name-username">
+            <h4 class="chat-user-fullname"><strong><%= @other_user.first_name %> <%= @other_user.last_name %></strong></h4>
+            <p class="chat-user-username">@<%= @other_user.username %></p>
+          </div>
+        </div>
+        <%= link_to "View", user_path(@other_user), class:"chat-view-button" %>
+      </div>
+      <div class="chat-user-tags">
+        <% user_tags=UserTag.where(user: @other_user) %>
+        <% user_tags.each do |usertag| %>
+          <div class="chat-individual-tag"><p><%= image_tag(usertag.tag.icon_url, class:"chat-tag-icon") %> <%= usertag.tag.name %></p></div>
         <% end %>
       </div>
     </div>
-    <div class="card-user-infos">
-      <div class="title-description">
-        <h2><%= "#{@other_user.first_name} #{@other_user.last_name}" %></h2>
-        <p>@<%= @other_user.username %></p>
+    <div class="chat-booking-info">
+      <h4 class="chat-booking-info-title border-bottom">Your Interview with <strong><%= @other_user.first_name %></strong></h4>
+      <div class="chat-booking-start">
+        <p><strong>Start time:</strong></p>
+        <p><%= @chatroom.booking.start_time.strftime("%B %d, %Y %I:%M %p") %></p>
       </div>
-      <div class="user-card-tags">
-        <% user_tags = UserTag.where(user: @other_user) %>
-        <% user_tags.each do |usertag| %>
-          <div class="individual-tag">
-            <p><%= image_tag usertag.tag.icon_url, class: "tag_icon" %> <%= usertag.tag.name %></p>
-          </div>
-        <% end %>
+      <div class="chat-booking-end border-bottom">
+        <p><strong>End time:</strong></p>
+        <p><%= @chatroom.booking.end_time.strftime("%B %d, %Y %I:%M %p") %></p>
       </div>
-      <div class="user-about border-top p-2">
-        <p><%= @other_user.about %></p>
-      </div>
-      <div class="price-capacity">
-        <div class="capacity-icon">
-          <i class="fa-solid fa-location-dot"></i>
-          <p class="card-user-capacity ms-2"><%= @other_user.address %></p>
+      <div class="chat-booking-bottom-buttons">
+        <div class="chat-booking-edit-delete">
+          <%= link_to "Edit", edit_booking_path(@chatroom.booking), class:"chat-booking-edit" %>
+          <%= link_to "Cancel", booking_path(@chatroom.booking), class:"chat-booking-delete", data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to cancel this booking? This will close your chatroom with #{@other_user.first_name}" } %>
         </div>
-        <p class="card-user-pricing">
-          <strong><%= @other_user.years_experience %> <%= "year".pluralize(@other_user.years_experience) %> experience</strong>
-        </p>
+        <div class="go-to-zoom">
+          <a href="<%= @chatroom.booking.meeting_link %>" target="_blank" class="go-to-room-button">Go to room</a>
+          <%= image_tag "zoom.png", class: "zoom-icon", crop: :fill %>
+        </div>
       </div>
+    </div>
+    <div>
     </div>
   </div>
 <% else %>

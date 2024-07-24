@@ -12,9 +12,28 @@
         <li>With <%= booking.interviewer.try(:first_name) %> as interviewee</li>
       <% end %>
       <li> <%= booking.time_full %> from <%= booking.time %></li>
-      <li><a href="<%= booking.meeting_link %>" target="_blank">Meeting Link</a></li>
       <% if booking.status == 'accepted' %>
-        <li>Edit Cancel</li>
+      <li><a href="<%= booking.meeting_link %>" target="_blank">Meeting Link</a></li>
+      <%= link_to "Edit", edit_booking_path(booking) %>
+      <%= link_to "Cancel", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to cancel this booking?" } %>
+        <% review = Review.find_by(booking_id: booking.id) %>
+        <% if review.present? %>
+          <div class="p-2"><h2> Your review </h2>
+          <h6> <%= review.title %> </h6>
+          <p> <%= review.content %> </p>
+          <p> Rating: <% review.rating.times do %>
+          <i class="fas fa-star star-blue"></i>
+        <% end %> </p>
+          <small><em class="text-muted"><%= distance_of_time_in_words_to_now(review.created_at) %> ago</em></small> </div>
+          <%= link_to "Edit", edit_review_path(review), class: "booking-card-edit" %>
+          <%= link_to "Delete", review_path(review), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "booking-card-delete" %>
+        <% else %>
+          <% if booking.end_time < Time.current %>
+            <%= link_to "Write a Review", new_booking_review_path(booking), class: "booking-view-pool" %>
+          <% else %>
+            <p><em> You can write a review after the booking ends </em></p>
+          <% end %>
+        <% end %>
       <% end %>
     </ul>
   </div>

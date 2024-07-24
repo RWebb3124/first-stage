@@ -33,10 +33,7 @@
   </div>
   <div class="bookings-container">
     <h4> My Bookings: </h4>
-    <% if @mybookings.any? %>
-      <%= render 'shared/mybookings_card', mybookings: @mybookings %>
-    <% else %>
-      <h6><em> You don't have any bookings yet </em></h6>
-    <% end %>
+    <h6><em> <%=  "You don't have any bookings yet" if @mybookings.empty? %> </em></h6>
+    <%= render 'shared/mybookings_card', mybookings: @mybookings %>
   </div>
 </div>
