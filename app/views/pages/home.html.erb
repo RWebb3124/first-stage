@@ -18,7 +18,11 @@
       <div id="btn-become-interviewer" class="link-colour">
         <h4>
         <% if user_signed_in? %>
-          <%= link_to "Become an Interviewer", become_interviewer_user_path(current_user) %>
+          <% if current_user.interviewer == true %>
+            <%= link_to "View my bookings", my_bookings_path %>
+          <% else %>
+            <%= link_to "Become an Interviewer", become_interviewer_user_path(current_user) %>
+          <% end %>
         <% else %>
           <%= link_to 'Become an Interviewer', new_user_registration_path %>
         <% end %>
