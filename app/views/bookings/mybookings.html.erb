@@ -24,9 +24,9 @@
       <%= date %>
       <% bookings.each do |booking| %>
         <div class="meeting">
-          <small><%= booking.interviewee.try(:first_name) %> <%= booking.interviewee.try(:last_name) %>
-          <%= booking.time unless booking.multi_days? %>
-          <a href="<%= booking.meeting_link %>" target="_blank">Meeting</a></small>
+          <h5><i class="fa-solid fa-user" id="icon"></i></i><%= booking.interviewee.try(:first_name) %> <%= booking.interviewee.try(:last_name) %></h5>
+          <h6><i class="fa-solid fa-clock" id="icon"></i><%= booking.time unless booking.multi_days? %></h6>
+          <a href="<%= booking.meeting_link %>" class="btn-primary" target="_blank">Meeting</a>
         </div>
       <% end %>
     <% end %>
