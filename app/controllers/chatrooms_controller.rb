@@ -6,10 +6,10 @@ class ChatroomsController < ApplicationController
   end
 
   def show
-  @chatroom = Chatroom.find(params[:id])
-  @message = Message.new
-  @current_user = current_user
-  @other_user = @chatroom.users.where.not(id: current_user.id).first
+    @chatroom = Chatroom.find(params[:id])
+    @message = Message.new
+    @current_user = current_user
+    @other_user = @chatroom.users.where.not(id: current_user.id).first
   end
 
   def new
@@ -30,4 +30,5 @@ class ChatroomsController < ApplicationController
   def chatroom_params
     params.require(:chatroom).permit(:name)
   end
+
 end

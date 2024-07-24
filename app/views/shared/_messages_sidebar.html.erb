@@ -12,20 +12,24 @@
           <div class="chatroom-container">
             <div class="chatroom-content">
               <div class="chatroom-info">
-                <strong class="chatroom-name"><%= chatroom.name %></strong>
 
                   <strong class="chatroom-name">
                     <% if chatroom.users.where.not(id: current_user.id).first %>
-                      <%= chatroom.users.where.not(id: current_user.id).first.username %>
+                      <div class="chatroom-img-name">
+                        <%= cl_image_tag chatroom.users.where.not(id: current_user.id).first.photo.key, class:"chatroom-avatar-img", crop: :fill unless chatroom.users.where.not(id: current_user.id).first.photo.key.blank? %>
+                        <%= chatroom.users.where.not(id: current_user.id).first.full_name %>
+                      </div>
                     <% else %>
                       No other user found
                     <% end %>
                   </strong>
 
-                <p class="last-message"><%= truncate(chatroom.messages.last&.content, length: 50) %></p>
               </div>
-              <div class="chatroom-date">
-              <%= chatroom.updated_at.strftime("%a %b %e") %>
+              <div class="chatroom-date-last-message">
+                <div class="chatroom-date">
+                  <%= chatroom.updated_at.strftime("%a %b %e") %>
+                </div>
+                <p class="last-message"><%= truncate(chatroom.messages.last&.content, length: 50) %></p>
               </div>
             </div>
           </div>

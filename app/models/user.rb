@@ -58,4 +58,8 @@ class User < ApplicationRecord
   def chatrooms
     Chatroom.joins(:booking).where(bookings: { interviewer_id: id }).or(Chatroom.joins(:booking).where(bookings: { interviewee_id: id }))
   end
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end
