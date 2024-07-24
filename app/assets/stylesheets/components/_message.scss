@@ -24,3 +24,18 @@
 .receiver-style {
   background-color: lightblue;
 }
+
+.name-and-time-message {
+  display: flex;
+  justify-content: space-between;
+}
+
+.message-content-p {
+  padding: 0px;
+  margin-bottom: 0px;
+}
+
+.all-message-universal {
+  padding-left: 6px;
+  padding-right: 6px;
+}

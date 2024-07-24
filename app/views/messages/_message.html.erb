@@ -1,7 +1,7 @@
- <div id="message-<%= message.id %>">
-    <small>
+ <div id="message-<%= message.id %>" class="all-message-universal">
+    <small class="name-and-time-message mb-2">
       <strong><%= message.user.username %></strong>
       <i><%= message.created_at.strftime("%a %b at %l:%M%p") %></i>
     </small>
-    <p><%= message.content %></p>
+    <p class="message-content-p"><%= message.content %></p>
 </div>

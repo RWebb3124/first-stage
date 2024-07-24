@@ -24,12 +24,11 @@
 .btn-send {
   text-decoration: none;
   border: none;
-  background: $primary-colour;
+  background: $accent-colour;
   color: white;
   border-radius: 5px;
   height: 40px;
   width: 80px;
-  margin-right: 10px;
   margin-left: 40px;
   &:hover {
     background: #0a84d5;

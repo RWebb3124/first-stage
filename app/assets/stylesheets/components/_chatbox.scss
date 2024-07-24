@@ -43,6 +43,10 @@
     align-self: flex-end;
   }
 
+  .sender-style .message-content-p {
+    align-self: end;
+  }
+
   .receiver-style {
     background-color: #5DADE2;
     border-radius: 15px 15px 15px 0;
