@@ -27,13 +27,16 @@
 
 .view-profile {
   padding: 6px 16px;
-  background-color: #d9f0ff;
   border-radius: 50px;
   margin-top: 10px;
   margin-bottom: 10px;
   margin-right: 10px;
   justify-content: start;
-  border: none;
   font-size: 12px;
+  border-color: rgb(208, 208, 208);
+  border-width: 1px;
+  border-style: solid;
+  background: $background-colour;
   color: $text-colour;
+  text-decoration: none;
 }
