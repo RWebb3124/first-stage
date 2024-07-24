@@ -1,75 +1,62 @@
-.card-user {
-  overflow: hidden;
-  background: $background-colour;
-  position: relative;
-  box-shadow: 0 0 10px rgba(154, 154, 154, 0.2);
-  border-radius: 10px;
-  margin: 10px;
-  margin-top: 100px;
-  height: 350px;
-  color: black;
+.chat-user-container {
+  height: 100%;
+  background-color: $background-colour;
+}
+
+.chat-user-infos {
   display: flex;
-  flex-direction: column;
-  overflow: visible;
+  margin: 16px;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.user-card-avatar {
+.avatar-infos {
   display: flex;
-  justify-content: center;
+  align-items: center;
 }
 
-.user-card-avatar-center {
-  // margin-top: 15px;
-}
-
-.user-avatar-img {
-  height: 110px;
-  width: 110px;
+.chat-avatar-img {
+  height: 13vh;
+  width: 13vh;
   border-radius: 50%;
-  border: solid 1px white;
+  margin-right: 8px;
+  box-shadow: 2px 2px 1px rgba(81, 51, 93, 0.2);
+}
+
+.chat-user-fullname {
+  font-size: 16px;
+}
+
+.chat-user-username {
+  font-size: 12px;
+  margin: 0px;
+  padding: 0px;
+}
+
+.chat-view-button {
+  text-decoration: none;
+  padding: 6px 14px;
+  background-color: $secondary-colour;
+  color: $background-colour;
+  border-radius: 6px;
+  transition: 0.1s ease-in-out;
   box-shadow: 2px 2px 1px rgba(0,0,0,0.2);
 
+  &:hover {
+    color: white;
+    background-color: $accent-colour;
+  }
 }
 
-.capacity-icon {
-  display: flex;
-}
-
-.card-user-infos {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  flex-grow: 1;
-  padding: 16px;
-}
-
-.user-card-tags {
-  display: flex;
-  justify-content: start;
-}
-
-.card-user h2 {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
-  color: $text-colour;
-}
-
-.card-user p {
-  font-size: 12px;
-  opacity: .7;
-  margin: 0;
-}
-
-.card-user-tags p {
+.chat-user-tags p {
   font-size: 14px;
   opacity: .8;
   margin: 0;
   color: $secondary-colour;
 }
 
-.individual-tag {
-  padding: 6px 8px;
+.chat-individual-tag {
+  padding: 8px 10px;
   background-color: #d9f0ff;
   border-radius: 50px;
   margin-top: 10px;
@@ -80,33 +67,60 @@
   align-items: center;
 }
 
-.individual-tag p {
-  font-size: 10px;
+.chat-individual-tag p {
+  font-size: 12px;
 }
 
-.tag_icon {
-  height: 15px;
-  width: 15px;
+.chat-tag-icon {
+  height: 18px;
+  width: 18px;
 }
 
-.price-capacity {
+.chat-user-tags {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-top: auto;
+  justify-content: space-evenly;
 }
 
-.clickable-card {
-  text-decoration: none;
-  color: $text-colour;
+.chat-booking-info {
+  box-shadow: 2px 2px 1px rgba(175, 105, 189, 0.2);
+  padding: 8px;
+  margin: 8px;
+  border-radius: 8px;
   background-color: white;
 }
 
-.clickable-card p {
-  font-family: $body-font !important;
-  display: inline-block;
+.chat-booking-info-title {
+  font-size: 20px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
 }
 
-.clickable-card h1, h2, h3, h4, h5, h6 {
-  font-family: $headers-font !important;
+.chat-booking-start {
+  display: flex;
+  justify-content: space-between;
+}
+
+.chat-booking-end {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.chat-booking-edit {
+  text-decoration: none;
+  color: $primary-colour;
+  margin-right: 6px;
+
+  &:hover {
+    color: rgb(39, 39, 164);
+  }
+}
+
+.chat-booking-delete {
+  text-decoration: none;
+  color: rgb(227, 78, 78);
+
+  &:hover {
+    color: rgb(225, 50, 50);
+  }
 }
