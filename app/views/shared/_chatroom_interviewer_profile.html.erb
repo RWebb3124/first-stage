@@ -26,9 +26,15 @@
         <p><strong>End time:</strong></p>
         <p><%= @chatroom.booking.end_time.strftime("%B %d, %Y %I:%M %p") %></p>
       </div>
-      <div class="chat-booking-edit-delete">
-        <%= link_to "Edit", edit_booking_path(@chatroom.booking), class:"chat-booking-edit" %>
-        <%= link_to "Cancel", booking_path(@chatroom.booking), class:"chat-booking-delete", data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to cancel this booking? This will close your chatroom with #{@other_user.first_name}" } %>
+      <div class="chat-booking-bottom-buttons">
+        <div class="chat-booking-edit-delete">
+          <%= link_to "Edit", edit_booking_path(@chatroom.booking), class:"chat-booking-edit" %>
+          <%= link_to "Cancel", booking_path(@chatroom.booking), class:"chat-booking-delete", data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to cancel this booking? This will close your chatroom with #{@other_user.first_name}" } %>
+        </div>
+        <div class="go-to-zoom">
+          <p>go to room</p>
+          <%= image_tag "zoom.png", class: "zoom-icon", crop: :fill %>
+        </div>
       </div>
     </div>
   </div>

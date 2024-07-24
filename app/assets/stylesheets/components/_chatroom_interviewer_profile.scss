@@ -124,3 +124,19 @@
     color: rgb(225, 50, 50);
   }
 }
+
+.chat-booking-bottom-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.go-to-zoom {
+  display: flex;
+  align-items: center;
+}
+
+.zoom-icon {
+  height: 15px;
+  width: 15px;
+}
