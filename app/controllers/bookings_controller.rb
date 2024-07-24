@@ -14,7 +14,7 @@ class BookingsController < ApplicationController
     @booking.interviewee = current_user
     if @booking.save
       @chatroom = @booking.chatroom
-      redirect_to my_bookings_path
+      redirect_to auth_path
     else
       render :new
     end
