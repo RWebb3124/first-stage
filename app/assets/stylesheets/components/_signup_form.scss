@@ -2,10 +2,11 @@
   background-color: $background-colour;
   padding: 10px 20px;
   padding-bottom: 10px;
-  margin-top: 40px;
-  margin-bottom: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   border-radius: 5px;
-  box-shadow: 0 5px 10px grey;
+  box-shadow: 0 5px 10px $accent-colour;
+  box-shadow: 0 3px 3px 3px rgba(216, 188, 222, 0.5);
 
   .btn-primary {
     background-color: $text-colour;
@@ -26,5 +27,29 @@
     margin-bottom: 10px;
     font-size: 25px;
     text-align: center;
+  }
+
+  .btn-forms {
+    padding-left: 0;
+    padding-top: 0;
+    padding-bottom: 15px;
+  }
+  a, a.btn-forms {
+    color: $text-colour;
+    text-decoration: none;
+    :hover {
+      color: $text-colour;
+    }
+  }
+  form-input {
+    margin-bottom: 2px;
+  }
+
+  .form-label {
+    margin-bottom: 2px !important;
+  }
+
+  .btn-remember-me {
+    margin-top: 10px;
   }
 }

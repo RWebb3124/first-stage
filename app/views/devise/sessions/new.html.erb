@@ -13,15 +13,17 @@
             <%= f.input :password,
                         required: false,
                         input_html: { autocomplete: "current-password" } %>
+          <%= render "devise/shared/new_password", class: "btn-forms" %>
             <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
           </div>
 
           <div class="form-actions">
             <%= f.button :submit, "Log in", class: "btn-primary" %>
           </div>
+          <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+            <%= link_to "Sign up", new_registration_path(resource_name), class: "btn-forms" %><br />
+          <% end %>
         <% end %>
-
-        <%= render "devise/shared/links" %>
       </div>
     </div>
   </div>
