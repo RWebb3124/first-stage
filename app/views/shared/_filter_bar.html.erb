@@ -10,7 +10,7 @@
         </h2>
         <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="headingYearsExperience" data-bs-parent="#accordionFlushExample">
           <div class="accordion-body">
-            <ul class="list-unstyled">
+            <ul class="list-unstyled" data-filter-users-target="years">
               <li>
                 <label>
                   <input type="checkbox" name="years_experience[]" value="M" data-action='change->filter-users#filterUsers'> 3-5 Mid Level
@@ -107,51 +107,14 @@
         </h2>
         <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="headingTags" data-bs-parent="#accordionFlushExample">
           <div class="accordion-body">
-            <ul class="list-unstyled">
-              <li>
-                <label>
-                  <input type="checkbox" name="tag[]" value="Ruby"> Ruby
-                </label>
-              </li>
-              <li>
-                <label>
-                  <input type="checkbox" name="tag[]" value="HTML"> HTML
-                </label>
-              </li>
-              <li>
-                <label>
-                  <input type="checkbox" name="tag[]" value="JavaScript"> JavaScript
-                </label>
-              </li>
-              <li>
-                <label>
-                  <input type="checkbox" name="tag[]" value="CSS"> CSS
-                </label>
-              </li>
-              <li>
-                <label>
-                  <input type="checkbox" name="tag[]" value="React"> React
-                </label>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <!-- Sort By -->
-      <div class="accordion-item mb-3">
-        <h2 class="accordion-header" id="headingSortBy">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
-            Sort by
-          </button>
-        </h2>
-        <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="headingSortBy" data-bs-parent="#accordionFlushExample">
-          <div class="accordion-body">
-            <ul class="list-unstyled">
-              <li>
-                <label>
-                  <input type="checkbox" name="reccomendation[]" value="review"> Most Reccomended
-                </label>
-              </li>
+            <ul class="list-unstyled" data-filter-users-target="tags">
+              <% @tags.each do |tag| %>
+                <li>
+                  <label>
+                    <input type="checkbox" name="tags[]" value="<%= tag.name %>" data-action='change->filter-users#filterUsers'> <%= tag.name %>
+                  </label>
+                </li>
+              <% end %>
             </ul>
           </div>
         </div>
