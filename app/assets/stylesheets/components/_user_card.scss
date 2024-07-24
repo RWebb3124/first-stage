@@ -1,6 +1,5 @@
 .card-user {
   overflow: hidden;
-  background: $background-colour;
   position: relative;
   box-shadow: 0 0 10px rgba(154, 154, 154, 0.2);
   border-radius: 10px;
@@ -99,7 +98,6 @@
 .clickable-card {
   text-decoration: none;
   color: $text-colour;
-  background-color: white;
 }
 
 .clickable-card p {
