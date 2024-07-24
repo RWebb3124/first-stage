@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
   def index
     @users = User.where(interviewer: true)
+    @tags = Tag.all
     if params[:years_experience].present?
       case params[:years_experience]
       when 'M'
