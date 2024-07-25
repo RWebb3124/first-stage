@@ -1,25 +1,32 @@
-<div class="review-card">
-  <div class="review-header">
-    <h3>This Developer is great</h3>
-  </div>
-  <div class="review-user-info">
-    <div class="review-user-details">
-      <img class="review-avatar" alt="avatar" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png" />
-      <span class="review-username">Sarahh3</span>
+<% if @reviews.present? %>
+  <% @reviews.each do |review| %>
+  <% @interviewee = review.booking.interviewee %>
+    <div class="review-card">
+      <div class="review-header">
+        <h3> <% review.title %> </h3>
+      </div>
+      <div class="review-user-info">
+        <div class="review-user-details">
+          <% if @interviewee.photo.present? && @interviewee.photo.key.present? %>
+            <%= cl_image_tag @interviewee.photo.key, class: "mybookings-user-avatar-img", crop: :fill %>
+          <% else %>
+            <img class="review-avatar" alt="avatar" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png" />
+          <% end %>
+          <span class="review-username"> <% @interviewee.username %> </span>
+        </div>
+          <span class="review-date"> <% review.created_at %> </span>
+      </div>
+      <div class="review-rating">
+        <% review.rating.times do %>
+          <i class="fas fa-star star-blue"></i>
+        <% end %>
+        <span class="rating-value"><% review.rating %></span>
+      </div>
+      <div class="review-divide">
+      </div>
+      <div class="review-content">
+        <p><% review.content %></p>
+      </div>
     </div>
-      <span class="review-date">13th Jan</span>
-  </div>
-  <div class="review-rating">
-    <i class="fas fa-star"></i>
-    <i class="fas fa-star"></i>
-    <i class="fas fa-star"></i>
-    <i class="fas fa-star"></i>
-    <i class="fas fa-star-half-alt"></i>
-    <span class="rating-value">4.5</span>
-  </div>
-  <div class="review-divide">
-  </div>
-  <div class="review-content">
-    <p>Cubilia interdum feugiat cubilia tortor augue egestas arcu tortor! Habitant neque elit quis turpis orci nulla aliquam nisi quam! Leo cursus vel arcu gravida elit vel nascetur. Rutrum potenti magnis lacus nam pharetra porta ipsum. Mattis nostra molestie.Cubilia interdum feugiat cubilia tortor augue egestas arcu tortor! Habitant neque elit quis turpis orci nulla aliquam nisi quam! Leo cursus vel arcu gravida elit vel nascetur. Rutrum potenti magnis lacus nam pharetra porta ipsum. Mattis nostra molestie.</p>
-  </div>
-</div>
+  <% end %>
+<% end %>

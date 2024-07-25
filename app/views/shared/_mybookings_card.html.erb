@@ -1,8 +1,8 @@
 <% mybookings.each do |booking| %>
   <div class="mybookings-card">
     <div class="mybookings-user-card-avatar-left">
-      <%= cl_image_tag booking.interviewer.photo.key, class:"mybookings-user-avatar-img", crop: :fill unless booking.interviewer.photo.key.blank? %>
-      <h4><%= link_to("#{booking.interviewee.try(:first_name)} #{booking.interviewee.try(:last_name)}", user_path(booking.interviewer)) %></h4>
+      <%= cl_image_tag booking.interviewee.photo.key, class:"mybookings-user-avatar-img", crop: :fill unless booking.interviewee.photo.key.blank? %>
+      <h4><%= "#{booking.interviewee.try(:first_name)} #{booking.interviewee.try(:last_name)}" %></h4>
     </div>
     <div class="mybookings-card-info-right">
       <div class="mybookings-time">
@@ -48,5 +48,3 @@
     </div>
   </div>
 <% end %>
-
-
