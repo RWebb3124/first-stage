@@ -3,6 +3,7 @@
   margin: 40px 20px;
   background:rgb(241, 241, 241);
   border-radius: 10px;
+  background-color: $background-colour;
 }
 
 .mybookings {
@@ -11,6 +12,7 @@
   align-items: flex-start;
   width: 100%;
   padding: 20px;
+  background-color: $background-colour;
 }
 
 .bookings-container {
@@ -21,6 +23,7 @@
   width: 50%;
   height: 100%;
   padding-left: 10px;
+  background-color: $background-colour;
 
   h5 {
     margin-top: 16px;
@@ -32,4 +35,5 @@
 .mybookingsnorequests {
   margin: 0px;
   padding: 20px 20px;
+  background-color: $background-colour;
 }

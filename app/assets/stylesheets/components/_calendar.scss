@@ -44,6 +44,8 @@
   box-shadow: 3px 3px 3px rgba(175, 105, 189, 0.5);
   transition: background 0.3s ease;
   text-align: center;
+  width: auto;
+  height: auto;
 
   #icon {
     padding-right: 3px;
@@ -51,12 +53,12 @@
   }
 
   h5 {
-    font-size: 15px;
+    font-size: .6rem;
     font-weight: bold;
   }
 
   h6 {
-    font-size: 10px;
+    font-size: .4rem;
     color: #2E4053;
 
   }

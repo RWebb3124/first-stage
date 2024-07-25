@@ -35,5 +35,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @interviewer = User.find(params[:id])
+    @bookings = Booking.where(interviewer_id: @interviewer.id)
+    @reviews = Review.where(booking_id: @bookings.pluck(:id))
   end
 end

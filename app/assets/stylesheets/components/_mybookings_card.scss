@@ -7,7 +7,7 @@
   padding: 20px;
   border-radius: 5px;
   background-color: rgb(236, 241, 241);
-  box-shadow: 1px 1px 1px 1px rgba(165, 105, 189, 0.5);
+  box-shadow: 2px 2px 2px 1px rgba(175, 105, 189, 0.2);
 }
 
 .mybookings-card:hover {
@@ -43,7 +43,7 @@
   width: 80px;
   border-radius: 50%;
   border: solid 1px white;
-  box-shadow: 2px 2px 1px $accent-colour;
+  box-shadow: 2px 2px 1px rgba(0,0,0,0.2);
 }
 
 .mybookings-card-info-right {
@@ -58,6 +58,7 @@
 
   p {
     font-style: $body-font;
+    font-size: 1rem;
   }
 }
 
@@ -95,7 +96,7 @@
 
 .mybookings-buttons {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   font-style: $body-font;
 }
@@ -105,7 +106,7 @@
   border: none;
   background-color: $primary-colour;
   color: white;
-  box-shadow: 2px 2px 1px rgba(165, 105, 189, 0.5);
+  box-shadow: 2px 2px 2px 1px rgba(175, 105, 189, 0.2);
   border-radius: 5px;
   height: 40px;
   width: 80px;
@@ -126,7 +127,7 @@
   border: none;
   background-color: $primary-colour;
   color: white;
-  box-shadow: 2px 2px 1px rgba(165, 105, 189, 0.5);
+  box-shadow: 2px 2px 2px 1px rgba(175, 105, 189, 0.2);
   border-radius: 5px;
   height: 40px;
   width: 80px;
