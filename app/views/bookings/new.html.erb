@@ -1,14 +1,10 @@
-<div class="container-signup-form">
-  <div class="row justify-content-center">
-    <div class="col-md-6 col-sm-4 col-sm-offset-4">
-      <div class="signup-form">
-        <h2><strong>Request Booking:</strong></h2>
-        <%= simple_form_for @booking, url: interview_booking_path(interviewer_id: @interviewer.id), data: {turbo: false, controller: 'flatpickr' } do |f| %>
-          <%= f.input :start_time, as: :string, input_html: { data: { flatpickr_target: "startTime" } } %>
-          <%= f.input :end_time, as: :string, input_html: { data: { flatpickr_target: "endTime" } } %>
-          <%= f.submit class: 'btn-primary' %>
-        <% end %>
-      </div>
-    </div>
+<div class="booking-background">
+  <div class="signup-form booking-new-form">
+    <h2><strong>Request Booking:</strong></h2>
+    <%= simple_form_for @booking, url: interview_booking_path(interviewer_id: @interviewer.id), data: {turbo: false, controller: 'flatpickr' } do |f| %>
+      <%= f.input :start_time, as: :string, input_html: { data: { flatpickr_target: "startTime" } } %>
+      <%= f.input :end_time, as: :string, input_html: { data: { flatpickr_target: "endTime" } } %>
+      <%= f.submit class: 'btn-primary' %>
+    <% end %>
   </div>
 </div>
