@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.booking = @booking
     if @review.save
-      redirect_to my_bookings_path
+      redirect_to myinterviews_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -21,12 +21,12 @@ class ReviewsController < ApplicationController
 
   def update
     @review.update(review_params)
-    redirect_to my_bookings_path
+    redirect_to myinterviews_path
   end
 
   def destroy
     @review.destroy
-    redirect_to my_bookings_path, status: :see_other
+    redirect_to myinterviews_path, status: :see_other
   end
 
   private

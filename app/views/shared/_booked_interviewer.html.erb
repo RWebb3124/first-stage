@@ -46,11 +46,21 @@
               <h2><%= interview.time_full %></h2>
             </div>
             <div class="time-and-link">
-              <i class="fa-solid fa-link"></i>
-              <h2><%= link_to interview.meeting_link %></h2>
+              <% if interview.end_time > Time.current %>
+                <i class="fa-solid fa-link"></i>
+                <h2><%= link_to "Meeting link", interview.meeting_link %></h2>
+              <% else %>
+                <% review = interview.reviews.first %>
+                <% if review.present? %>
+                  <i class="fa-solid fa-star"></i>
+                  <h2><%= link_to "#{review.rating} stars rating by you", edit_review_path(review)%></h2>
+                <% else %>
+                  <i class="fa-solid fa-star"></i>
+                  <h2><%= link_to "Write a Review", new_booking_review_path(interview)%></h2>
+                <% end %>
+              <% end %>
             </div>
           </div>
-
         </div>
       </div>
     </div>

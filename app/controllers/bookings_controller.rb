@@ -68,7 +68,7 @@ class BookingsController < ApplicationController
   end
 
   def myinterviews
-    @interviews = Booking.includes(:interviewer).where(interviewee_id: current_user).sort_by(&:start_time)
+    @interviews = Booking.includes(:interviewer, :reviews).where(interviewee_id: current_user).sort_by(&:start_time)
   end
 
   def update_status
