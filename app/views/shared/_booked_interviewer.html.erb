@@ -19,14 +19,15 @@
                 <div class="individual-tag"><p><%= image_tag(usertag.tag.icon_url, class:"tag_icon") %> <%= usertag.tag.name %></p></div>
               <% end %>
             </div>
-            <%= link_to "View profile", user_path(interview.interviewer), class:"view-profile" %>
+            <%= link_to "", user_path(interview.interviewer), class:"view-profile fa-regular fa-user" %>
+
           </div>
 
           <div class="interview-info">
             <div class="time-and-link">
               <% if interview.status == nil %>
               <i class="fa-solid fa-clock"></i>
-              <h2>Waiting to be confirmed</h2>
+              <h2>Waiting confirmation</h2>
               <% end %>
 
               <% if interview.status == 'accepted' %>
