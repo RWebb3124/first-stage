@@ -53,7 +53,7 @@
                 <% review = interview.reviews.first %>
                 <% if review.present? %>
                   <i class="fa-solid fa-star"></i>
-                  <h2><%= link_to "#{review.rating} stars rating by you", edit_review_path(review)%></h2>
+                  <h2><%= link_to "#{review.rating} star rating by you", edit_review_path(review)%></h2>
                 <% else %>
                   <i class="fa-solid fa-star"></i>
                   <h2><%= link_to "Write a Review", new_booking_review_path(interview)%></h2>
