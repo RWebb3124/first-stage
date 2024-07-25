@@ -15,6 +15,7 @@
     height: 100%;
     overflow: scroll;
     padding: 0.5rem;
+    margin-bottom: 20px;
   }
 
   #new_message {
@@ -54,5 +55,9 @@
     max-width: 60%;
     word-wrap: break-word;
     align-self: flex-start;
+  }
+
+  .simple-form {
+    margin-bottom: 20px;
   }
 }

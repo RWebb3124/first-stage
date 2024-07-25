@@ -3,7 +3,7 @@
 }
 
 .interview-info {
-  background-color: rgb(243, 243, 243);
+  border: 1px solid #ebe6e6;
   padding: 15px;
   padding-bottom: 5px;
   border-radius: 10px;
@@ -25,24 +25,30 @@
   justify-content: space-between;
 }
 
-.view-profile {
-  padding: 6px 16px;
-  border-radius: 50px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  margin-right: 10px;
-  justify-content: start;
-  font-size: 12px;
-  border-color: rgb(208, 208, 208);
-  border-width: 1px;
-  border-style: solid;
-  background: $background-colour;
-  color: $text-colour;
-  text-decoration: none;
-}
-
 .my-interviews-placeholder {
   margin-top: 20px;
   display: flex;
   justify-content: center;
+}
+
+.view-button {
+  text-decoration: none;
+  padding-top: 8px;
+  padding-bottom: 12px;
+  padding-left: 12px;
+  padding-right: 12px;
+  background-color: $secondary-colour;
+  color: $background-colour;
+  border-radius: 10px;
+  transition: 0.1s ease-in-out;
+  box-shadow: 2px 2px 1px rgba(0,0,0,0.2);
+
+  &:hover {
+    color: white;
+    background-color: $accent-colour;
+  }
+
+  .profile-view-button {
+    padding-bottom: 10px;
+  }
 }

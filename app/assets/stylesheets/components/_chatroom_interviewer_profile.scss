@@ -36,9 +36,9 @@
   padding: 0px;
 }
 
-.chat-view-button {
+.profile-view-button {
   text-decoration: none;
-  padding: 6px 14px;
+  padding: 6px 12px;
   background-color: $secondary-colour;
   color: $background-colour;
   border-radius: 6px;
@@ -86,10 +86,11 @@
 
 .chat-booking-info, .chat-info-and-tags {
   box-shadow: 2px 2px 2px 1px rgba(175, 105, 189, 0.2);
-  padding: 8px;
+  padding: 20px;
   margin: 10px;
   border-radius: 8px;
   background-color: white;
+  border: 1px solid #ebe6e6;
 }
 
 .chat-booking-info-title {
@@ -153,5 +154,10 @@
 }
 
 .chat-info-and-tags {
-  margin-top: 20px;
+  margin-top: 30px;
+  border: 1px solid #ebe6e6;
+}
+
+.styling-div {
+  height: 250px;
 }
