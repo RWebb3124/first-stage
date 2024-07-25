@@ -2,7 +2,7 @@
   border: 1px solid #dadedd;
   border-radius: 5px;
   padding: 20px;
-  margin: 10 10px;
+  margin: 15px 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: $background-colour;
   width: 350px;
@@ -122,4 +122,9 @@
   &:hover {
     color: rgb(205, 100, 100);
   }
+}
+
+
+.fas.fa-star.star-blue {
+  color: $accent-colour;
 }

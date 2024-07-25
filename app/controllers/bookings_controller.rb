@@ -9,10 +9,10 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @interviewer = User.find(params[:interviewer_id])
 
-    unless booking_params[:start_time].present? && booking_params[:end_time].present?
-      flash[:alert] = "Please select a date and time for your booking"
-      return render :new
-    end
+  #  unless booking_params[:start_time].present? && booking_params[:end_time].present?
+  #    flash[:alert] = "Please select a date and time for your booking"
+  #    return render :new
+  #  end
 
     @start_time = DateTime.parse(booking_params[:start_time]) if booking_params[:start_time]
     @end_time = DateTime.parse(booking_params[:end_time]) if booking_params[:end_time]
@@ -61,7 +61,7 @@ class BookingsController < ApplicationController
     @upcoming_bookings = @mybookings.select { |booking| booking.start_time >= Time.current }.sort_by do |booking|
       (booking.start_time - Time.current).abs
     end
-    
+
     @past_bookings = @mybookings.select { |booking| booking.start_time < Time.current }.sort_by do |booking|
       (booking.start_time - Time.current).abs
     end

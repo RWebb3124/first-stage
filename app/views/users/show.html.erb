@@ -61,7 +61,14 @@
         <p>@<%= @user.username %></p>
         <p><i class="fa-solid fa-location-dot"></i> <%= @user.address %></p>
         <p><i class="fa-regular fa-calendar"></i> joined <%= @user.created_at.strftime('%B') %>, <%= @user.created_at.strftime('%Y') %></p>
-        <p><i class="fa-regular fa-star"></i>4.2 (12)</p>
+        <p>
+          <% if @reviews.present? %>
+            <% average_rating = @reviews.average(:rating)&.round(2) || 0.0 %>
+            <% if average_rating > 0.0 %>
+              <i class="fas fa-star star-blue"></i><small><%= average_rating %> (<%= @reviews.count %>)</small>
+            <% end %>
+          <% end %>
+        </i></p>
         <p></p>
       </div>
     </div>
