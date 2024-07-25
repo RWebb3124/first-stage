@@ -26,7 +26,7 @@ class ZoomController < ApplicationController
       if personal_meeting_url
         @user_bookings = Booking.where(interviewee: current_user)
         @user_bookings.last.update(meeting_link: personal_meeting_url)
-        redirect_to my_interviews_path
+        redirect_to myinterviews_path
       end
     else
       flash[:alert] = "There was an error authenticating with Zoom. Please try again."
