@@ -64,33 +64,26 @@
 
 .mybookings-stars {
   margin-bottom: 5px;
+  color: $accent-colour;
 
   i {
-    color: $accent-colour;
     margin: 10px;
   }
 
 }
 
 .stars-container {
-  display: inline-block;
+  display: flex;
+  justify-content: flex-end;
   margin-bottom: 0.5rem;
 }
 
 .mybookings-stars-review {
   font-size: .7rem;
-  color: $accent-colour;
 
   em {
-    padding-left: 30px;
+    padding-left: 10px;
     font-style: $body-font;
-  }
-}
-
-.mybookings-stars-review-ago {
-
-  em {
-    padding-left: 40px;
   }
 }
 

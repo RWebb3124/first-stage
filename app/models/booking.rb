@@ -4,8 +4,8 @@ class Booking < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_one :chatroom, dependent: :destroy
 
-  validate :start_time_in_future
-  validate :end_time_after_start_time
+  #validate :start_time_in_future
+  #validate :end_time_after_start_time
 
   default_scope -> { order(:start_time) }
 
