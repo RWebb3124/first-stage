@@ -25,7 +25,6 @@ class Booking < ApplicationRecord
 
   def time_full
     "#{start_time.strftime("%A, %b #{start_time.day.ordinalize} ")}"
-
   end
 
   def multi_days?
