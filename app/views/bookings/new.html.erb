@@ -1,10 +1,11 @@
 <div class="booking-background">
   <div class="signup-form booking-new-form">
-    <h2><strong>Request Booking:</strong></h2>
+    <h2><strong>Request Interview:</strong></h2>
+    <div class="form-paragraph"><p> Choose a start and end time that suits you best </p></div>
     <%= simple_form_for @booking, url: interview_booking_path(interviewer_id: @interviewer.id), data: {turbo: false, controller: 'flatpickr' } do |f| %>
-      <%= f.input :start_time, as: :string, input_html: { data: { flatpickr_target: "startTime" } } %>
-      <%= f.input :end_time, as: :string, input_html: { data: { flatpickr_target: "endTime" } } %>
-      <%= f.submit class: 'btn-primary' %>
+      <%= f.input :start_time, as: :string, class:"booking-form-input", input_html: { data: { flatpickr_target: "startTime" } } %>
+      <%= f.input :end_time, as: :string, class:"booking-form-input", input_html: { data: { flatpickr_target: "endTime" } } %>
+      <%= f.submit "Get in touch", class: 'btn-primary booking-form-submit' %>
     <% end %>
   </div>
 </div>

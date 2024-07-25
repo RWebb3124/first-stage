@@ -1,12 +1,42 @@
 .booking-background {
   height: 87vh;
   width: 100%;
-  background-color: yellow;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("banner.jpg");
+    background-size: cover;
+    background-position: center;
+    opacity: 0.5;
+    z-index: -1;
+  }
 }
 
 .booking-new-form {
   width: 40%;
+  box-shadow: 3px 3px 3px rgba(0,0,0,0.5);
+}
+
+.form-paragraph {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.booking-form-input {
+  margin-bottom: 10px;
+}
+
+.booking-form-submit {
+  margin-top: 10px;
 }
