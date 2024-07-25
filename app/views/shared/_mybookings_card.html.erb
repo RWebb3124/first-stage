@@ -1,47 +1,52 @@
 <% mybookings.each do |booking| %>
   <div class="mybookings-card">
-    <ul>
-      <% if booking.status == nil && booking.interviewer_id == current_user.id %>
-        <h4> <%= booking.interviewee.try(:first_name) %> <%= booking.interviewee.try(:last_name) %> </h4>
-      <% elsif booking.status == nil && booking.interviewee_id == current_user.id %>
-        <li>You requested an interview with <%= booking.interviewer.try(:first_name) %></li>
-      <% end %>
-      <% if booking.status == 'accepted' && booking.interviewer_id == current_user.id %>
-        <h4> <%= booking.interviewee.try(:first_name) %> <%= booking.interviewee.try(:last_name) %> </h4>
-      <% elsif booking.status == 'accepted' && booking.interviewee_id == current_user.id %>
-        <li>With <%= booking.interviewer.try(:first_name) %> as interviewee</li>
-      <% end %>
-      <li> <%= booking.time_full %> from <%= booking.time %></li>
-      <% if booking.status == 'accepted' %>
-      <li><a href="<%= booking.meeting_link %>" target="_blank">Meeting Link</a></li>
-      <%= link_to "Edit", edit_booking_path(booking) %>
-      <%= link_to "Cancel", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to cancel this booking?" } %>
+    <div class="mybookings-user-card-avatar-left">
+      <%= cl_image_tag booking.interviewer.photo.key, class:"mybookings-user-avatar-img", crop: :fill unless booking.interviewer.photo.key.blank? %>
+      <h4><%= link_to("#{booking.interviewee.try(:first_name)} #{booking.interviewee.try(:last_name)}", user_path(booking.interviewer)) %></h4>
+    </div>
+    <div class="mybookings-card-info-right">
+      <div class="mybookings-time">
+        <% if booking.end_time > Time.current %>
+          <p><%= booking.time_full %> <em><small>from</small></em> <%= booking.time %></p>
+        <% end %>
+      </div>
+      <div class="mybookings-stars">
         <% review = Review.find_by(booking_id: booking.id) %>
         <% if review.present? %>
-          <div class="p-2"><h2> Your review </h2>
-          <h6> <%= review.title %> </h6>
-          <p> <%= review.content %> </p>
-          <p> Rating: <% review.rating.times do %>
-          <i class="fas fa-star star-blue"></i>
-        <% end %> </p>
-          <small><em class="text-muted"><%= distance_of_time_in_words_to_now(review.created_at) %> ago</em></small> </div>
-          <%= link_to "Edit", edit_review_path(review), class: "booking-card-edit" %>
-          <%= link_to "Delete", review_path(review), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "booking-card-delete" %>
-        <% else %>
-          <% if booking.end_time < Time.current %>
-            <%= link_to "Write a Review", new_booking_review_path(booking), class: "booking-view-pool" %>
-          <% else %>
-            <p><em> You can write a review after the booking ends </em></p>
-          <% end %>
+          <div>
+            <div class="stars-container">
+              <% review.rating.times do %>
+                <i class="fas fa-star star-blue"></i>
+              <% end %>
+            </div>
+            <p class="mybookings-stars-review">
+              <em><%= booking.interviewee.try(:first_name) %>'s review of your interview</em><br>
+              <em class="mybookings-stars-review-ago"> <%= distance_of_time_in_words_to_now(review.created_at) %> ago</em>
+            </p>
+          </div>
         <% end %>
-      <% end %>
-    </ul>
-  </div>
-  <% if booking.status == nil %>
-      <div class="accept-reject-buttons">
-        <small><%= button_to "Accept", update_booking_status_path(booking, status: 'accepted'), class: "accept-button", method: :patch, data: {turbo: false} %></small>
-        <small><%= button_to "Reject", update_booking_status_path(booking, status: 'rejected'), class: "reject-button", method: :patch, data: {turbo: false} %></small>
-        <small><%= button_to 'Message', booking.chatroom, method: :get, class: "message-button" %></small>
+        <% if review.blank? && booking.end_time < Time.current %>
+          <div>
+            <p class="mybookings-stars-review">
+              <em><%= booking.interviewee.try(:first_name) %> hasn't left you a review of your interview yet</em>
+            </p>
+          </div>
+        <% end %>
       </div>
-  <% end %>
+      <div class="mybookings-buttons">
+        <% if booking.status == nil %>
+          <small><%= button_to "Accept", update_booking_status_path(booking, status: 'accepted'), class: "mybookings-accept-button", method: :patch, data: {turbo: false} %></small>
+          <small><%= button_to "Reject", update_booking_status_path(booking, status: 'rejected'), class: "mybookings-reject-button", method: :patch, data: {turbo: false} %></small>
+        <% end %>
+        <% if booking.status == 'accepted' && booking.end_time > Time.current %>
+          <small><button type="button" class="mybookings-accept-button"><a href="<%= booking.meeting_link %>" target="_blank"><em> Meeting </em></a></button></small>
+          <small><%= button_to "Edit", edit_booking_path(booking), method: :get, class: "mybookings-accept-button" %></small>
+          <small><%= button_to "Cancel", booking_path(booking), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to cancel this booking?" }, class: "mybookings-reject-button" %></small>
+        <% end %>
+          <small><%= button_to 'Message', booking.chatroom, method: :get, class: "mybookings-message-button" %></small>
+      </div>
+    </div>
+  </div>
 <% end %>
+
+
