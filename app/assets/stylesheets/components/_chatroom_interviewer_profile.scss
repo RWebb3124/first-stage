@@ -84,10 +84,10 @@
   justify-content: space-evenly;
 }
 
-.chat-booking-info {
-  box-shadow: 2px 2px 1px rgba(175, 105, 189, 0.2);
+.chat-booking-info, .chat-info-and-tags {
+  box-shadow: 2px 2px 2px 1px rgba(175, 105, 189, 0.2);
   padding: 8px;
-  margin: 12px;
+  margin: 10px;
   border-radius: 8px;
   background-color: white;
 }
@@ -150,4 +150,8 @@
 .zoom-icon {
   height: 15px;
   width: 15px;
+}
+
+.chat-info-and-tags {
+  margin-top: 20px;
 }

@@ -9,7 +9,7 @@
             <p class="chat-user-username">@<%= @other_user.username %></p>
           </div>
         </div>
-        <%= link_to "View", user_path(@other_user), class:"chat-view-button" %>
+        <%= link_to "", user_path(@other_user), class:"chat-view-button fa-regular fa-user" %>
       </div>
       <div class="chat-user-tags">
         <% user_tags=UserTag.where(user: @other_user) %>
@@ -19,7 +19,7 @@
       </div>
     </div>
     <div class="chat-booking-info">
-      <h4 class="chat-booking-info-title border-bottom">Your Interview with <strong><%= @other_user.first_name %></strong></h4>
+      <h4 class="chat-booking-info-title border-bottom">Interview with <strong><%= @other_user.first_name %></strong></h4>
       <div class="chat-booking-start">
         <p><strong>Start time:</strong></p>
         <p><%= @chatroom.booking.start_time.strftime("%B %d, %Y %I:%M %p") %></p>
@@ -30,11 +30,11 @@
       </div>
       <div class="chat-booking-bottom-buttons">
         <div class="chat-booking-edit-delete">
-          <%= link_to "Edit", edit_booking_path(@chatroom.booking), class:"chat-booking-edit" %>
-          <%= link_to "Cancel", booking_path(@chatroom.booking), class:"chat-booking-delete", data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to cancel this booking? This will close your chatroom with #{@other_user.first_name}" } %>
+          <%= link_to "", edit_booking_path(@chatroom.booking), class:"chat-booking-edit fa-regular fa-pen-to-square" %>
+          <%= link_to "", booking_path(@chatroom.booking), class:"chat-booking-delete fa-regular fa-trash-can", data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to cancel this booking? This will close your chatroom with #{@other_user.first_name}" } %>
         </div>
         <div class="go-to-zoom">
-          <a href="<%= @chatroom.booking.meeting_link %>" target="_blank" class="go-to-room-button">Go to room</a>
+          <a href="<%= @chatroom.booking.meeting_link %>" target="_blank" class="go-to-room-button">Meeting link</a>
           <%= image_tag "zoom.png", class: "zoom-icon", crop: :fill %>
         </div>
       </div>
