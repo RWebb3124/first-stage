@@ -14,11 +14,11 @@
           <% end %>
           <span class="review-username"> <%= @interviewee.username %> </span>
         </div>
-          <span class="review-date"> <%= review.created_at %> </span>
+          <span class="review-date"> <%= review.created_at.strftime("%B %d") %> </span>
       </div>
       <div class="review-rating">
         <% review.rating.times do %>
-          <i class="fas fa-star star-blue"></i>
+          <i class="fas fa-star star-blue fa-lg"></i>
         <% end %>
         <span class="rating-value"><%= review.rating %></span>
       </div>
