@@ -84,6 +84,7 @@ interviewer_image_urls = [
 ]
 
 10.times do |i|
+  rand_num = rand(1..9)
   create_user(
     {
       first_name: Faker::Name.first_name,
@@ -93,9 +94,9 @@ interviewer_image_urls = [
       username: Faker::Internet.username,
       address: Faker::Address.city,
       interviewer: true,
-      years_experience: rand(1..9),
+      years_experience: rand_num,
       headline: "Passionate full-stack developer with a love for innovative solutions.",
-      about: "With over #{rand(1..9)} years of experience, I specialize in building dynamic web applications using modern technologies like Ruby on Rails and React. I thrive on solving complex problems and improving user experiences through efficient code and design.",
+      about: "With over #{rand_num} years of experience, I specialize in building dynamic web applications using modern technologies like Ruby on Rails and React. I thrive on solving complex problems and improving user experiences through efficient code and design.",
       github: "https://github.com/#{Faker::Internet.username}",
       linkedin: "https://www.linkedin.com/in/#{Faker::Internet.username}",
       fiverr: "https://www.fiverr.com/#{Faker::Internet.username}",
