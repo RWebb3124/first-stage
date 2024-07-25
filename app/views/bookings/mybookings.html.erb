@@ -2,22 +2,13 @@
   <div class="booking-requests">
     <div class="row">
       <div class="col-6">
-        <h4> Booking requests as interviewer </h4>
+        <h5><small><em> Interview requests: </em></small></h5>
         <%= render 'shared/mybookings_card', mybookings: @mybookingrequests_er %>
       </div>
     </div>
   </div>
 <% end %>
-<% if @mybookingrequests_ee.any? %>
-  <div class="booking-requests">
-    <div class="row">
-      <div class="col-6">
-        <h4> Booking requests as interviewee </h4>
-        <%= render 'shared/mybookings_card', mybookings: @mybookingrequests_ee %>
-      </div>
-    </div>
-  </div>
-<% end %>
+<h6 class="mybookingsnorequests"><em> <%=  "You don't have any pending interview requests" if @mybookingrequests_er.empty? %> </em></h6>
 <div class="mybookings">
   <div class="calendar-container">
     <%= month_calendar(events: @mybookings, end_attribute: :end_time) do |date, bookings| %>
@@ -32,8 +23,11 @@
     <% end %>
   </div>
   <div class="bookings-container">
-    <h4> My Bookings: </h4>
-    <h6><em> <%=  "You don't have any bookings yet" if @mybookings.empty? %> </em></h6>
-    <%= render 'shared/mybookings_card', mybookings: @mybookings %>
+    <h5><small><em> Upcoming Interviews: </em></small></h5>
+    <h6><em> <%=  "You don't have any bookings yet" if @upcoming_bookings.empty? %> </em></h6>
+    <%= render 'shared/mybookings_card', mybookings: @upcoming_bookings %>
+    <h5><small><em> Past Interviews: </em></small></h5>
+    <h6><em> <%=  "You don't have any bookings yet" if @past_bookings.empty? %> </em></h6>
+    <%= render 'shared/mybookings_card', mybookings: @past_bookings %>
   </div>
 </div>

@@ -4,7 +4,6 @@ class Booking < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_one :chatroom, dependent: :destroy
 
-  validates :start_time, :end_time, presence: true
   validate :start_time_in_future
   validate :end_time_after_start_time
 

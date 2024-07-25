@@ -6,50 +6,127 @@
   margin-bottom: 10px;
   padding: 20px;
   border-radius: 5px;
-  background-color: rgb(227, 227, 227);
-
-  h4 {
-    margin: 0;
-    font-size: 1.2rem;
-    text-decoration: underline;
-  }
-
-  ul {
-    list-style: none;
-  }
+  background-color: rgb(236, 241, 241);
+  box-shadow: 1px 1px 1px 1px rgba(165, 105, 189, 0.5);
 }
 
 .mybookings-card:hover {
   background: #e1e1e1;
-  color: rgb(119, 119, 119);
+  color: $text-colour;
   transform: translateY(-2px);
 }
 
-.accept-reject-buttons {
+.mybookings-user-card-avatar-left {
   display: flex;
-  align-items: center;
-  margin-bottom: 15px;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: left;
+  padding-left: 10px;
+
+  h4 {
+    font-style: $headers-font;
+    margin-top: 0px;
+    font-size: 1.2rem;
+    text-decoration: underline;
+    margin-top: 11px;
+    margin-bottom: 5px;
+  }
+
+  a {
+    color: $text-colour;
+    font-style: $headers-font;
+  }
 }
 
-.accept-button, .message-button {
+.mybookings-user-avatar-img {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  border: solid 1px white;
+  box-shadow: 2px 2px 1px $accent-colour;
+}
+
+.mybookings-card-info-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-right: 10px;
+}
+
+.mybookings-time {
+
+  p {
+    font-style: $body-font;
+  }
+}
+
+.mybookings-stars {
+  margin-bottom: 5px;
+
+  i {
+    color: $accent-colour;
+    margin: 10px;
+  }
+
+}
+
+.stars-container {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+.mybookings-stars-review {
+  font-size: .7rem;
+  color: $accent-colour;
+
+  em {
+    padding-left: 30px;
+    font-style: $body-font;
+  }
+}
+
+.mybookings-stars-review-ago {
+
+  em {
+    padding-left: 40px;
+  }
+}
+
+.mybookings-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-style: $body-font;
+}
+
+.mybookings-accept-button, .mybookings-message-button {
   text-decoration: none;
   border: none;
-  background: $primary-colour;
+  background-color: $primary-colour;
   color: white;
+  box-shadow: 2px 2px 1px rgba(165, 105, 189, 0.5);
   border-radius: 5px;
   height: 40px;
   width: 80px;
   margin-right: 10px;
   &:hover {
-    background: #0a84d5;
+    background-color: $accent-colour;
+  }
+
+  a {
+    color: white;
+    text-decoration: none;
+    font-size: small;
   }
 }
 
-.reject-button {
+.mybookings-reject-button {
   text-decoration: none;
-  border: 1px solid gray;
-  background: none;
-  color: gray;
+  border: none;
+  background-color: $primary-colour;
+  color: white;
+  box-shadow: 2px 2px 1px rgba(165, 105, 189, 0.5);
   border-radius: 5px;
   height: 40px;
   width: 80px;

@@ -6,8 +6,16 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @start_time = DateTime.parse(booking_params[:start_time])
-    @end_time = DateTime.parse(booking_params[:end_time])
+    @booking = Booking.new(booking_params)
+    @interviewer = User.find(params[:interviewer_id])
+
+    unless booking_params[:start_time].present? && booking_params[:end_time].present?
+      flash[:alert] = "Please select a date and time for your booking"
+      return render :new
+    end
+
+    @start_time = DateTime.parse(booking_params[:start_time]) if booking_params[:start_time]
+    @end_time = DateTime.parse(booking_params[:end_time]) if booking_params[:end_time]
     @booking = Booking.new(start_time: @start_time, end_time: @end_time)
     @interviewer = User.find(params[:interviewer_id])
     @booking.interviewer = @interviewer
@@ -42,9 +50,21 @@ class BookingsController < ApplicationController
   end
 
   def mybookings
-    @mybookings = Booking.where(interviewer_id: current_user, status: 'accepted').or(Booking.where(interviewee_id: current_user, status: 'accepted')).sort_by(&:start_time)
-    @mybookingrequests_er = Booking.where(interviewer_id: current_user, status: nil).sort_by(&:start_time)
-    @mybookingrequests_ee = Booking.where(interviewee_id: current_user, status: nil).sort_by(&:start_time)
+    @mybookings = Booking.where(interviewer_id: current_user, status: 'accepted').sort_by do |booking|
+      (booking.start_time - Time.current).abs
+    end
+
+    @mybookingrequests_er = Booking.where(interviewer_id: current_user, status: nil).sort_by(&:start_time).sort_by do |booking|
+      (booking.start_time - Time.current).abs
+    end
+
+    @upcoming_bookings = @mybookings.select { |booking| booking.start_time >= Time.current }.sort_by do |booking|
+      (booking.start_time - Time.current).abs
+    end
+    
+    @past_bookings = @mybookings.select { |booking| booking.start_time < Time.current }.sort_by do |booking|
+      (booking.start_time - Time.current).abs
+    end
   end
 
   def myinterviews

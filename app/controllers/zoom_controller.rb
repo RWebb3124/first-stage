@@ -23,19 +23,10 @@ class ZoomController < ApplicationController
       )
       response = JSON.parse(serialized_response)
       personal_meeting_url = response["personal_meeting_url"]
-      # headers = {
-      #   "Authorization": "Bearer #{access_token}",
-      #   "Content-Type": "application/json"
-      # }
-      # RestClient.get(api_endpoint_url, headers: headers)
-      # user_data = JSON.parse(response)
-      # system("curl -X GET #{api_endpoint_url} -H 'Authorization: Bearer #{access_token}' -H 'Content-Type: application/json'")
-      # user_data = JSON.parse(response)
-      # personal_meeting_url = user_data["personal_meeting_url"] if user_data.has_key?("personal_meeting_url")
       if personal_meeting_url
         @user_bookings = Booking.where(interviewee: current_user)
         @user_bookings.last.update(meeting_link: personal_meeting_url)
-        redirect_to my_bookings_path
+        redirect_to my_interviews_path
       end
     else
       flash[:alert] = "There was an error authenticating with Zoom. Please try again."
