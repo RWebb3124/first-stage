@@ -98,4 +98,28 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 40px;
+}
+
+.btn.submit-review {
+  text-decoration: none;
+  border: none;
+  background: $accent-colour;
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+  &:hover {
+    background: #0a84d5;
+  }
+}
+
+.delete-review {
+  text-decoration: none;
+  border: rgb(204, 204, 204) solid 1px;
+  color: $text-colour;
+  border-radius: 5px;
+  padding: 10px;
+  &:hover {
+    color: rgb(205, 100, 100);
+  }
 }

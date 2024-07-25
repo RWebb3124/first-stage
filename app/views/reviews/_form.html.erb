@@ -9,11 +9,11 @@
           <%= f.input :rating, required: true, collection: (1..5).to_a, label: "Rate your experience", input_html: {data: {controller: "star-rating", action: "click->form-submit#submit"}} %>
           <div class="edit-delete-buttons">
             <div class="submit">
-              <%= f.button :submit, class: "mybookings-accept-button" %>
+              <%= f.button :submit, class: "submit-review" %>
             </div>
             <% if @review.persisted? %>
               <div class="delete">
-                <%= link_to "Delete review", review_path(@review), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }%>
+                <%= link_to "Delete review", review_path(@review), class: "delete-review", data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
               </div>
             <% end %>
           </div>
