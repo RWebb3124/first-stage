@@ -19,8 +19,9 @@
                 <div class="individual-tag"><p><%= image_tag(usertag.tag.icon_url, class:"tag_icon") %> <%= usertag.tag.name %></p></div>
               <% end %>
             </div>
-            <%= link_to "", user_path(interview.interviewer), class:"view-profile fa-regular fa-user" %>
-
+            <div calss="profile-view-button fa-regular fa-user">
+              <%= link_to "", user_path(interview.interviewer), class:"view-button fa-regular fa-user" %>
+            </div>
           </div>
 
           <div class="interview-info">

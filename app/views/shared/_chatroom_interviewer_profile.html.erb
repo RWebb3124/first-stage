@@ -9,7 +9,7 @@
             <p class="chat-user-username">@<%= @other_user.username %></p>
           </div>
         </div>
-        <%= link_to "", user_path(@other_user), class:"chat-view-button fa-regular fa-user" %>
+        <%= link_to "", user_path(@other_user), class:"profile-view-button fa-regular fa-user" %>
       </div>
       <div class="chat-user-tags">
         <% user_tags=UserTag.where(user: @other_user) %>
@@ -17,6 +17,8 @@
           <div class="chat-individual-tag"><p><%= image_tag(usertag.tag.icon_url, class:"chat-tag-icon") %> <%= usertag.tag.name %></p></div>
         <% end %>
       </div>
+    </div>
+    <div class="space">
     </div>
     <div class="chat-booking-info">
       <h4 class="chat-booking-info-title border-bottom">Interview with <strong><%= @other_user.first_name %></strong></h4>
@@ -39,7 +41,7 @@
         </div>
       </div>
     </div>
-    <div>
+    <div class="styling-div">
     </div>
   </div>
 <% else %>
