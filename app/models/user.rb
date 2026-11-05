@@ -24,13 +24,21 @@ class User < ApplicationRecord
 
   accepts_nested_attributes_for :tags
 
-  # validates :first_name, presence: true
+  validates :first_name, presence: true
   # validates :last_name, presence: true
   validates :username, presence: true, uniqueness: true
   # validates :address, presence: true, uniqueness: true, length: { minimum: 8 }
   validates :years_experience, presence: true, if: :interviewer?
   validates :headline, presence: true, if: :interviewer?
   validates :about, presence: true, length: { minimum: 16 }, if: :interviewer?
+  validates :github, :linkedin, :fiverr, :personal_website, http_url: true, allow_blank: true
+
+  normalizes :github, :linkedin, :fiverr, :personal_website, with: lambda { |url|
+    url = url.strip
+    return nil if url.empty?
+    
+    url.match?(%r{\A\w+://}) ? url : "https://#{url}"
+  }
   # validates :linkedin, presence: true, if: :interviewer?
   # validates :github, presence: true, if: :interviewer?
   # validates :tags, presence: true, if: :interviewer?

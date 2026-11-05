@@ -39,7 +39,7 @@
           <small><%= button_to "Reject", update_booking_status_path(booking, status: 'rejected'), class: "mybookings-reject-button", method: :patch, data: {turbo: false} %></small>
         <% end %>
         <% if booking.status == 'accepted' && booking.end_time > Time.current %>
-          <small><button type="button" class="mybookings-accept-button"><a href="<%= booking.meeting_link %>" target="_blank"><em> Meeting </em></a></button></small>
+          <small><button type="button" class="mybookings-accept-button"><a href="<%= safe_url(booking.meeting_link) %>" target="_blank"><em> Meeting </em></a></button></small>
           <small><%= button_to "Edit", edit_booking_path(booking), method: :get, class: "mybookings-accept-button" %></small>
           <small><%= button_to "Cancel", booking_path(booking), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to cancel this booking?" }, class: "mybookings-reject-button" %></small>
         <% end %>

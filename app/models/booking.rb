@@ -7,6 +7,8 @@ class Booking < ApplicationRecord
   #validate :start_time_in_future
   #validate :end_time_after_start_time
 
+  validates :meeting_link, http_url: true, allow_blank: true
+
   default_scope -> { order(:start_time) }
 
   def start_time_in_future

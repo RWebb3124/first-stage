@@ -3,12 +3,14 @@ class ReviewsController < ApplicationController
   before_action :find_review, only: %i[edit update destroy]
 
   def new
-    @review = Review.new
+    @review = Review.new(booking: @booking)
+    authorize @review
   end
 
   def create
     @review = Review.new(review_params)
     @review.booking = @booking
+    authorize @review
     if @review.save
       redirect_to myinterviews_path
     else
@@ -33,6 +35,7 @@ class ReviewsController < ApplicationController
 
   def find_review
     @review = Review.find(params[:id])
+    authorize @review
   end
 
   def find_booking

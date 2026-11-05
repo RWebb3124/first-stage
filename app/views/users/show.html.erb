@@ -24,30 +24,30 @@
         <h3 class=""><strong><%= @user.first_name %> <%= @user.last_name %></strong></h3>
         <div class="show-social-links mt-2">
           <ul class="social-media-list">
-            <% if @user.github? %>
+            <% if safe_url(@user.github) %>
               <li>
-                <%= link_to @user.github, target:"_blank" do %>
+                <%= link_to safe_url(@user.github), target: "_blank", rel: "noopener" do %>
                   <%= image_tag 'github.png', class:"social-link-img" %>
                 <% end %>
               </li>
             <% end %>
-            <% if @user.linkedin? %>
+            <% if safe_url(@user.linkedin) %>
               <li>
-                <%= link_to @user.linkedin, target:"_blank" do %>
+                <%= link_to safe_url(@user.linkedin), target: "_blank", rel: "noopener" do %>
                   <%= image_tag 'linkedin.png', class:"social-link-img ms-1" %>
                 <% end %>
               </li>
             <% end %>
-            <% if @user.fiverr? %>
+            <% if safe_url(@user.fiverr) %>
               <li>
-                <%= link_to @user.fiverr, target:"_blank" do %>
+                <%= link_to safe_url(@user.fiverr), target: "_blank", rel: "noopener" do %>
                   <%= image_tag 'fiverr.png', class:"social-link-img" %>
                 <% end %>
               </li>
             <% end %>
-            <% if @user.personal_website? %>
+            <% if safe_url(@user.personal_website) %>
               <li>
-                <%= link_to @user.personal_website, target:"_blank" do %>
+                <%= link_to safe_url(@user.personal_website), target: "_blank", rel: "noopener" do %>
                   <%= image_tag 'personal_website.png', class:"social-link-img" %>
                 <% end %>
               </li>
