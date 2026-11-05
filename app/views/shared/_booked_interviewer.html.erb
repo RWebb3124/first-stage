@@ -48,7 +48,7 @@
             <div class="time-and-link">
               <% if interview.end_time > Time.current %>
                 <i class="fa-solid fa-link"></i>
-                <h2><%= link_to "Meeting link", interview.meeting_link %></h2>
+                <h2><%= link_to "Meeting link", safe_url(interview.meeting_link) %></h2>
               <% else %>
                 <% review = interview.reviews.first %>
                 <% if review.present? %>
