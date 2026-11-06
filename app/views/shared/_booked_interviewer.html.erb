@@ -26,17 +26,17 @@
 
           <div class="interview-info">
             <div class="time-and-link">
-              <% if interview.status == nil %>
+              <% if interview.pending? %>
               <i class="fa-solid fa-clock"></i>
               <h2>Waiting confirmation</h2>
               <% end %>
 
-              <% if interview.status == 'accepted' %>
+              <% if interview.accepted? %>
               <i class="fa-solid fa-check"></i>
               <h2>Accepted</h2>
               <% end %>
 
-              <% if interview.status == 'rejected' %>
+              <% if interview.rejected? %>
               <i class="fa-solid fa-circle-xmark"></i>
               <h2>Rejected</h2>
               <% end %>
@@ -47,8 +47,10 @@
             </div>
             <div class="time-and-link">
               <% if interview.end_time > Time.current %>
-                <i class="fa-solid fa-link"></i>
-                <h2><%= link_to "Meeting link", safe_url(interview.meeting_link) %></h2>
+                <% if safe_url(interview.meeting_link) %>
+                  <i class="fa-solid fa-link"></i>
+                  <h2><%= link_to "Meeting link", safe_url(interview.meeting_link) %></h2>
+                <% end %>
               <% else %>
                 <% review = interview.reviews.first %>
                 <% if review.present? %>

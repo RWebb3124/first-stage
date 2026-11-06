@@ -17,7 +17,9 @@
         <div class="meeting">
           <h5><i class="fa-solid fa-user" id="icon"></i></i><%= booking.interviewee.try(:first_name) %> <%= booking.interviewee.try(:last_name) %></h5>
           <h6><i class="fa-solid fa-clock" id="icon"></i><%= booking.time unless booking.multi_days? %></h6>
-          <a href="<%= safe_url(booking.meeting_link) %>" class="btn-primary" target="_blank">Meeting</a>
+          <% if safe_url(booking.meeting_link) %>
+            <a href="<%= safe_url(booking.meeting_link) %>" class="btn-primary" target="_blank">Meeting</a>
+          <% end %>
         </div>
       <% end %>
     <% end %>

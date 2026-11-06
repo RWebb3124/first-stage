@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_23_150150) do
+ActiveRecord::Schema[7.1].define(version: 2026_11_06_171919) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -46,7 +46,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_23_150150) do
     t.datetime "start_time"
     t.datetime "end_time"
     t.string "meeting_link"
-    t.string "status"
+    t.string "status", default: "pending", null: false
     t.bigint "interviewee_id"
     t.bigint "interviewer_id"
     t.datetime "created_at", null: false

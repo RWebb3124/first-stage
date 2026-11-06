@@ -8,26 +8,15 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking = Booking.new(booking_params)
     @interviewer = User.find(params[:interviewer_id])
-
-  #  unless booking_params[:start_time].present? && booking_params[:end_time].present?
-  #    flash[:alert] = "Please select a date and time for your booking"
-  #    return render :new
-  #  end
-
-    @start_time = DateTime.parse(booking_params[:start_time]) if booking_params[:start_time]
-    @end_time = DateTime.parse(booking_params[:end_time]) if booking_params[:end_time]
-    @booking = Booking.new(start_time: @start_time, end_time: @end_time)
-    @interviewer = User.find(params[:interviewer_id])
-    @booking.interviewer = @interviewer
-    @booking.interviewee = current_user
+    # Active Record parses the time strings itself; blank ones become nil
+    # and are caught by the presence validations.
+    @booking = Booking.new(booking_params.merge(interviewer: @interviewer, interviewee: current_user))
     authorize @booking
     if @booking.save
-      @chatroom = @booking.chatroom
-      redirect_to auth_path
+      redirect_to myinterviews_path, notice: "Interview requested. You'll see it here once #{@interviewer.first_name} responds."
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -39,12 +28,10 @@ class BookingsController < ApplicationController
   def update
     @booking = Booking.find(params[:id])
     authorize @booking
-    @start_time = DateTime.parse(booking_params[:start_time]) if booking_params[:start_time]
-    @end_time = DateTime.parse(booking_params[:end_time]) if booking_params[:end_time]
-    if @booking.update(booking_params.permit(:start_time, :end_time))
+    if @booking.update(booking_params)
       redirect_to my_bookings_path
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -56,11 +43,11 @@ class BookingsController < ApplicationController
   end
 
   def mybookings
-    @mybookings = policy_scope(Booking).where(interviewer_id: current_user, status: 'accepted').sort_by do |booking|
+    @mybookings = policy_scope(Booking).accepted.where(interviewer_id: current_user).sort_by do |booking|
       (booking.start_time - Time.current).abs
     end
 
-    @mybookingrequests_er = policy_scope(Booking).where(interviewer_id: current_user, status: nil).sort_by(&:start_time).sort_by do |booking|
+    @mybookingrequests_er = policy_scope(Booking).pending.where(interviewer_id: current_user).sort_by(&:start_time).sort_by do |booking|
       (booking.start_time - Time.current).abs
     end
 
@@ -80,8 +67,12 @@ class BookingsController < ApplicationController
   def update_status
     @booking = Booking.find(params[:booking_id])
     authorize @booking, :update_status?
-    @booking.update(status: params[:status])
-    redirect_to my_bookings_path
+    # The interviewer can only answer a request, never set it back to pending.
+    if params[:status].in?(%w[accepted rejected]) && @booking.update(status: params[:status])
+      redirect_to my_bookings_path, notice: "Booking #{@booking.status}."
+    else
+      redirect_to my_bookings_path, alert: "That booking couldn't be updated."
+    end
   end
 
   private
@@ -91,6 +82,7 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:interview_id, :interviewer_id, :interviewee_id, :start_time, :end_time)
+    # Participants come from the URL and current_user, never from the form.
+    params.require(:booking).permit(:start_time, :end_time)
   end
 end

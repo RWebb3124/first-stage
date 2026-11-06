@@ -23,9 +23,9 @@ class ApplicationController < ActionController::Base
   protected
 
   # Controllers that don't use Pundit yet. Pages, users and interviewers only
-  # touch public profiles or current_user; zoom is covered by issue M8.
+  # touch public profiles or current_user.
   def skip_pundit?
-    devise_controller? || %w[pages users interviewers zoom].include?(controller_name)
+    devise_controller? || %w[pages users interviewers].include?(controller_name)
   end
 
   # List actions must use `policy_scope`; every other action must call `authorize`.
