@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-"First Stage" is a Rails 7.1 app (Ruby 3.1.2, PostgreSQL) for booking mock interviews: users browse interviewer profiles, book a time slot, chat with the interviewer in real time, attach a Zoom meeting link, and leave reviews. Generated from the Le Wagon rails-templates (Devise + Bootstrap + Simple Form).
+"First Stage" is a Rails 7.1 app (Ruby 3.1.2, PostgreSQL) for booking mock interviews: users browse interviewer profiles, book a time slot, chat with the interviewer in real time, and leave reviews. Generated from the Le Wagon rails-templates (Devise + Bootstrap + Simple Form).
 
 ## Commands
 
@@ -34,11 +34,12 @@ Deploys to Heroku (`heroku` git remote); a Dockerfile also exists. `config.force
 - `Booking` has an `after_create` callback that creates a `Chatroom` plus two `ChatroomUser` rows (one for the interviewer, one for the interviewee). Every booking therefore has exactly one chatroom.
 - `Message` has an `after_create_commit` callback that runs `broadcast_append_to chatroom, target: "messages"` (Turbo Streams). `ChatroomChannel` and `chatroom_subscription_controller.js` handle the Action Cable side. Redis is the cable adapter in development and production.
 - `User#chatrooms` is a hand-written method that overrides the `has_many :chatrooms` associations declared above it. Use the method.
+- `Booking#status` is a string enum (`pending`, `accepted`, `rejected`), non-null, defaulting to `pending`.
 - `ApplicationController` loads `@chatrooms` on every request for the messages sidebar. It also requires authentication globally (`before_action :authenticate_user!`).
 
 **Reviews** belong to a `Booking`, not directly to a user. They are created through the nested route `bookings/:booking_id/reviews`.
 
-**Zoom integration** lives in `ZoomController` and uses `rest-client`. `/auth` redirects to Zoom OAuth. `/oauth/callback` exchanges the code for a token, fetches the user's `personal_meeting_url`, and writes it to the current user's **most recent** booking as interviewee (`Booking.where(interviewee: current_user).last`). Bookings have a `default_scope` ordered by `start_time`, which affects what `.last` returns.
+**Video calls**: the old Zoom OAuth integration has been removed and no video provider is wired up yet. `bookings.meeting_link` is kept for a future provider; views only show a meeting link when one is present (and passes `safe_url`).
 
 **Custom booking routes** sit alongside the REST resources: `/users/:interviewer_id/bookings/new`, `/mybookings`, `/myinterviews`, and `PATCH /mybookings/:booking_id/update_status`.
 
@@ -48,4 +49,4 @@ Deploys to Heroku (`heroku` git remote); a Dockerfile also exists. `config.force
 
 ## Environment
 
-`.env` (loaded by `dotenv-rails` in dev and test) needs `CLOUDINARY_URL`, `CLIENT_ZOOM_ID`, `CLIENT_ZOOM_SECRET`, `CLIENT_ZOOM_REDIRECT_URI`, and `ZOOM_REDIRECT_LINK`. Production also needs `REDIS_URL`.
+`.env` (loaded by `dotenv-rails` in dev and test) needs `CLOUDINARY_URL`. Production also needs `REDIS_URL`.

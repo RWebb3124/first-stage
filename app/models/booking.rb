@@ -4,8 +4,13 @@ class Booking < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_one :chatroom, dependent: :destroy
 
-  #validate :start_time_in_future
-  #validate :end_time_after_start_time
+  enum :status, { pending: "pending", accepted: "accepted", rejected: "rejected" }, validate: true
+
+  validates :start_time, :end_time, presence: true
+  # Only when the time changes, so accepting or rejecting a request after its
+  # start time has passed doesn't fail validation.
+  validate :start_time_in_future, if: :will_save_change_to_start_time?
+  validate :end_time_after_start_time
 
   validates :meeting_link, http_url: true, allow_blank: true
 

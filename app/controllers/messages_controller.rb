@@ -14,6 +14,8 @@ class MessagesController < ApplicationController
         sender_id: @message.user.id
         )
       head :ok
+    else
+      head :unprocessable_entity
     end
   end
 

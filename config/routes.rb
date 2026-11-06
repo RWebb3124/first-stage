@@ -22,8 +22,6 @@ Rails.application.routes.draw do
   get '/myinterviews', to: 'bookings#myinterviews', as: 'myinterviews'
   patch '/mybookings/:booking_id/update_status', to: 'bookings#update_status', as: 'update_booking_status'
 
-  get '/auth', to: 'zoom#auth'
-  get '/oauth/callback', to: 'zoom#zoom_callback'
 
   resources :bookings, only: [:edit, :update, :destroy] do
     resources :reviews, only: [:new, :create]
