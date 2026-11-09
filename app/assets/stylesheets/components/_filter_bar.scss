@@ -1,9 +1,15 @@
-filter-bar {
-  padding: 10px;
+// Phones: the filter sits above the cards. From md up it is a sidebar,
+// pushed down to line up with the first row of cards.
+.filter-bar {
+  margin-top: 1.5rem;
 }
 
-.filter-bar {
-  margin-top: 73px;
+@include media-breakpoint-up(md) {
+  .filter-bar {
+    margin-top: 73px;
+    position: sticky;
+    top: 1rem;
+  }
 }
 
 #filter_title {
@@ -37,7 +43,7 @@ input[type="checkbox"] {
   background: #A569BD;
   color: white;
   border-radius: 5px;
-  height: 40px;
+  min-height: 40px;
   width: 90%;
   transition: background-color 0.2s ease, border 0.2s ease;
 

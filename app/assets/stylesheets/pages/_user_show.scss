@@ -1,5 +1,5 @@
 .navbar-extender {
-  height: 25vh;
+  height: clamp(160px, 25vh, 260px);
   background-color: $primary-colour;
   position: relative;
   overflow: visible;
@@ -11,13 +11,17 @@
   align-items: end;
 }
 
+// Hangs off the bottom-left of the banner. Anchored to the bottom edge (not
+// a % of the height) so it lands in the same place whatever the banner height.
 .user-avatar-show {
-  height: 100px;
-  width: 100px;
+  height: clamp(80px, 18vw, 100px);
+  width: clamp(80px, 18vw, 100px);
+  object-fit: cover;
   border-radius: 50%;
   position: absolute;
-  left: 10%;
-  top: 70%;
+  left: clamp(1rem, 10%, 10rem);
+  bottom: 0;
+  transform: translateY(40%);
   border: 1px solid white;
   box-shadow: 0 3px 10px rgba(0,0,0,0.2);
 }
@@ -31,9 +35,12 @@
 // }
 
 .social-media-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
   list-style: none;
   padding: 0;
-  margin-left: 45px;
+  margin: 0;
 }
 
 .social-media-list li {
@@ -56,13 +63,17 @@
 
 .user-names-links {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: start;
+  column-gap: 1.5rem;
+  // Clears the avatar that overhangs the banner.
+  padding-top: clamp(2.5rem, 8vw, 3.5rem);
 }
 
 .username-location-etc {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  column-gap: 1.5rem;
 }
 
 .username-location-etc p {
@@ -83,6 +94,7 @@
 .bottom-buttons {
   display: flex;
   justify-content: end;
+  gap: 8px;
   padding-bottom: 16px;
 }
 
@@ -95,8 +107,8 @@
 .nav-extender-buttons {
   display: flex;
   justify-content: end;
-  padding-bottom: 10px;
-  margin-right: 12.7vh;
+  gap: 8px;
+  padding: 0 clamp(1rem, 8vw, 8rem) 10px 0;
 }
 
 #reviews-button {
@@ -156,7 +168,6 @@
 }
 
 #book-button {
-  margin-left: 8px;
   background-color: $accent-colour;
   border: 0px;
   padding: 10px 30px;
@@ -167,10 +178,8 @@
 }
 
 #years-exp-panel {
-  margin-left: 8px;
-  margin-top: 5px;
   border: 0px;
-  padding: 10px 22px;
+  padding: 8px clamp(10px, 3vw, 22px);
   background-color: $secondary-colour;
   box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
 }
@@ -189,10 +198,8 @@
 }
 
 #interviews-panel {
-  margin-left: 8px;
-  margin-top: 5px;
   border: 0px;
-  padding: 10px 22px;
+  padding: 8px clamp(10px, 3vw, 22px);
   background-color: $secondary-colour;
   box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
 }
@@ -215,9 +222,15 @@
   margin-bottom: 30px;
 }
 
+// Reviews: under "About" on phones and small tablets, a sidebar column from md up.
 .main-content-right {
-  display: flex;
-  justify-content: end;
+  margin-bottom: 30px;
+}
+
+@include media-breakpoint-up(md) {
+  .main-content-right {
+    padding-left: 1.5rem;
+  }
 }
 
 .carousel-caption-header {

@@ -1,11 +1,9 @@
-
 <div class="container" data-controller="filter-users">
   <div class="row">
-    <div class="col-4 col-lg-3 mt-4">
+    <div class="col-12 col-md-4 col-lg-3">
       <%= render 'shared/filter_bar' %>
     </div>
-    <div class="col-8 col-lg-9" data-filter-users-target="list">
-      <div class="mb-5"></div>
+    <div class="col-12 col-md-8 col-lg-9 pt-md-4" data-filter-users-target="list">
       <%= render 'shared/user_card', users: @users %>
     </div>
   </div>

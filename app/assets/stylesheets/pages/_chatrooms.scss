@@ -27,10 +27,22 @@
   background: $accent-colour;
   color: white;
   border-radius: 5px;
-  height: 40px;
-  width: 80px;
-  margin-left: 40px;
+  min-height: 40px;
+  padding: 0 1.25rem;
   &:hover {
     background: #0a84d5;
+  }
+}
+
+.chat-page {
+  padding-bottom: 1rem;
+}
+
+// The chat list scrolls on its own beside the conversation on desktop;
+// on smaller screens it is just part of the page.
+@include media-breakpoint-up(lg) {
+  .chat-sidebar {
+    max-height: calc(100vh - 90px);
+    overflow-y: auto;
   }
 }

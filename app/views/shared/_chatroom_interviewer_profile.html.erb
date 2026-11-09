@@ -14,8 +14,6 @@
       <%= render "shared/tag_pills", user: @other_user, container_class: "chat-user-tags",
                                      pill_class: "chat-individual-tag", icon_class: "chat-tag-icon" %>
     </div>
-    <div class="space">
-    </div>
     <div class="chat-booking-info">
       <h4 class="chat-booking-info-title border-bottom">Interview with <strong><%= @other_user.first_name %></strong></h4>
       <div class="chat-booking-start">
@@ -38,8 +36,6 @@
           </div>
         <% end %>
       </div>
-    </div>
-    <div class="styling-div">
     </div>
   </div>
 <% else %>

@@ -22,7 +22,6 @@
 }
 
 .messages-box {
-  max-height: 80vh;
   overflow-y: auto;
 }
 
@@ -52,12 +51,15 @@
 .chatroom-content {
   padding: 10px;
   display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
   justify-content: space-between;
   align-items: center;
 }
 
 .chatroom-info {
   flex-grow: 1;
+  min-width: 0;
 }
 
 .chatroom-name {
@@ -86,8 +88,10 @@
 }
 
 .chatroom-avatar-img {
-  height: 8vh;
-  width: 8vh;
+  height: 56px;
+  width: 56px;
+  flex-shrink: 0;
+  object-fit: cover;
   border-radius: 50%;
   margin-right: 10px;
   box-shadow: 2px 2px 1px rgba(81, 51, 93, 0.2);

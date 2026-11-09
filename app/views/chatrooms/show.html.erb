@@ -1,11 +1,16 @@
-<div class="row">
-  <div class="col-3" style="padding-right: 0px; max-height: 85vh; overflow-y: auto;">
-    <%= render 'shared/messages_sidebar', messages_sidebar: @messages_sidebar %>
-  </div>
-  <div class="col-6" style="padding-left: 0px; padding-right: 0px">
-    <%= render 'shared/chatbox', chatbox: @chatbox %>
-  </div>
-  <div class="col-3" style="padding-right: 15px; padding-left: 5px">
-    <%= render 'shared/chatroom_interviewer_profile', chatroom_interviewer_profile: @chatroom_interviewer_profile %>
+<%# Source order = phone order: the conversation first, then who it's with,
+    then the other chats. From lg up the order-* classes rearrange them into
+    sidebar | conversation | profile. %>
+<div class="container-fluid chat-page">
+  <div class="row g-3">
+    <div class="col-12 col-lg-6 order-lg-2">
+      <%= render 'shared/chatbox', chatbox: @chatbox %>
+    </div>
+    <div class="col-12 col-md-6 col-lg-3 order-lg-3">
+      <%= render 'shared/chatroom_interviewer_profile', chatroom_interviewer_profile: @chatroom_interviewer_profile %>
+    </div>
+    <div class="col-12 col-md-6 col-lg-3 order-lg-1 chat-sidebar">
+      <%= render 'shared/messages_sidebar', messages_sidebar: @messages_sidebar %>
+    </div>
   </div>
 </div>

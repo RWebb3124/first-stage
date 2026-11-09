@@ -26,7 +26,7 @@ Deploys to Heroku (`heroku` git remote); a Dockerfile also exists. `config.force
 
 ## Architecture
 
-**Front end** uses importmap (no Node build step; `package.json` is vestigial), Turbo, and Stimulus. Stimulus controllers in `app/javascript/controllers/` are auto-registered. Styling is Bootstrap 5 via `sassc-rails`. JS libraries such as flatpickr and star-rating.js are pinned in `config/importmap.rb`.
+**Front end** uses importmap (no Node build step; `package.json` is vestigial), Turbo, and Stimulus. Stimulus controllers in `app/javascript/controllers/` are auto-registered. Styling is Bootstrap 5 via `sassc-rails`. Bootstrap's CSS comes only from the gem (compiled into `application.css`), so don't add a CDN `<link>`: one loaded after `application.css` overrides the site's styles. Layouts use Bootstrap's grid and the `media-breakpoint-up/down` mixins rather than fixed px/vh sizes. SassC (libsass) can't compile CSS `min()`/`max()` with mixed units, so use `width: 100%; max-width: …` or `clamp()` instead. After a Sass error, run `bin/rails tmp:cache:clear` if pages still 500. JS libraries such as flatpickr and star-rating.js are pinned in `config/importmap.rb`.
 
 **Core domain: Users play two roles.** There is a single `User` model (Devise). A boolean `interviewer` flag switches on extra profile validations (`years_experience`, `headline`, `about`). Users opt in through `InterviewersController#become_interviewer` / `#upgrade_to_interviewer`, which are nested as member routes under `users`. `Booking` links two users through `interviewer_id` and `interviewee_id`, and `User` exposes these as `bookings_as_interviewer` and `bookings_as_interviewee`.
 
