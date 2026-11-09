@@ -1,0 +1,9 @@
+<%# Tag checkboxes for the interviewer forms. The tag-limit Stimulus controller
+    stops a 5th box being ticked; User#tags_within_limit enforces it on save. %>
+<%= f.association :tags,
+                  as: :check_boxes,
+                  label: "Skills (up to #{User::MAX_TAGS})",
+                  wrapper_html: { data: { controller: "tag-limit", tag_limit_max_value: User::MAX_TAGS } },
+                  input_html: { class: "tag-selector",
+                                data: { tag_limit_target: "checkbox", action: "change->tag-limit#update" } },
+                  item_wrapper_class: "tag-item" %>

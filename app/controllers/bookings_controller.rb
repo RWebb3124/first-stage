@@ -61,7 +61,7 @@ class BookingsController < ApplicationController
   end
 
   def myinterviews
-    @interviews = policy_scope(Booking).includes(:interviewer, :reviews).where(interviewee_id: current_user).sort_by(&:start_time)
+    @interviews = policy_scope(Booking).includes(:reviews, interviewer: [:tags, { photo_attachment: :blob }]).where(interviewee_id: current_user).sort_by(&:start_time)
   end
 
   def update_status

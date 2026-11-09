@@ -33,10 +33,16 @@ class User < ApplicationRecord
   validates :about, presence: true, length: { minimum: 16 }, if: :interviewer?
   validates :github, :linkedin, :fiverr, :personal_website, http_url: true, allow_blank: true
 
+  MAX_TAGS = 4
+  # Only checked when tags are being changed, so users who had more than
+  # MAX_TAGS before this rule existed can still save other changes
+  # (e.g. a password reset).
+  validate :tags_within_limit, if: :tags_assigned?
+
   normalizes :github, :linkedin, :fiverr, :personal_website, with: lambda { |url|
     url = url.strip
     return nil if url.empty?
-    
+
     url.match?(%r{\A\w+://}) ? url : "https://#{url}"
   }
   # validates :linkedin, presence: true, if: :interviewer?
@@ -69,5 +75,20 @@ class User < ApplicationRecord
 
   def full_name
     "#{first_name} #{last_name}"
+  end
+
+  def tag_ids=(ids)
+    @tags_assigned = true
+    super
+  end
+
+  private
+
+  def tags_assigned?
+    @tags_assigned
+  end
+
+  def tags_within_limit
+    errors.add(:tags, "can't be more than #{MAX_TAGS}") if tags.size > MAX_TAGS
   end
 end

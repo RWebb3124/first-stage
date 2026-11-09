@@ -1,0 +1,19 @@
+ruby:
+  name: Ruby
+  icon_url: ruby.png
+
+rails:
+  name: RoR
+  icon_url: ruby_on_rails.png
+
+javascript:
+  name: Javascript
+  icon_url: javascript.png
+
+css:
+  name: CSS
+  icon_url: css.png
+
+python:
+  name: Python
+  icon_url: python.png

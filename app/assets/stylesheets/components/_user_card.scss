@@ -44,9 +44,13 @@
   padding: 16px;
 }
 
+// Up to User::MAX_TAGS pills: wrap onto a second row rather than overflow the card.
 .user-card-tags {
   display: flex;
-  justify-content: start;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 6px;
+  margin: 8px 0;
 }
 
 .card-user h2 {
@@ -70,19 +74,18 @@
 }
 
 .individual-tag {
-  padding: 6px 8px;
+  padding: 4px 8px;
   background-color: #d9f0ff;
   border-radius: 50px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  margin-right: 10px;
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
+  white-space: nowrap;
 }
 
 .individual-tag p {
   font-size: 10px;
+  margin: 0;
 }
 
 .tag_icon {

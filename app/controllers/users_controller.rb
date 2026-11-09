@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
   def index
-    @users = User.where(interviewer: true)
+    # Preload everything the cards render, so the page runs a fixed number of
+    # queries however many interviewers there are.
+    @users = User.where(interviewer: true).includes(:tags).with_attached_photo
     @tags = Tag.all
     if params[:years_experience].present?
       case params[:years_experience]
@@ -16,7 +18,9 @@ class UsersController < ApplicationController
 
     if params[:tags].present?
       tags = params[:tags].split(',')
-      @users = @users.joins(:tags).where(tags: { name: tags })
+      # A subquery rather than joins(:tags): a join returns a user once per
+      # matching tag, and would limit the preloaded tags to the matching ones.
+      @users = @users.where(id: UserTag.joins(:tag).where(tags: { name: tags }).select(:user_id))
     end
 
     if params[:query].present?

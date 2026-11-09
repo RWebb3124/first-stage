@@ -12,10 +12,7 @@
           <%= f.input :fiverr, label: "Fiverr profile URL"%>
           <%= f.input :personal_website, label: "Personal website URL"%>
           <%= f.input :banner_photo, as: :file %>
-          <%= f.association :tags,
-                          as: :check_boxes,
-                          input_html: { class: "tag-selector" },
-                          item_wrapper_class: 'tag-item' %>
+          <%= render "shared/tag_picker", f: f %>
 
           <%= f.button :submit, "Become interviewer", class: "btn-primary" %>
         <% end %>

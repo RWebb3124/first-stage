@@ -13,12 +13,7 @@
               <h2><%= "#{user.first_name} #{user.last_name}" %></h2>
               <p>@<%= user.username %></p>
             </div>
-            <div class="user-card-tags">
-              <% user_tags=UserTag.where(user: user) %>
-              <% user_tags.each do |usertag| %>
-                <div class="individual-tag"><p><%= image_tag(usertag.tag.icon_url, class:"tag_icon") %> <%= usertag.tag.name %></p></div>
-              <% end %>
-            </div>
+            <%= render "shared/tag_pills", user: user %>
             <div class="user-about border-top p-2">
               <p><%= user.about %></p>
             </div>

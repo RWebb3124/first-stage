@@ -2,8 +2,7 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
 
   def home
-    @interviewers = User.where(interviewer: true)
-    @top_ten_interviewers = @interviewers.first(10)
+    @top_ten_interviewers = User.where(interviewer: true).includes(:tags).with_attached_photo.limit(10)
     @user = current_user
   end
 

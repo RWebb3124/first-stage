@@ -1,0 +1,7 @@
+alice_ruby:
+  user: alice
+  tag: ruby
+
+alice_rails:
+  user: alice
+  tag: rails

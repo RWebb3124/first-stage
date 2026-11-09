@@ -1,0 +1,11 @@
+<% pill_class = local_assigns.fetch(:pill_class, "individual-tag") %>
+<% icon_class = local_assigns.fetch(:icon_class, "tag_icon") %>
+<% shown, hidden = user.tags.partition.with_index { |_, i| i < User::MAX_TAGS } %>
+<div class="<%= local_assigns.fetch(:container_class, "user-card-tags") %>">
+  <% shown.each do |tag| %>
+    <div class="<%= pill_class %>"><p><%= image_tag(tag.icon_url, class: icon_class) %> <%= tag.name %></p></div>
+  <% end %>
+  <% if hidden.any? %>
+    <div class="<%= pill_class %>" title="<%= hidden.map(&:name).join(", ") %>"><p>+<%= hidden.size %></p></div>
+  <% end %>
+</div>
