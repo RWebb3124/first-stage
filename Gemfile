@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "3.3.9"
+ruby "4.0.9"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8.1.4", ">= 8.1.4.1"
@@ -71,8 +71,6 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
-
-  gem "error_highlight", ">= 0.7.0", platforms: [:ruby]
 end
 
 group :test do
