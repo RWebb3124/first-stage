@@ -91,4 +91,16 @@ class BookingsControllerTest < ActionDispatch::IntegrationTest
     get myinterviews_path
     assert_response :success
   end
+
+  # Uses the customised app/views/simple_calendar/_month_calendar.html.erb,
+  # so this catches a simple_calendar upgrade breaking the override.
+  test "accepted bookings appear on the my bookings calendar" do
+    booking = bookings(:past)
+    sign_in users(:alice)
+
+    get my_bookings_path, params: { start_date: booking.start_time.to_date }
+
+    assert_select ".simple-calendar td", 35..42
+    assert_select ".simple-calendar .meeting", text: /#{users(:bob).first_name}/
+  end
 end

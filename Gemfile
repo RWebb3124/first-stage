@@ -27,7 +27,7 @@ gem "stimulus-rails"
 gem "jbuilder"
 
 
-gem "simple_calendar", "~> 2.4"
+gem "simple_calendar", "~> 3.1"
 
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
@@ -44,10 +44,10 @@ gem "bootsnap", require: false
 
 gem "bootstrap", "~> 5.2"
 gem "devise", "~> 5.0"
-gem "autoprefixer-rails"
 gem "font-awesome-sass", "~> 6.1"
-gem "simple_form", github: "heartcombo/simple_form"
-gem "sassc-rails"
+gem "simple_form", "~> 5.4"
+# Dart Sass (the maintained Sass compiler) for Sprockets; replaces sassc-rails/libsass.
+gem "dartsass-sprockets"
 gem "cloudinary"
 gem "pundit"
 
