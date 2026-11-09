@@ -1,11 +1,12 @@
+# Action Cable runs over the app's own PostgreSQL database (LISTEN/NOTIFY), so
+# no Redis is needed. Postgres limits each broadcast to 8000 bytes, which is
+# why Message#content has a maximum length.
 development:
-  adapter: redis
-  url: redis://localhost:6379/1
+  adapter: postgresql
 
 test:
   adapter: test
 
 production:
-  adapter: redis
-  url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
+  adapter: postgresql
   channel_prefix: first_stage_production
