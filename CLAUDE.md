@@ -20,7 +20,7 @@ bundle exec rubocop            # lint (config in .rubocop.yml; test/, db/, confi
 bin/importmap pin <pkg>        # add a JS dependency
 ```
 
-Note: the test files are currently all generated stubs with no real assertions.
+Tests use Minitest with fixtures (`test/fixtures/*.yml`). The fixture users are `alice` (an interviewer), `bob` (books with alice) and `carol` (a stranger, for authorisation-denied cases). Fixtures skip callbacks, so each booking's chatroom and chatroom_users are separate fixtures. Request tests sign in with Devise's `sign_in users(:bob)`. Policies are unit-tested in `test/policies/`.
 
 Deploys to Heroku (`heroku` git remote); a Dockerfile also exists. `config.force_ssl = true` in production.
 

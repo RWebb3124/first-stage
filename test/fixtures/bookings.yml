@@ -1,0 +1,17 @@
+# Fixtures are inserted straight into the database: validations and callbacks
+# (like Booking's after_create :create_chatroom) do NOT run, so the matching
+# chatrooms are defined in chatrooms.yml.
+
+upcoming:
+  interviewer: alice
+  interviewee: bob
+  status: pending
+  start_time: <%= 2.days.from_now.change(hour: 10).to_fs(:db) %>
+  end_time: <%= 2.days.from_now.change(hour: 11).to_fs(:db) %>
+
+past:
+  interviewer: alice
+  interviewee: bob
+  status: accepted
+  start_time: <%= 3.days.ago.change(hour: 10).to_fs(:db) %>
+  end_time: <%= 3.days.ago.change(hour: 11).to_fs(:db) %>

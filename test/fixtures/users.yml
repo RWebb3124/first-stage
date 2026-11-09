@@ -1,0 +1,31 @@
+# Three people cover every authorisation case:
+#   alice - an interviewer
+#   bob   - books interviews with alice
+#   carol - a stranger to both, used to prove access is denied
+
+alice:
+  email: alice@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, "password") %>
+  first_name: Alice
+  last_name: Interviewer
+  username: alice
+  interviewer: true
+  years_experience: 5
+  headline: Senior Rails developer
+  about: I have been interviewing developers for years.
+
+bob:
+  email: bob@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, "password") %>
+  first_name: Bob
+  last_name: Candidate
+  username: bob
+  interviewer: false
+
+carol:
+  email: carol@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, "password") %>
+  first_name: Carol
+  last_name: Stranger
+  username: carol
+  interviewer: false

@@ -1,0 +1,15 @@
+upcoming_alice:
+  chatroom: upcoming
+  user: alice
+
+upcoming_bob:
+  chatroom: upcoming
+  user: bob
+
+past_alice:
+  chatroom: past
+  user: alice
+
+past_bob:
+  chatroom: past
+  user: bob

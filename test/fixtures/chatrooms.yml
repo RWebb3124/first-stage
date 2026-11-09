@@ -1,0 +1,7 @@
+upcoming:
+  name: upcoming
+  booking: upcoming
+
+past:
+  name: past
+  booking: past
