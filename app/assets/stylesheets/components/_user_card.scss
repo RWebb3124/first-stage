@@ -4,14 +4,35 @@
   position: relative;
   box-shadow: 0 0 10px rgba(154, 154, 154, 0.2);
   border-radius: 10px;
-  margin: 10px;
-  margin-top: 50px;
-  margin-bottom: 50px;
-  height: 350px;
+  margin: 50px 10px 10px;
+  // No fixed height: the card grows with its content, and flex-grow lets it
+  // fill its grid cell so cards in the same row line up.
+  flex-grow: 1;
   color: black;
   display: flex;
   flex-direction: column;
   overflow: visible;
+}
+
+// The column and link stretch so every card in a row is the same height.
+.user-card-col,
+.home-card-slot {
+  display: flex;
+}
+
+.clickable-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+// Bios vary a lot in length; show the first 4 lines so cards stay uniform.
+.user-about p,
+.home-user-about p {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .user-card-avatar {
@@ -34,6 +55,8 @@
 
 .capacity-icon {
   display: flex;
+  align-items: center;
+  min-width: 0;
 }
 
 .card-user-infos {
@@ -95,14 +118,20 @@
 
 .price-capacity {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-end;
+  gap: 4px 12px;
   margin-top: auto;
 }
 
 .clickable-card {
   text-decoration: none;
   color: $text-colour;
+}
+
+.clickable-card:hover .card-user {
+  box-shadow: 0 0 14px rgba(154, 154, 154, 0.45);
 }
 
 .clickable-card p {

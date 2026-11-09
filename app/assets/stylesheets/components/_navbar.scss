@@ -1,157 +1,104 @@
-.navbar {
+// Layout comes from Bootstrap's .navbar / .navbar-expand-lg; this file only
+// adds the site's look.
+.site-navbar {
   background-color: $primary-colour;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  top: 0;
-  width: 100%;
+  padding: 0.5rem 0.75rem;
 }
 
-.navbar-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  margin: 0;
+.navbar-logo {
+  // Scales down on narrow screens instead of squashing into the search bar.
+  width: clamp(120px, 30vw, 160px);
+  height: auto;
 }
 
+.site-navbar .nav-link {
+  color: $text-colour;
+  padding: 0.5rem 0;
+  transition: color 0.3s ease-in-out;
 
-.nav-menu-left {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-basis: auto;
-  list-style: none;
-  width: 20%;
-  margin: 0;
-  padding: 0;
-
-  .navbar-brand .logo-circle {
-    width: 40px;
-    height: 40px;
-    background-color: #333;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    font-size: 14px;
+  &:hover,
+  &:focus {
+    color: $background-colour;
   }
 }
 
-.nav-menu-center {
-  display: flex;
-  justify-content: center;
-  flex-basis: auto;
-  list-style: none;
-  width: 70%;
-  margin: 0;
-  padding: 0;
-
-  .nav-item {
-    margin: 0 30px;
+// Desktop row: spread the links out.
+@include media-breakpoint-up(lg) {
+  .site-navbar .navbar-nav {
+    gap: 2.5rem;
   }
 }
 
-.nav-links {
-  color: #333;
-  text-decoration: none;
-  transition: all 0.3s ease-in-out;
+// Mobile menu: links stacked, search full width underneath.
+@include media-breakpoint-down(lg) {
+  .site-navbar .navbar-collapse {
+    padding-top: 0.5rem;
+  }
+
+  .site-navbar .search-bar {
+    margin: 0.5rem 0;
+  }
 }
 
-.nav-links:hover {
-  color: grey;
-}
-
-.nav-menu-right {
+.navbar-account {
   display: flex;
-  flex-shrink: 0;
-  justify-content: space-between;
   align-items: center;
-  flex-basis: auto;
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  gap: 0.75rem;
+}
 
+.navbar-toggler {
+  border-color: rgba($text-colour, 0.3);
+  color: $text-colour;
+  padding: 0.25rem 0.6rem;
 }
 
 .search-bar {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-right: 10px;
-  height: 40px;
 
-  .fa-search {
+  .search-button {
     color: #333;
-    margin-right: 10px;
+    padding-left: 0;
   }
 
   .form-control {
     background-color: $background-colour;
   }
+}
 
+@include media-breakpoint-up(lg) {
+  .search-bar {
+    margin-right: 1rem;
+
+    .form-control {
+      width: 200px;
+    }
+  }
 }
 
 .navbar-avatar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
   width: 40px;
   height: 40px;
+  object-fit: cover;
   border: solid 1px rgb(207, 254, 255);
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
   border-radius: 50%;
   background-color: $background-colour;
-  margin: 0px;
-
-  a {
-    color: grey;
-    margin-left: 10px;
-    padding: 0px;
-  }
-}
-
-.hamburger {
-  display: none;
-  cursor: pointer;
-}
-
-@media (max-width: 768px) {
-  .nav-menu-center {
-    display: none;
-  }
-
-  .hamburger {
-    display: block;
-  }
-}
-
-.search-bar-box {
-  width: 200px !important;
 }
 
 .login-button {
   color: white;
   text-decoration: none;
-}
-
-.nav-link {
-  text-decoration: none !important;
-  color: $text-colour !important;
+  white-space: nowrap;
 }
 
 .avatar-dropdown {
-  margin: 0px;
-  padding: 0px !important;
+  margin: 0;
+  padding: 0 !important;
 }
 
 .avatar-dropdown::after {
   display: none !important;
-}
-
-.dropdown > a {
-  padding: 0px !important;
 }

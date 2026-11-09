@@ -1,11 +1,17 @@
+// ---- Hero --------------------------------------------------------------
+// --hero-size drives the wordmark AND the checkbox logo, so they always
+// scale together: 2.5rem on a phone, growing with the screen, capped at 120px.
 .container-home .banner-home {
+  --hero-size: clamp(2.5rem, 11vw, 7.5rem);
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  height: 70vh;
+  min-height: 70vh;
+  padding: 3rem 1rem;
+  text-align: center;
 
   &::before {
     content: "";
@@ -22,103 +28,38 @@
   }
 
   h1 {
-    font-size: 120px;
+    font-size: var(--hero-size);
     font-weight: bolder;
-    margin-bottom: -5px;
+    margin: 0;
   }
-
-  h3 {
-    font-size: 50px;
-    font-weight: bolder;
-  }
-
-  .buttons-home {
-    display: flex;
-    justify-content: space-around;
-
-    .link-colour {
-      color: white;
-
-      a {
-        color: white;
-        text-decoration: none;
-      }
-    }
-
-    #btn-index,
-    #btn-become-interviewer {
-      background-color: $primary-colour;
-      border: 1px solid $secondary-colour;
-      box-shadow: 5px 10px 10px rgb(98, 97, 97);
-      padding: 10px 50px;
-      margin: 20px;
-      border-radius: 5px;
-      transition: background-color 0.2s ease, border 0.2s ease;
-
-      &:hover {
-        background-color: $accent-colour;
-        border: 1px solid $secondary-colour;
-      }
-    }
-    #btn-index h4 {
-      color: $background-colour;
-      margin: 0px;
-    }
-
-    #btn-become-interviewer h4 {
-      color: $background-colour;
-      margin: 0px;
-    }
-
-    #btn-become-interviewer {
-      padding: 10px 30px;
-    }
-  }
-}
-
-.container-cards-home {
-  height: 70vh;
-  display: flex;
-  align-items: center;
-
-}
-
-.card-home {
-  height: 45vh;
-  background-color: white;
-}
-
-.find-devs-title {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#homepage-first {
-  color: #a368bb;
-  padding-right: 15px;
-}
-
-#homepage-stage {
-  color: #0a1220;
-  padding-right: 15px;
 }
 
 .first-stage {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  gap: 0.15em;
+  font-size: var(--hero-size); // lets the logo below size itself in em
+}
+
+#homepage-first {
+  color: #a368bb;
+}
+
+#homepage-stage {
+  color: #0a1220;
 }
 
 #logo-checkbox-outer {
-  height: 120px;
-  width: 120px;
+  flex-shrink: 0;
+  height: 1em;
+  width: 1em;
+  margin-left: 0.1em;
+  margin-top: 0.15em;
   background-color: #0a1220;
-  top: 30px;
-  right: -130px;
-  margin-top: 18px;
-  // position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #logo-checkbox-inner {
@@ -126,28 +67,76 @@
   width: 80%;
   background-color: #a368bb;
   border-radius: 5%;
- //  position: absolute;
-  margin-top: 10%;
-  margin-left: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #logo-check {
   color: #060100;
-  font-size: 75px;
-  margin-left: 15px;
-  margin-top: 8px;
+  font-size: 0.62em;
 }
 
 #homepage-tagline {
-  font-size: 24px;
-  margin-top: 15px;
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  font-weight: bolder;
+  margin-top: 1rem;
 }
 
+.buttons-home {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem 2.5rem;
+  margin-top: 1.25rem;
+}
+
+.btn-home {
+  background-color: $primary-colour;
+  border: 1px solid $secondary-colour;
+  box-shadow: 5px 10px 10px rgb(98, 97, 97);
+  padding: 0.6rem clamp(1.5rem, 4vw, 3rem);
+  border-radius: 5px;
+  color: $background-colour;
+  font-family: $headers-font;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  text-decoration: none;
+  transition: background-color 0.2s ease, border 0.2s ease;
+
+  &:hover {
+    color: white;
+    background-color: $accent-colour;
+    border: 1px solid $secondary-colour;
+  }
+}
+
+// On phones the two buttons stack and share one width.
+@include media-breakpoint-down(sm) {
+  .buttons-home {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-width: 320px;
+  }
+}
+
+.find-devs-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  h2 {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+  }
+}
+
+// ---- Scrolling "top interviewers" strip ---------------------------------
 #topteninterviewers {
   overflow: hidden;
-  height: auto;
   width: 100%;
   background-color: $primary-colour;
+  padding: 2.5rem 0 1rem;
 }
 
 @keyframes marquee {
@@ -159,36 +148,35 @@
   }
 }
 
-.marquee-content {
-  display: flex;
-  align-items: center;
-  height: 550px;
-  overflow: hidden;
-}
-
+// The list is rendered twice side by side; sliding left by exactly half
+// (one copy) makes the loop seamless. max-content keeps every card at its
+// own width instead of squeezing ten cards into the screen.
 .user-cards-container {
   display: flex;
-  justify-content: space-evenly;
-  width: 200%;
-  animation: marquee 25s linear infinite;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+
+  &:hover {
+    animation-play-state: paused;
+  }
 }
 
 .user-cards-container-inner {
   display: flex;
-  width: 50%;
 }
 
-#topteninterviewers .user-cards-container .user-card {
-  margin: 0 10px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f9f9f9;
+.home-card-slot {
+  width: clamp(260px, 75vw, 320px);
+  flex-shrink: 0;
+  padding: 0 10px;
 }
 
-.card-home {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+@media (prefers-reduced-motion: reduce) {
+  #topteninterviewers {
+    overflow-x: auto;
+  }
+
+  .user-cards-container {
+    animation: none;
+  }
 }

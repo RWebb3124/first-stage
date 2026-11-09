@@ -1,7 +1,7 @@
 <% if @mybookingrequests_er.any? %>
   <div class="booking-requests">
     <div class="row">
-      <div class="col-6">
+      <div class="col-12 col-lg-6">
         <h5><small><em> Interview requests: </em></small></h5>
         <%= render 'shared/mybookings_card', mybookings: @mybookingrequests_er %>
       </div>
@@ -9,13 +9,14 @@
   </div>
 <% end %>
 <h6 class="mybookingsnorequests"><em> <%=  "You don't have any pending interview requests" if @mybookingrequests_er.empty? %> </em></h6>
-<div class="mybookings">
-  <div class="calendar-container">
+<%# Calendar and lists side by side from lg up, stacked below that. %>
+<div class="mybookings row g-4">
+  <div class="calendar-container col-12 col-lg-6">
     <%= month_calendar(events: @mybookings, end_attribute: :end_time) do |date, bookings| %>
       <%= date %>
       <% bookings.each do |booking| %>
         <div class="meeting">
-          <h5><i class="fa-solid fa-user" id="icon"></i></i><%= booking.interviewee.try(:first_name) %> <%= booking.interviewee.try(:last_name) %></h5>
+          <h5><i class="fa-solid fa-user" id="icon"></i><%= booking.interviewee.try(:first_name) %> <%= booking.interviewee.try(:last_name) %></h5>
           <h6><i class="fa-solid fa-clock" id="icon"></i><%= booking.time unless booking.multi_days? %></h6>
           <% if safe_url(booking.meeting_link) %>
             <a href="<%= safe_url(booking.meeting_link) %>" class="btn-primary" target="_blank">Meeting</a>
@@ -24,7 +25,7 @@
       <% end %>
     <% end %>
   </div>
-  <div class="bookings-container">
+  <div class="bookings-container col-12 col-lg-6">
     <h5><small><em> Upcoming Interviews: </em></small></h5>
     <h6><em> <%=  "You don't have any bookings yet" if @upcoming_bookings.empty? %> </em></h6>
     <%= render 'shared/mybookings_card', mybookings: @upcoming_bookings %>

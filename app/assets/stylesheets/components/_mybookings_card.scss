@@ -1,5 +1,7 @@
 .mybookings-card {
   display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
   justify-content: space-between;
   align-items: center;
   width: 100%;
@@ -20,7 +22,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: left;
+  align-items: flex-start;
   padding-left: 10px;
 
   h4 {
@@ -41,6 +43,7 @@
 .mybookings-user-avatar-img {
   height: 80px;
   width: 80px;
+  object-fit: cover;
   border-radius: 50%;
   border: solid 1px white;
   box-shadow: 2px 2px 1px rgba(0,0,0,0.2);
@@ -51,7 +54,23 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-end;
+  text-align: right;
   padding-right: 10px;
+}
+
+// Phones: avatar/name on top, details and buttons full width underneath.
+@include media-breakpoint-down(sm) {
+  .mybookings-card-info-right {
+    width: 100%;
+    align-items: flex-start;
+    text-align: left;
+    padding: 0 10px;
+  }
+
+  .stars-container,
+  .mybookings-buttons {
+    justify-content: flex-start;
+  }
 }
 
 .mybookings-time {
@@ -89,7 +108,9 @@
 
 .mybookings-buttons {
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
   align-items: center;
   font-style: $body-font;
 }
@@ -101,9 +122,9 @@
   color: white;
   box-shadow: 2px 2px 2px 1px rgba(175, 105, 189, 0.2);
   border-radius: 5px;
-  height: 40px;
-  width: 80px;
-  margin-right: 10px;
+  min-height: 40px;
+  min-width: 80px;
+  padding: 0 12px;
   &:hover {
     background-color: $accent-colour;
   }
@@ -122,9 +143,9 @@
   color: white;
   box-shadow: 2px 2px 2px 1px rgba(175, 105, 189, 0.2);
   border-radius: 5px;
-  height: 40px;
-  width: 80px;
-  margin-right: 10px;
+  min-height: 40px;
+  min-width: 80px;
+  padding: 0 12px;
   &:hover {
     color: rgb(228, 89, 25);
     border-color: rgb(228, 89, 25);

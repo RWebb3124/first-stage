@@ -3,7 +3,6 @@
     <div class="first-stage">
       <h1 id="homepage-first">First</h1>
       <h1 id="homepage-stage">Stage</h1>
-      <div></div>
       <div id="logo-checkbox-outer">
         <div id="logo-checkbox-inner">
           <i class="fa-solid fa-check" id="logo-check"></i>
@@ -12,22 +11,16 @@
     </div>
     <h3 id="homepage-tagline">Smash your first interview for the last time</h3>
     <div class="buttons-home">
-      <div id="btn-index" class="link-colour">
-        <h4><%= link_to "Find an Interviewer", users_path %></h4>
-      </div>
-      <div id="btn-become-interviewer" class="link-colour">
-        <h4>
-        <% if user_signed_in? %>
-          <% if current_user.interviewer == true %>
-            <%= link_to "View my bookings", my_bookings_path %>
-          <% else %>
-            <%= link_to "Become an Interviewer", become_interviewer_user_path(current_user) %>
-          <% end %>
+      <%= link_to "Find an Interviewer", users_path, class: "btn-home" %>
+      <% if user_signed_in? %>
+        <% if current_user.interviewer == true %>
+          <%= link_to "View my bookings", my_bookings_path, class: "btn-home" %>
         <% else %>
-          <%= link_to 'Become an Interviewer', new_user_registration_path %>
+          <%= link_to "Become an Interviewer", become_interviewer_user_path(current_user), class: "btn-home" %>
         <% end %>
-        </h4>
-      </div>
+      <% else %>
+        <%= link_to "Become an Interviewer", new_user_registration_path, class: "btn-home" %>
+      <% end %>
     </div>
   </div>
 
@@ -58,7 +51,7 @@
     </div>
   </div>
   <div class="find-devs-title">
-    <h1 class="p-4">Find experienced developers to help you prepare</h1>
+    <h2 class="p-4">Find experienced developers to help you prepare</h2>
   </div>
   <div id="topteninterviewers">
     <div class="marquee-content">

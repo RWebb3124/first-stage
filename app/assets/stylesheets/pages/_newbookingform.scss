@@ -1,5 +1,6 @@
 .booking-background {
-  height: 87vh;
+  min-height: 80vh;
+  padding: 2rem 1rem;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -23,7 +24,8 @@
 }
 
 .booking-new-form {
-  width: 40%;
+  width: 100%;
+  max-width: 480px;
   box-shadow: 3px 3px 3px rgba(0,0,0,0.5);
 }
 

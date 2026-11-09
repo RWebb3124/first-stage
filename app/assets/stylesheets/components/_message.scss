@@ -10,11 +10,11 @@
 
 // To style the message itself
 .sender-style, .receiver-style {
-  width: 70%;
-  max-width: 400px;
+  width: fit-content;
+  min-width: 40%;
+  max-width: 80%;
   border-radius: 4px;
   padding: 8px;
-  min-height: 80px;
 }
 
 .sender-style {
@@ -27,7 +27,9 @@
 
 .name-and-time-message {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
+  column-gap: 1rem;
 }
 
 .message-content-p {

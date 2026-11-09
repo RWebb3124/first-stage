@@ -15,6 +15,10 @@
   align-items: center;
   margin-bottom: 10px;
 
+  h2 {
+    overflow-wrap: anywhere;
+  }
+
   i {
     padding-right: 10px;
   }
@@ -27,6 +31,8 @@
 .tags-section {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
 }
 
 .my-interviews-placeholder {

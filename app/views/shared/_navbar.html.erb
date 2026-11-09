@@ -1,50 +1,20 @@
-<nav class="navbar">
-  <div class="navbar-container">
-    <div class="nav-menu-left">
-      <a href="<%= root_path %>" class="navbar-brand">
-        <div class="logo">
-          <%= image_tag "Group 1-3.png", style: "width: 160px;" %>
-        </div>
-      </a>
-    </div>
+<%# Bootstrap's responsive navbar: from lg up everything sits on one row; below
+    that the links and search fold into a menu opened by the toggler button.
+    The avatar/login group stays visible at every width. %>
+<nav class="navbar navbar-expand-lg site-navbar">
+  <div class="container-fluid">
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <%= image_tag "Group 1-3.png", alt: "First Stage", class: "navbar-logo" %>
+    <% end %>
 
-    <ul class="nav-menu-center">
-      <li class="nav-item">
-        <a href="<%= root_path %>" class="nav-links">Home</a>
-      </li>
-      <li class="nav-item">
-        <a href="<%= users_path %>" class="nav-links">Interviewers</a>
-      </li>
-      <% if current_user %>
-      <li class="nav-item">
-        <%= link_to 'Messages', current_user.chatrooms.any?  ? chatroom_path(@chatrooms.last) : root_path, class: 'nav-links' %>
-      </li>
-      <% end %>
-      <li class="nav-item">
-        <a href="<%= myinterviews_path %>" class="nav-links">My Interviews</a>
-      </li>
-    </ul>
-    <div class="nav-menu-right">
-
-
-      <div class="search-bar">
-        <button name="button" type="submit" class="nav-links btn">
-          <i class="fas fa-search"></i>
-        </button>
-        <form action="/users" method="GET" class="search-form d-flex">
-          <input class="form-control me-2 custom-search" type="search" name="query" placeholder="Search" aria-label="Search">
-        </form>
-      </div>
-
-
-
+    <div class="navbar-account order-lg-last">
       <% if user_signed_in? %>
         <div class="dropdown">
           <a id="navbarDropdown" class="nav-link dropdown-toggle avatar-dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <% if current_user.photo.attached? %>
-              <%= cl_image_tag current_user.photo.key, class: "navbar-avatar", crop: :fill %>
+              <%= cl_image_tag current_user.photo.key, class: "navbar-avatar", crop: :fill, alt: "Account menu" %>
             <% else %>
-              <%= image_tag "default-pp.jpg", class: "navbar-avatar", crop: :fill %>
+              <%= image_tag "default-pp.jpg", class: "navbar-avatar", alt: "Account menu" %>
             <% end %>
           </a>
           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -59,10 +29,36 @@
       <% else %>
         <%= link_to "Login", new_user_session_path, class: "login-button" %>
       <% end %>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
     </div>
 
-    <div class="hamburger">
-      <i class="fas fa-bars"></i>
+    <div class="collapse navbar-collapse" id="main-nav">
+      <ul class="navbar-nav mx-lg-auto">
+        <li class="nav-item">
+          <a href="<%= root_path %>" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="<%= users_path %>" class="nav-link">Interviewers</a>
+        </li>
+        <% if current_user %>
+          <li class="nav-item">
+            <%= link_to 'Messages', current_user.chatrooms.any? ? chatroom_path(@chatrooms.last) : root_path, class: 'nav-link' %>
+          </li>
+        <% end %>
+        <li class="nav-item">
+          <a href="<%= myinterviews_path %>" class="nav-link">My Interviews</a>
+        </li>
+      </ul>
+
+      <form action="/users" method="GET" class="search-bar" role="search">
+        <button type="submit" class="btn search-button" aria-label="Search">
+          <i class="fas fa-search"></i>
+        </button>
+        <input class="form-control" type="search" name="query" placeholder="Search" aria-label="Search">
+      </form>
     </div>
   </div>
 </nav>

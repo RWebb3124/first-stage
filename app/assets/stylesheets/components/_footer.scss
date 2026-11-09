@@ -1,44 +1,33 @@
+// Phones: links and social icons stacked and centred.
+// md and up: links centred on the bar, icons pinned to the right.
 .footer {
   background-color: $primary-colour;
   box-shadow: 0 -2px 2px rgba(0, 0, 0, 0.05);
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  padding: 10px 20px;
-  bottom: 0;
-  width: 100%;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
 }
 
-.footer-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  margin: 0;
+.footer-menu {
+  column-gap: clamp(1.5rem, 6vw, 4rem);
 }
 
-.footer-menu-left {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-basis: auto;
-  list-style: none;
-  width: 20%;
-  margin: 0;
-  padding: 0;
-}
+.footer-social {
+  gap: 1.25rem;
 
-.footer-menu-center {
-  display: flex;
-  justify-content: center;
-  flex-basis: auto;
-  list-style: none;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-
-  .foot-item {
-    margin: 0 50px;
+  i {
+    color: #333;
   }
 }
 
@@ -52,41 +41,15 @@
   color: grey;
 }
 
-.footer-menu-right {
-  display: flex;
-  justify-content: space-between;
-  flex-basis: auto;
-  list-style: none;
-  width: 20%;
-  margin: 0;
-  padding: 0;
-}
-
-.social-item {
-  margin: 0 10px;
-  padding: 0 5px;
-
-  i {
-    color: #333;
-  }
-}
-
-.hamburger {
-  display: none;
-  cursor: pointer;
-}
-
-
-@media (max-width: 768px) {
-  .foot-menu {
-    display: none;
+@include media-breakpoint-up(md) {
+  .footer {
+    flex-direction: row;
+    position: relative;
+    justify-content: center;
   }
 
   .footer-social {
-    display: none;
-  }
-
-  .hamburger {
-    display: block;
+    position: absolute;
+    right: 1.25rem;
   }
 }

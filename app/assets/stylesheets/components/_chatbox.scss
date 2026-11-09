@@ -1,7 +1,12 @@
+// Fills the screen below the navbar so the message box stays in view.
+// dvh tracks the visible height on phones (where the browser bar
+// shrinks it); the vh line is the fallback for older browsers.
 .chatroom {
   background: white;
   margin-top: 9px;
-  height: calc(100vh - 75px);
+  height: calc(100vh - 90px);
+  height: calc(100dvh - 90px);
+  min-height: 420px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -13,7 +18,7 @@
 
   .messages {
     height: 100%;
-    overflow: scroll;
+    overflow-y: auto;
     padding: 0.5rem;
     margin-bottom: 20px;
   }
@@ -21,14 +26,10 @@
   #new_message {
     border-top: 1px solid $gray-200;
 
-    .form-group {
-      margin-bottom: 0;
+    // Simple Form's wrapper adds mb-3; drop it so input and Send line up.
+    .mb-3 {
+      margin-bottom: 0 !important;
     }
-  }
-
-  .col-2 {
-    max-height: 80vh;
-    overflow-y: auto;
   }
 
   .message-row {
@@ -57,7 +58,9 @@
     align-self: flex-start;
   }
 
-  .simple-form {
-    margin-bottom: 20px;
+  #new_message,
+  form {
+    gap: 0.5rem;
+    padding-bottom: 0.75rem;
   }
 }
