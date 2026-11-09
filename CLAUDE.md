@@ -11,7 +11,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ```bash
 bin/setup                      # install gems, prepare DB
 bin/rails db:create db:migrate db:seed
-bin/rails server               # dev server on :3000 (Redis must be running for Action Cable)
+bin/rails server               # dev server on :3000
 bin/rails test                 # run all tests
 bin/rails test test/models/booking_test.rb      # single file
 bin/rails test test/models/booking_test.rb:5    # single test by line
@@ -32,7 +32,7 @@ Deploys to Heroku (`heroku` git remote); a Dockerfile also exists. `config.force
 
 **Booking → Chatroom → Messages pipeline:**
 - `Booking` has an `after_create` callback that creates a `Chatroom` plus two `ChatroomUser` rows (one for the interviewer, one for the interviewee). Every booking therefore has exactly one chatroom.
-- `Message` has an `after_create_commit` callback that runs `broadcast_append_to chatroom, target: "messages"` (Turbo Streams). `ChatroomChannel` and `chatroom_subscription_controller.js` handle the Action Cable side. Redis is the cable adapter in development and production.
+- `Message` has an `after_create_commit` callback that runs `broadcast_append_to chatroom, target: "messages"` (Turbo Streams). `ChatroomChannel` and `chatroom_subscription_controller.js` handle the Action Cable side. Action Cable uses the `postgresql` adapter (LISTEN/NOTIFY on the app's own database) in development and production; there is no Redis. Postgres caps each broadcast at 8000 bytes, which is why `Message::MAX_LENGTH` is 700 (worst-case escaping is about 10 bytes per character; `test/models/message_test.rb` guards it).
 - `User#chatrooms` is a hand-written method that overrides the `has_many :chatrooms` associations declared above it. Use the method.
 - `Booking#status` is a string enum (`pending`, `accepted`, `rejected`), non-null, defaulting to `pending`.
 - `ApplicationController` loads `@chatrooms` on every request for the messages sidebar. It also requires authentication globally (`before_action :authenticate_user!`).
@@ -49,4 +49,4 @@ Deploys to Heroku (`heroku` git remote); a Dockerfile also exists. `config.force
 
 ## Environment
 
-`.env` (loaded by `dotenv-rails` in dev and test) needs `CLOUDINARY_URL`. Production also needs `REDIS_URL`.
+`.env` (loaded by `dotenv-rails` in dev and test) needs `CLOUDINARY_URL`.
